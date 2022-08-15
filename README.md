@@ -9,6 +9,9 @@
 A Food Donation crowdfunding application aimed at helping those experiencing challenging circumstances 
 gain access to food during trying times.
 
+## Design
+https://excalidraw.com/#room=e81f9f5b5592a092b96b,WsKASQWoD6IZVB7N5DSShw
+
 ## Intended market
 
 The people that we expect to use this are those
