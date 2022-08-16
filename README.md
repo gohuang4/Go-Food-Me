@@ -39,4 +39,6 @@ that need food and those that wish to aid those in need of food.
 * Flag Fundraiser button that goes to site admin to be reviewed if you suspect bad actor
 * Language Selector to translate the page into selected language.
 * Allow Food Banks to make posts for necessary food products needed by their organization
+* Featured Post of the day
+* Charity fundraiser related news on landing page
   
