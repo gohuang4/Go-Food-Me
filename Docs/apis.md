@@ -14,7 +14,6 @@ Input:
     "description": str
 }
 ```
-
 Output:
 
 ```json
@@ -25,4 +24,5 @@ Output:
 "description": str
 }
 ```
+
 Creating a donation uses incoming grocery store data to query grocery list API to get a URL for a list for the donation. Then, it saves the items, name, and description. It returns all of the data with the new databse id.
