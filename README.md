@@ -10,7 +10,11 @@ A Food Donation crowdfunding application aimed at helping those experiencing cha
 gain access to food during trying times.
 
 ## Design
-https://excalidraw.com/#room=e81f9f5b5592a092b96b,WsKASQWoD6IZVB7N5DSShw
+
+* [API design](docs/apis.md)
+* [Data model](docs/data-model.md)
+* [GHI](docs/ghi.md)
+* [Integrations](docs/integrations.md)
 
 ## Intended market
 
