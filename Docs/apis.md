@@ -11,7 +11,8 @@ Input:
 {
     "items": str,
     "name": str,
-    "description": str
+    "description": str,
+    "picture_url": str
 }
 ```
 Output:
