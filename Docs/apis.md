@@ -50,7 +50,7 @@ Path: /api/accounts/login
 }
 ```
 To log in, a user inputs their username and password. If the username and password match a username and password in the accounts database, 'logged_in' is changed to 
-'true'. Their username, email, and login status are returned.
+'true'. Their username, email, and login status are returned if login is successful.
 
 ## Create a new donation request
 
