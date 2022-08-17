@@ -52,6 +52,53 @@ Path: /api/accounts/login
 To log in, a user inputs their username and password. If the username and password match a username and password in the accounts database, 'logged_in' is changed to 
 'true'. Their username, email, and login status are returned if login is successful.
 
+## Edit account info
+Method: 'PUT'
+Path: /api/accounts/<int:id>
+
+### Input:
+```json
+{
+    "username": str,
+    "password_1": str,
+    "password_2": str,
+    "email": str
+}
+```
+
+### Output:
+```json
+{
+    "username": str,
+    "password1": str,
+    "email": str
+}
+```
+Any change to account info can be made if the account holder is signed in and they have entered their current/old password. The text fields showing the account info can
+be edited but changes can only be saved after a "save" button is pressed and the original password is entered correctly. For now, the only account info that the user 
+can edit is their username, password, and email. If the new password_1 and password_2 do not match, the save will not happen and the displayed data will be changed back
+to the current user data.
+
+## Delete account
+Method: 'DELETE'
+Path: /api/accounts/<int:id>
+
+### Input:
+```json
+{
+    "password_1": str
+}
+```
+
+### Output:
+```json
+{
+    "id": num
+}
+```
+If the user wants to delete their account, they can do so by pressing a "delete" button and then correctly entering their password. Their id is returned on success.
+
+# Donations
 ## Create a new donation request
 
 Method: 'POST'
