@@ -1,0 +1,5 @@
+fastapi[all]==0.78.0
+uvicorn[standard]==0.17.6
+psycopg[binary]==3.0.14
+black==22.3.0
+eslint==8.22.0
