@@ -27,7 +27,7 @@ Path: /api/accounts/new
 }
 ```
 Creating an account takes a username, 2 passwords, an email, and saves them in the accounts database. An account can be created if the 2 passwords match and if the
-passwords are strong enough. If the signup is successful, the user-provided data is returned as well as the id of their new account.
+passwords are strong enough. If the signup is successful, the user-provided data is returned as well as the id of their new account. 
 
 ## Log in
 Method: 'POST'
