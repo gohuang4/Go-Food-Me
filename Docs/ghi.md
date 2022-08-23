@@ -1,6 +1,11 @@
 # Graphical Human Interface
 
-## Excalidraw
+## Excalidraws
+
+# MVP
+https://excalidraw.com/#room=b08bb300b7250a92e080,UklykYqEewLuk_EZk2TImQ
+
+# Stretch Page
 https://excalidraw.com/#room=e81f9f5b5592a092b96b,WsKASQWoD6IZVB7N5DSShw
 
 ## Home Page
