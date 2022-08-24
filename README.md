@@ -26,17 +26,23 @@ that need food and those that wish to aid those in need of food.
 
 ## Functionality
 
-* Create User Accounts who can make posts telling there situation, explaining why they need and what food they need, can update their food wish list, can make posts giving updates and thanks to those donating.
+# MVP Functionality
+* Create User Accounts who can make posts telling there situation, explaining why they need and what food they need , can make posts giving updates and thanks to those donating.
+* In order to create content would need to make an account
+* Add a "payment" method form to allow people to donate towards person post
+* Users and Non-Users will be able to look at posts 
+* How it works page explaining the purpose of the website and how it works
+
+
+# Stretch Goals
+
 * Allow Charity Users to be created that would have their own section for posts
 * Posts made by users will be sharable to social media platforms. 
-* Users and Non-Users will be able to look at posts made by users and select food items on the persons wish list to buy and have delivered to their home or location of their choice.
-* In order to create content and comment on site would need to make an account
 * Version 1 will link to Amazon API to create a shopping list and have it delivered to the address they set
 * Updated Version will have the shopping list created by a more local location
 * People who donate to buying something off persons wishlist will receive some notification that the item has been recieved
 * Person who made post will be able to send a personal thank you message to another user who has donated. Will only work for those who have an account as to protect personal information of donater.
 * Search Function to find by user or title of post
-* How it works page explaining the purpose of the website and how it works
 * Most viewed posts section or most donated post
 * Top Donators per Post
 * Comment Section on each post page moderated by the post creator 
