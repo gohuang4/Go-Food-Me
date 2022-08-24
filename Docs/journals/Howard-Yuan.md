@@ -10,3 +10,5 @@ Had to attend wedding rehearsal, couldn't contribute today
 Had to get married, couldn't contribute today
 8/22/2022
 Decided to go forth with a FARM stack approach. Researching FastAPI, React, and MongoDB.
+8/23/2022
+FastAPI is working. Backend complete. Finally got the logo to show up on homepage
