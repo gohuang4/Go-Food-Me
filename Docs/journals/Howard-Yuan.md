@@ -12,3 +12,5 @@ Had to get married, couldn't contribute today
 Decided to go forth with a FARM stack approach. Researching FastAPI, React, and MongoDB.
 8/23/2022
 FastAPI is working. Backend complete. Finally got the logo to show up on homepage
+8/24/2022
+Added post and payment models, still trying to get the optional fields up and running
