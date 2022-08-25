@@ -46,7 +46,16 @@ async def post_payment(payment:Payment):
     raise HTTPException(400, f"Something went wrong / Bad Request")
 
 @app.put("/api/payment/{id}", response_model = Payment)
-async def put_payment(id: int, name: str, card_number: str, expiration_date: str, CVV: str):
+async def put_payment(id: int, name: str | None = None, card_number: str | None = None, expiration_date: str | None = None, CVV: str | None = None):
+    get_payment = await fetch_one_payment(id)
+    if name == None:
+        name = get_payment["name"]
+    if card_number == None:
+        card_number = get_payment["card_number"]
+    if expiration_date == None:
+        expiration_date = get_payment["expiration_date"]
+    if CVV == None:
+        CVV = get_payment["CVV"]
     response = await update_payment(id, name, card_number, expiration_date, CVV)
     if response:
         return response
