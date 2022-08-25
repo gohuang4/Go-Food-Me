@@ -46,18 +46,9 @@ async def post_post(post:Post):
         return response
     raise HTTPException(400, f"Something went wrong / Bad Request")
 
-@app.put("/api/post{id}", response_model = UpdatePost)
+@app.put("/api/post{id}", response_model = Post)
 async def put_post(id: int, title: str | None=None, description: str | None=None, requested_amount: int | None=None):
-    response = await update_post(id, title, description, requested_amount)
-    if response["title"] != None:
-        response["title"] = title
-        print("!!!!!!!!!!!")
-        print(response["title"])
-    if response["description"] != None:
-        response["description"] = description
-    if response["requested_amount"] != None:
-        response["requested_amount"] = requested_amount
-
+    response = await update_post(id=id, title=title, description=description, requested_amount=requested_amount)
     if response: 
         return response
     raise HTTPException(404, f"There is no post with this id.{id}")

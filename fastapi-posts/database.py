@@ -22,12 +22,17 @@ async def create_post(Post):
     result = await collection.insert_one(document)
     return document
 
-async def update_post(id, title, description, requested_amount):
-    await collection.update_one({"id": id}, {"$set":{
-        "title": title, 
-        "description": description, 
-        "requested_amount": requested_amount,
-    }})
+async def update_post(id = None, title = None, description = None, requested_amount = None):
+    var = {}
+    if id:
+        var["id"] = id
+    if title:
+        var["title"] = title
+    if description:
+        var["description"] = description
+    if requested_amount:
+        var["requested_amount"] = requested_amount    
+    await collection.update_one({"id": id}, {"$set": var})
     document = await collection.find_one({"id":id})
     return document
 
