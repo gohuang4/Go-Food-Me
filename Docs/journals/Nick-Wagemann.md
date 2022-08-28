@@ -29,4 +29,8 @@ We worked together on putting together the first model the Account Model for the
 
 ## Wednesday August 24, 2022
 
-We worked together and put together our other two models for payment and posts. This is when we hit our first big snag. When updating a post we would want to make some of the fields have optional so you would not have to have the original post open on other page to copy paste or anything as un-user friendly as that. We searched thru stack overflow and many different sites testing various solutions and did not find anything that solved the issue after spending quite some time on it we asked for assistance but we were unable to figure it out before the night was thru and we called it for the night to be picked up again tomorrow.  
+We worked together and put together our other two models for payment and posts. This is when we hit our first big snag. When updating a post we would want to make some of the fields have optional so you would not have to have the original post open on other page to copy paste or anything as un-user friendly as that. We searched thru stack overflow and many different sites testing various solutions and did not find anything that solved the issue after spending quite some time on it we asked for assistance but we were unable to figure it out before the night was thru and we called it for the night to be picked up again tomorrow.
+
+## Thursday August 25, 2022 
+
+We were able to work out the issue with having optional data fields in our models. With a little help from a seir which sparked some inspiration in Cameron we were able to figure out the method for having our models not throw null values into our database which was causing errors. We were able to write an if statement that if the data was not being changed it would leave the previous submission rather then overwrite it with null value.
