@@ -1,4 +1,3 @@
-from typing import Union, Optional
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from model import Post
