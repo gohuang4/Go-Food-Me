@@ -2,25 +2,25 @@ stages:
   - test 
   - build
 
-fastapi-accounts-unit-test-job:
+accounts-unit-test-job:
   image: python:3-bullseye
   stage: test
   script: 
-    - cd fastapi-accounts
+    - cd accounts
     - pip install -r requirements.txt
     - python -m pytest
-fastapi-payments-unit-test-job:
+payments-unit-test-job:
   image: python:3-bullseye
   stage: test
   script: 
-    - cd fastapi-payments
+    - cd payments
     - pip install -r requirements.txt
     - python -m pytest
-fastapi-posts-unit-test-job:
+posts-unit-test-job:
   image: python:3-bullseye
   stage: test
   script: 
-    - cd fastapi-posts
+    - cd posts
     - pip install -r requirements.txt
     - python -m pytest
 lint-job:
@@ -28,7 +28,7 @@ lint-job:
   stage: test
   script:
     - pip install flake8
-    - flake8 fastapi-accounts fastapi-payments fastapi-posts
+    - flake8 accounts payments posts
 build-front-end-job:
   stage: build
   image: node:lts-bullseye
