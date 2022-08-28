@@ -3,37 +3,37 @@ stages:
   - build
 
 fastapi-accounts-unit-test-job:
-  image : python:3-bullseye
+  image: python:3-bullseye
   stage: test
   script: 
-    -cd fastapi-accounts
-    -pip install -r requirements.txt
-    -python -m pytest
+    - cd fastapi-accounts
+    - pip install -r requirements.txt
+    - python -m pytest
 fastapi-payments-unit-test-job:
-  image : python:3-bullseye
+  image: python:3-bullseye
   stage: test
   script: 
-    -cd fastapi-payments
-    -pip install -r requirements.txt
-    -python -m pytest
+    - cd fastapi-payments
+    - pip install -r requirements.txt
+    - python -m pytest
 fastapi-posts-unit-test-job:
-  image : python:3-bullseye
+  image: python:3-bullseye
   stage: test
   script: 
-    -cd fastapi-posts
-    -pip install -r requirements.txt
-    -python -m pytest
+    - cd fastapi-posts
+    - pip install -r requirements.txt
+    - python -m pytest
 lint-job:
   image: python:3-bullseye
   stage: test
   script:
-    -pip install flake8
-    -flake8 fastapi-accounts fastapi-payments fastapi-posts
+    - pip install flake8
+    - flake8 fastapi-accounts fastapi-payments fastapi-posts
 build-front-end-job:
   stage: build
   image: node:lts-bullseye
   script:
-    -cd ghi
-    -npm install
-    -npm run build
+    - cd ghi
+    - npm install
+    - npm run build
 
