@@ -1,11 +1,12 @@
+const imageLogo = '/images/GoFoodMe-Logo.png';
+
 function MainPage() {
     return (
       <div className="px-4 py-5 my-5 text-center">
-        <h1 className="display-5 fw-bold">CarCar</h1>
+        <img src={imageLogo}/>
         <div className="col-lg-6 mx-auto">
-          <p className="lead mb-4">
-            The premiere solution for automobile dealership
-            management!
+          <p className="fs-2 fw-bold lead mb-4">
+            Here to help you feed your neighbors.
           </p>
         </div>
       </div>
