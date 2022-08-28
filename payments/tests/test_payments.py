@@ -5,7 +5,7 @@ from database import fetch_all_payments
 client = TestClient(app)
 
 class EmptyPaymentQueries:
-    def fetch_all_payments(self):
+    def fetch_payments(self):
         return []
 
 def test_get_all_payments():
