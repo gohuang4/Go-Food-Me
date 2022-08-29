@@ -9,38 +9,38 @@ services:
         environment:
             MONGO_INITDB_ROOT_USERNAME: root
             MONGO_INITDB_ROOT_PASSWORD: password
-    fastapi-accounts:
+    accounts:
         build:
-            context: ./fastapi-accounts
+            context: ./accounts
             dockerfile: ./Dockerfile.dev
         ports:
             - "8000:8000"
         volumes:
-            - ./fastapi-accounts:/app
+            - ./accounts:/app
         environment:
             DATABASE_URL: mongodb://root:password@mongo
             DATABASE_NAME: mongo-data
             WAIT_HOSTS: mongo:27017
-    fastapi-payments:
+    payments:
         build:
-            context: ./fastapi-payments
+            context: ./payments
             dockerfile: ./Dockerfile.dev
         ports:
             - "8100:8000"
         volumes:
-            - ./fastapi-payments:/app
+            - ./payments:/app
         environment:
             DATABASE_URL: mongodb://root:password@mongo
             DATABASE_NAME: mongo-data
             WAIT_HOSTS: mongo:27017
-    fastapi-posts:
+    posts:
         build:
-            context: ./fastapi-posts
+            context: ./posts
             dockerfile: ./Dockerfile.dev
         ports:
             - "8200:8000"
         volumes:
-            - ./fastapi-posts:/app
+            - ./posts:/app
         environment:
             DATABASE_URL: mongodb://root:password@mongo
             DATABASE_NAME: mongo-data
