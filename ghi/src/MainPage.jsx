@@ -6,7 +6,7 @@ function MainPage() {
         <img src={imageLogo}/>
         <div className="col-lg-6 mx-auto">
           <p className="fs-2 fw-bold lead mb-4">
-            Here to help you feed your neighbors.
+            Here to help you feed your neighbor
           </p>
         </div>
       </div>

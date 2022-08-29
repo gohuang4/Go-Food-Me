@@ -10,9 +10,9 @@ function HowItWorks() {
         <h1>How Go Food Me Works</h1>
     </div>
     <div className="text-left my-5 py-3">
-        <p>Go Food Me is the best place to fundraise for your food needs.
+        <h5>Go Food Me is the best place to fundraise for your food needs.
         If you want to make sure that your donation money is going to feed a
-        person then look no farther.</p>
+        person then look no farther.</h5>
     </div>
     <div className="text-left my-5 py-3">
         <h3>"There is no exercise better for the heart than reaching down and lifting
@@ -20,13 +20,13 @@ function HowItWorks() {
         </h3>
     </div>
     <div className="text-left my-5 py-3">
-        <p>
+        <h5>
             Creating a fundraiser is simple. Sign up for a free Go Food Me Account, 
             Make a post describing your circumstances and what you need to buy food
             for yourself and your family, and that is it. Share the link for your 
             campaign on social media to get your fundraiser out there to as many people
             as possible.  
-        </p>
+        </h5>
     </div>
     <div className="text-left my-5 py-3">
         <h3>"I don't want to live in the kind of world where we don't look out for each other.

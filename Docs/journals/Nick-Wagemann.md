@@ -34,3 +34,7 @@ We worked together and put together our other two models for payment and posts. 
 ## Thursday August 25, 2022 
 
 We were able to work out the issue with having optional data fields in our models. With a little help from a seir which sparked some inspiration in Cameron we were able to figure out the method for having our models not throw null values into our database which was causing errors. We were able to write an if statement that if the data was not being changed it would leave the previous submission rather then overwrite it with null value.
+
+## Sunday August 28, 2022
+
+Tried making the CI document had trouble with it after several tests will have to ask questions about it tomorrow in class. Did the React Home Page, How it Works Page, and Nav Bar first drafts since they did not require any back end integrations which we should be able to put the final touches on this week ideally. Had some trouble with some of the positioning of buttons and images but was able to sort through most of those issues by going over the documentation for bootstrap.
