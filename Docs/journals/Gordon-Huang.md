@@ -13,3 +13,23 @@ Took out the delivery aspect of the project and made it more similar Go Fund Me.
 Decided on making the delivery part a stretch goal
 Decided on using a Kroger API rather than also the InstaCart API
 Considering using MongoDB
+
+08/23/2022
+MADE FAST APIs 
+Got 4/5 to work after debugging
+Got 5/5 to work after debugging
+Got POST, PUT, GET, DELETE, GET detail
+
+08/24/2022
+Tried to make fields optional for the PUT request, but we are hard stuck on it
+Attempted to use field: Optional[str] = None with no progress 
+Fields are still listed as requirements for making a put request
+Decided to figure out how to create a unique identifier for posts, accounts, payments
+
+08/25/2022
+Figured out how to make fields optional though using if statements in the database file
+Also figured out a way to do it on the [main.py](http://main.py) file 
+Currently trying to figure out how to make a unique identifier 
+
+08/29/2022
+Over the weekend Nick got a working home page along with other static pages with a navigation bar working that goes to those static pages.
