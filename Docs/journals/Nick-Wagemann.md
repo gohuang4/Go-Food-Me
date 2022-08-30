@@ -38,3 +38,7 @@ We were able to work out the issue with having optional data fields in our model
 ## Sunday August 28, 2022
 
 Tried making the CI document had trouble with it after several tests will have to ask questions about it tomorrow in class. Did the React Home Page, How it Works Page, and Nav Bar first drafts since they did not require any back end integrations which we should be able to put the final touches on this week ideally. Had some trouble with some of the positioning of buttons and images but was able to sort through most of those issues by going over the documentation for bootstrap.
+
+## Monday August 29, 2022
+
+Was a rough day we thought that we had made headway with the UUID replacing _id for our unique field for MongoDB. After figuring out how to get UUID to show we thought we had been successful then after testing it more we noticed that it was just replicating the same long string id. We are stalled on the back-end which is a bit frustrating and just trying solution after solution with not much headway. Did not resolve CI as spent the day trying to get the MongoDB issues resolved. Hopefully after meeting with instructors we will have a more solid direction on how to overcome our issues. In the meanwhile just incase I spent the later end of the night setting up the docker compose for the project setup through Django though I really hope we do not have to use it.
