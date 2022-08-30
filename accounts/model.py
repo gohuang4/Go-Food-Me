@@ -7,3 +7,8 @@ class Account(BaseModel):
     password: str
     email: str
 
+
+class AccountIn(BaseModel):
+    name: str
+    password: str
+    email: str
