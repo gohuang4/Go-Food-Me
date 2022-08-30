@@ -7,19 +7,27 @@ database = client.AccountList
 collection = database.account
 
 async def fetch_one_account(id):
-    document = await collection.find_one({"id": id})
+    document = await collection.find_one({"_id": id})
+    return document
+
+def move_ids_around(doc):
+    document = doc.copy()
+    document["id"] = str(document["_id"])
+    del document["_id"]
     return document
 
 async def fetch_all_account():
     account = []
     cursor = collection.find({})
     async for document in cursor:
-        account.append(Account(**document))
+        doc = move_ids_around(document)
+        account.append(Account(**doc))
     return account
 
 async def create_account(Account):
     document = Account 
     result = await collection.insert_one(document)
+    print(result)
     return document
 
 async def update_account(id, name, password, email):

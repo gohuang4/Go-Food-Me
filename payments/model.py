@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 class Payment(BaseModel):
-    id: int
+    id: str
     name: str
     card_number: str
     expiration_date: str

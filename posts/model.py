@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 class Post(BaseModel):
-    id: int
+    id: str
     title: str
     description: str 
     requested_amount: int
