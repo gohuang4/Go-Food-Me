@@ -34,12 +34,14 @@ async def create_account(Account):
     return document
 
 async def update_account(id, name, password, email):
-    await collection.update_one({"id": id}, {"$set":{
+    o_id = ObjectId(id)
+    await collection.update_one({"_id": o_id}, {"$set":{
         "name": name, "password": password, "email": email 
     }})
-    document = await collection.find_one({"id":id})
+    document = await collection.find_one({"_id":o_id})
     return document
 
 async def remove_account(id):
-    await collection.delete_one({"id":id})
+    o_id = ObjectId(id)
+    await collection.delete_one({"_id":o_id})
     return True
