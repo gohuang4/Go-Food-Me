@@ -1,5 +1,7 @@
+from http import client
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.testclient import TestClient
 from model import Payment
 
 app=FastAPI()
@@ -24,7 +26,7 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    return{ "Go" : "FoodMe"}
+    return{ "Go":"FoodMe"}
 
 @app.get("/api/payment")
 async def get_payment():
@@ -67,3 +69,10 @@ async def delete_payment(id: int):
     if response:
         return "Sucessfully deleted payment"
     raise HTTPException(404, f"There is no payment with this id.{id}")
+
+client = TestClient(app)
+
+def test_read_root():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == { "Go":"FoodMe"}

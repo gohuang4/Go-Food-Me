@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.testclient import TestClient
 from model import Post
 
 
@@ -26,7 +27,7 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    return{ "posts" : "posted"}
+    return{ "Go":"FoodMe"}
 
 @app.get("/api/post")
 async def get_post():
@@ -60,3 +61,10 @@ async def delete_post(id: str):
     if response:
         return "Sucessfully deleted post"
     raise HTTPException(404, f"There is no post with this id.{id}")
+
+client = TestClient(app)
+
+def test_read_root():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == { "Go":"FoodMe"}
