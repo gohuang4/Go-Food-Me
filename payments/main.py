@@ -26,7 +26,7 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    return{ "Go" : "FoodMe"}
+    return{ "Go":"FoodMe"}
 
 @app.get("/api/payment")
 async def get_payment():
@@ -75,4 +75,4 @@ client = TestClient(app)
 def test_read_root():
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == { "Go" : "FoodMe"}
+    assert response.json() == { "Go":"FoodMe"}

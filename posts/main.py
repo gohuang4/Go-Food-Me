@@ -25,7 +25,7 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    return{ "posts" : "posted"}
+    return{ "Go":"FoodMe"}
 
 @app.get("/api/post")
 async def get_post():
@@ -65,4 +65,4 @@ client = TestClient(app)
 def test_read_root():
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == { "Go" : "FoodMe"}
+    assert response.json() == { "Go":"FoodMe"}
