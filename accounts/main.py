@@ -50,7 +50,7 @@ async def post_account(account:Account):
     raise HTTPException(400, f"Something went wrong / Bad Request")
 
 @app.put("/api/account/{id}", response_model = Account)
-async def put_account(id: str, name: str, password: str, email:str):
+async def put_account(id: str, name: str | None=None, password: str | None=None, email:str | None=None):
     response = await update_account(id, name, password, email)
     if response:
         return response
