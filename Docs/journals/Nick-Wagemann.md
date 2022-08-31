@@ -42,3 +42,7 @@ Tried making the CI document had trouble with it after several tests will have t
 ## Monday August 29, 2022
 
 Was a rough day we thought that we had made headway with the UUID replacing _id for our unique field for MongoDB. After figuring out how to get UUID to show we thought we had been successful then after testing it more we noticed that it was just replicating the same long string id. We are stalled on the back-end which is a bit frustrating and just trying solution after solution with not much headway. Did not resolve CI as spent the day trying to get the MongoDB issues resolved. Hopefully after meeting with instructors we will have a more solid direction on how to overcome our issues. In the meanwhile just incase I spent the later end of the night setting up the docker compose for the project setup through Django though I really hope we do not have to use it.
+
+## Tuesday August 30, 2022
+
+We had a good day after a rough start and a push in the right direction from our instructor. We were able to figure out how to select the Account by the ObjectId. We were able to do this with a half a dozen print statements and finally getting MongoDB Compass. With ObjectId glaring us in the face in our database realized that we had to assign the id value to the Object id. Tomorrow morning we will make some edits to our put method to ensure that it works and edit the other two services to match accounts.

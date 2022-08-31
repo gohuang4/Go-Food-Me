@@ -1,8 +1,11 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.testclient import TestClient
 from model import Post
 
-app = FastAPI()
+
+
+app=FastAPI()
 
 from database import (
     fetch_one_post,
@@ -25,17 +28,15 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    return {"posts": "posted"}
-
+    return{ "Go":"FoodMe"}
 
 @app.get("/api/post")
 async def get_post():
     response = await fetch_all_post()
     return response
 
-
-@app.get("/api/post{id}", response_model=Post)
-async def get_post_by_id(id: int):
+@app.get("/api/post{id}", response_model = Post)
+async def get_post_by_id(id: str):
     response = await fetch_one_post(id)
     if response:
         return response
@@ -49,25 +50,24 @@ async def post_post(post: Post):
         return response
     raise HTTPException(400, f"Something went wrong / Bad Request")
 
-
-@app.put("/api/post{id}", response_model=Post)
-async def put_post(
-    id: int,
-    title: str | None = None,
-    description: str | None = None,
-    requested_amount: int | None = None,
-):
-    response = await update_post(
-        id=id, title=title, description=description, requested_amount=requested_amount
-    )
-    if response:
+@app.put("/api/post{id}", response_model = Post)
+async def put_post(id: str, title: str | None=None, description: str | None=None, requested_amount: int | None=None):
+    response = await update_post(id=id, title=title, description=description, requested_amount=requested_amount)
+    if response: 
         return response
     raise HTTPException(404, f"There is no post with this id.{id}")
 
 
 @app.delete("/api/post{id}")
-async def delete_post(id: int):
+async def delete_post(id: str):
     response = await remove_post(id)
     if response:
         return "Sucessfully deleted post"
     raise HTTPException(404, f"There is no post with this id.{id}")
+
+client = TestClient(app)
+
+def test_read_root():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == { "Go":"FoodMe"}
