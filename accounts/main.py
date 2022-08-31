@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.testclient import TestClient
 from model import Account
 
 
@@ -61,3 +62,10 @@ async def delete_account(id: str):
     if response:
         return "Sucessfully deleted account"
     raise HTTPException(404, f"There is no account with this id.{id}")
+
+client = TestClient(app)
+
+def test_read_root():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == { "Go" : "FoodMe"}
