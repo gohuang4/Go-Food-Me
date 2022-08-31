@@ -1,14 +1,14 @@
 from pydantic import BaseModel
 
 
-class Account(BaseModel):
+class AccountGetAll(BaseModel):
     id: str 
     name: str
     password: str
     email: str
 
 
-class AccountIn(BaseModel):
+class Account(BaseModel):
     name: str
     password: str
     email: str

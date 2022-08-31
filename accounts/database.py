@@ -1,5 +1,6 @@
-from model import Account, AccountIn
+from model import Account, AccountGetAll
 
+from bson.objectid import ObjectId
 import motor.motor_asyncio
 
 client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://root:password@mongo')
@@ -18,22 +19,18 @@ async def fetch_all_account():
     cursor = collection.find({})
     async for document in cursor:
         doc = move_ids_around(document)
-        account.append(Account(**doc))
+        account.append(AccountGetAll(**doc))
     return account
 
 async def fetch_one_account(id):
-
-    document = await collection.find_one({"id": id})
+    o_id = ObjectId(id)
+    document = await collection.find_one({"_id": o_id})
     print(document)
-    # doc = move_ids_around(document)
-    # print(doc)
-    # return doc
     return document
 
-async def create_account(AccountIn):
-    document = AccountIn 
+async def create_account(Account):
+    document = Account
     result = await collection.insert_one(document)
-    print(result)
     return document
 
 async def update_account(id, name, password, email):

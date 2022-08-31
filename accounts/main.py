@@ -1,7 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from bson.objectid import ObjectId
-from model import Account, AccountIn
+from model import Account
 
 
 app=FastAPI()
@@ -42,14 +41,14 @@ async def get_account_byid(id: str):
         return response
     raise HTTPException(404, f"There is no account with this id.{id}")
 
-@app.post("/api/account", response_model = AccountIn)
-async def post_account(account:AccountIn):
+@app.post("/api/account", response_model = Account)
+async def post_account(account:Account):
     response = await create_account(account.dict()) 
     if response:
         return response
     raise HTTPException(400, f"Something went wrong / Bad Request")
 
-@app.put("/api/account{id}", response_model = AccountIn)
+@app.put("/api/account{id}", response_model = Account)
 async def put_account(name: str, password: str, email:str):
     response = await update_account(name, password, email)
     if response:
