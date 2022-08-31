@@ -14,3 +14,6 @@ Decided to go forth with a FARM stack approach. Researching FastAPI, React, and 
 FastAPI is working. Backend complete. Finally got the logo to show up on homepage
 8/24/2022
 Added post and payment models, still trying to get the optional fields up and running
+8/25/2022
+Figured out the null value issue, getting the optional fields to work for payments, bootstrap added to index
+8/29/2022
