@@ -4,9 +4,11 @@ from database import fetch_all_account
 
 client = TestClient(app)
 
+
 class EmptyAccountQueries:
     def fetch_all_account(self):
         return []
+
 
 def test_get_all_accounts():
     app.dependency_overrides[fetch_all_account] = EmptyAccountQueries

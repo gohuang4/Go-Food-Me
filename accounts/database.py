@@ -2,19 +2,22 @@ from model import Account
 
 import motor.motor_asyncio
 
-client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://root:password@mongo')
+client = motor.motor_asyncio.AsyncIOMotorClient("mongodb://root:password@mongo")
 database = client.AccountList
 collection = database.account
+
 
 async def fetch_one_account(id):
     document = await collection.find_one({"_id": id})
     return document
+
 
 def move_ids_around(doc):
     document = doc.copy()
     document["id"] = str(document["_id"])
     del document["_id"]
     return document
+
 
 async def fetch_all_account():
     account = []
@@ -24,19 +27,22 @@ async def fetch_all_account():
         account.append(Account(**doc))
     return account
 
+
 async def create_account(Account):
-    document = Account 
+    document = Account
     result = await collection.insert_one(document)
     print(result)
     return document
 
+
 async def update_account(id, name, password, email):
-    await collection.update_one({"id": id}, {"$set":{
-        "name": name, "password": password, "email": email 
-    }})
-    document = await collection.find_one({"id":id})
+    await collection.update_one(
+        {"id": id}, {"$set": {"name": name, "password": password, "email": email}}
+    )
+    document = await collection.find_one({"id": id})
     return document
 
+
 async def remove_account(id):
-    await collection.delete_one({"id":id})
+    await collection.delete_one({"id": id})
     return True

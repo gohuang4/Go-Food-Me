@@ -4,9 +4,11 @@ from database import fetch_all_post
 
 client = TestClient(app)
 
+
 class EmptyPostQueries:
     def fetch_all_post(self):
         return []
+
 
 def test_get_all_posts():
     app.dependency_overrides[fetch_all_post] = EmptyPostQueries

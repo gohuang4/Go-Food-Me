@@ -4,9 +4,11 @@ from database import fetch_all_payments
 
 client = TestClient(app)
 
+
 class EmptyPaymentQueries:
     def fetch_payments(self):
         return []
+
 
 def test_get_all_payments():
     app.dependency_overrides[fetch_all_payments] = EmptyPaymentQueries
