@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 
 class AccountGetAll(BaseModel):
-    id: str 
+    id: str
     name: str
     password: str
     email: str
