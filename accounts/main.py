@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from model import Account
 
 
+
 app=FastAPI()
 
 
@@ -36,7 +37,6 @@ async def get_account():
 @app.get("/api/account/{id}", response_model = Account)
 async def get_account_byid(id: str):
     response = await fetch_one_account(id)
-    print("!!!RESPONSE!!!", response)
     if response:
         return response
     raise HTTPException(404, f"There is no account with this id.{id}")
@@ -48,14 +48,14 @@ async def post_account(account:Account):
         return response
     raise HTTPException(400, f"Something went wrong / Bad Request")
 
-@app.put("/api/account{id}", response_model = Account)
-async def put_account(name: str, password: str, email:str):
-    response = await update_account(name, password, email)
+@app.put("/api/account/{id}", response_model = Account)
+async def put_account(id: str, name: str, password: str, email:str):
+    response = await update_account(id, name, password, email)
     if response:
         return response
     raise HTTPException(404, f"There is no account with this id.{id}")
 
-@app.delete("/api/account{id}")
+@app.delete("/api/account/{id}")
 async def delete_account(id: str):
     response = await remove_account(id)
     if response:
