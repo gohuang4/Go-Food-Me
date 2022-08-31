@@ -9,6 +9,7 @@ accounts-unit-test-job:
     - cd accounts
     - pip install -r requirements.txt
     - python -m pytest
+
 payments-unit-test-job:
   image: python:3-bullseye
   stage: test
@@ -16,6 +17,7 @@ payments-unit-test-job:
     - cd payments
     - pip install -r requirements.txt
     - python -m pytest
+
 posts-unit-test-job:
   image: python:3-bullseye
   stage: test
@@ -23,12 +25,14 @@ posts-unit-test-job:
     - cd posts
     - pip install -r requirements.txt
     - python -m pytest
+
 lint-job:
   image: python:3-bullseye
   stage: test
   script:
     - pip install flake8
     - flake8 accounts payments posts
+
 build-front-end-job:
   stage: build
   image: node:lts-bullseye

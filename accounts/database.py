@@ -33,11 +33,20 @@ async def create_account(Account):
     result = await collection.insert_one(document)
     return document
 
-async def update_account(id, name, password, email):
+async def update_account(id, name = None, password = None, email = None):
     o_id = ObjectId(id)
-    await collection.update_one({"_id": o_id}, {"$set":{
-        "name": name, "password": password, "email": email 
-    }})
+    var = { "id": id }
+    if name:
+        var["name"] = name
+    if password: 
+        var["password"] = password 
+    if email:
+        var["email"] = email 
+    
+    # await collection.update_one({"_id": o_id}, {"$set":{
+    #     "name": name, "password": password, "email": email 
+    # }})
+    await collection.update_one({"_id": o_id}, {"$set": var})
     document = await collection.find_one({"_id":o_id})
     return document
 
