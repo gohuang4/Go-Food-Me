@@ -37,8 +37,9 @@ async def create_post(Post):
 async def update_post(id = None, title = None, description = None, requested_amount = None):
     o_id = ObjectId(id)
     var = {}
+    o_id = ObjectId(id)
     if id:
-        var["id"] = id
+        var["id"] = o_id
     if title:
         var["title"] = title
     if description:

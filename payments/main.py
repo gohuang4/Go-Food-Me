@@ -34,9 +34,8 @@ async def get_payment():
     response = await fetch_all_payments()
     return response
 
-
-@app.get("/api/payment/{id}", response_model=Payment)
-async def get_payment_by_id(id: int):
+@app.get("/api/payment/{id}", response_model = Payment)
+async def get_payment_by_id(id: str):
     response = await fetch_one_payment(id)
     if response:
         return response
@@ -50,15 +49,8 @@ async def post_payment(payment: Payment):
         return response
     raise HTTPException(400, f"Something went wrong / Bad Request")
 
-
-@app.put("/api/payment/{id}", response_model=Payment)
-async def put_payment(
-    id: int,
-    name: str | None = None,
-    card_number: str | None = None,
-    expiration_date: str | None = None,
-    CVV: str | None = None,
-):
+@app.put("/api/payment/{id}", response_model = Payment)
+async def put_payment(id: str, name: str | None = None, card_number: str | None = None, expiration_date: str | None = None, CVV: str | None = None):
     get_payment = await fetch_one_payment(id)
     if name == None:
         name = get_payment["name"]
@@ -75,7 +67,7 @@ async def put_payment(
 
 
 @app.delete("/api/payment/{id}")
-async def delete_payment(id: int):
+async def delete_payment(id: str):
     response = await remove_payment(id)
     if response:
         return "Sucessfully deleted payment"
