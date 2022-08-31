@@ -1,12 +1,20 @@
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Nav from './Nav';
+import MainPage from './MainPage';
+import HowItWorks from './HowItWorks'
 
-const imageURL = '/images/GoFoodMe-Logo.png';
-
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <img src={imageURL}/>
+    <BrowserRouter>
+    <Nav />
+    <div className="container">
+      <Routes>
+        <Route path="" element={<MainPage />} />
+        <Route path="/how-it-works" element={<HowItWorks />} />
+      </Routes>
     </div>
+    </BrowserRouter>
   );
 }
 

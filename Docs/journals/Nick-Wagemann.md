@@ -26,3 +26,23 @@ We shrank our MVP down one further step to basically be a more straightforward G
 ## Tuesday August 23, 2022
 
 We worked together on putting together the first model the Account Model for the backend. We are using FastAPI with Motor and Pydantic to setup the models and database. We had some minor hurdles figuring out how to sync the database to the database.py file but figured it out by seeing the Url in the Docker Compose file. We setup the routes and at first had only the post and get all working and we step by step saw the small little syntax errors in the terminal that were causing server errors. After going back and forth and resetting our database once after we made changes to the base model we got all the routes working. After that wanted to take a quick break and do something fun by putting the Logo on the main page of the react page. This turned into a mini trial of just finding the proper way to import the image to App.js. Turns out all we had to was find the route by going to the correct url for the image and then putting that route into the imageUrl variable.
+
+## Wednesday August 24, 2022
+
+We worked together and put together our other two models for payment and posts. This is when we hit our first big snag. When updating a post we would want to make some of the fields have optional so you would not have to have the original post open on other page to copy paste or anything as un-user friendly as that. We searched thru stack overflow and many different sites testing various solutions and did not find anything that solved the issue after spending quite some time on it we asked for assistance but we were unable to figure it out before the night was thru and we called it for the night to be picked up again tomorrow.
+
+## Thursday August 25, 2022 
+
+We were able to work out the issue with having optional data fields in our models. With a little help from a seir which sparked some inspiration in Cameron we were able to figure out the method for having our models not throw null values into our database which was causing errors. We were able to write an if statement that if the data was not being changed it would leave the previous submission rather then overwrite it with null value.
+
+## Sunday August 28, 2022
+
+Tried making the CI document had trouble with it after several tests will have to ask questions about it tomorrow in class. Did the React Home Page, How it Works Page, and Nav Bar first drafts since they did not require any back end integrations which we should be able to put the final touches on this week ideally. Had some trouble with some of the positioning of buttons and images but was able to sort through most of those issues by going over the documentation for bootstrap.
+
+## Monday August 29, 2022
+
+Was a rough day we thought that we had made headway with the UUID replacing _id for our unique field for MongoDB. After figuring out how to get UUID to show we thought we had been successful then after testing it more we noticed that it was just replicating the same long string id. We are stalled on the back-end which is a bit frustrating and just trying solution after solution with not much headway. Did not resolve CI as spent the day trying to get the MongoDB issues resolved. Hopefully after meeting with instructors we will have a more solid direction on how to overcome our issues. In the meanwhile just incase I spent the later end of the night setting up the docker compose for the project setup through Django though I really hope we do not have to use it.
+
+## Tuesday August 30, 2022
+
+We had a good day after a rough start and a push in the right direction from our instructor. We were able to figure out how to select the Account by the ObjectId. We were able to do this with a half a dozen print statements and finally getting MongoDB Compass. With ObjectId glaring us in the face in our database realized that we had to assign the id value to the Object id. Tomorrow morning we will make some edits to our put method to ensure that it works and edit the other two services to match accounts.

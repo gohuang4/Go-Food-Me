@@ -1,24 +1,35 @@
-from model import Account
+from model import Account, AccountGetAll
 
+from bson.objectid import ObjectId
 import motor.motor_asyncio
 
 client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://root:password@mongo')
 database = client.AccountList
 collection = database.account
 
-async def fetch_one_account(id):
-    document = await collection.find_one({"id": id})
+
+def move_ids_around(doc):
+    document = doc.copy()
+    document["id"] = str(document["_id"])
+    del document["_id"]
     return document
 
 async def fetch_all_account():
     account = []
     cursor = collection.find({})
     async for document in cursor:
-        account.append(Account(**document))
+        doc = move_ids_around(document)
+        account.append(AccountGetAll(**doc))
     return account
 
+async def fetch_one_account(id):
+    o_id = ObjectId(id)
+    document = await collection.find_one({"_id": o_id})
+    print(document)
+    return document
+
 async def create_account(Account):
-    document = Account 
+    document = Account
     result = await collection.insert_one(document)
     return document
 

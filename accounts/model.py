@@ -1,7 +1,14 @@
 from pydantic import BaseModel
 
+
+class AccountGetAll(BaseModel):
+    id: str 
+    name: str
+    password: str
+    email: str
+
+
 class Account(BaseModel):
-    id: int 
     name: str
     password: str
     email: str

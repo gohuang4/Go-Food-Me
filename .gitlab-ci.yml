@@ -1,0 +1,39 @@
+stages:
+  - test 
+  - build
+
+accounts-unit-test-job:
+  image: python:3-bullseye
+  stage: test
+  script: 
+    - cd accounts
+    - pip install -r requirements.txt
+    - python -m pytest
+payments-unit-test-job:
+  image: python:3-bullseye
+  stage: test
+  script: 
+    - cd payments
+    - pip install -r requirements.txt
+    - python -m pytest
+posts-unit-test-job:
+  image: python:3-bullseye
+  stage: test
+  script: 
+    - cd posts
+    - pip install -r requirements.txt
+    - python -m pytest
+lint-job:
+  image: python:3-bullseye
+  stage: test
+  script:
+    - pip install flake8
+    - flake8 accounts payments posts
+build-front-end-job:
+  stage: build
+  image: node:lts-bullseye
+  script:
+    - cd ghi
+    - npm install
+    - npm run build
+
