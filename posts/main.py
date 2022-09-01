@@ -26,7 +26,7 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    return {"Go":"FoodMe"}
+    return {"Go": "FoodMe"}
 
 
 @app.get("/api/post")

@@ -39,7 +39,11 @@ async def create_post(Post):
     return document
 
 
-async def update_post(id=None,title=None,description=None,requested_amount=None):
+async def update_post(id=None,
+title=None,
+description=None,
+requested_amount=None
+):
     o_id = ObjectId(id)
     var = {}
     o_id = ObjectId(id)

@@ -9,10 +9,7 @@ from database import (
     remove_account,
 )
 
-
 app = FastAPI()
-
-
 
 origins = ["https://localhost:3000"]
 
