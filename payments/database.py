@@ -1,4 +1,3 @@
-from http import client
 import os
 import requests
 import motor.motor_asyncio
@@ -10,8 +9,8 @@ from model import PaymentGetAll
 #     "mongodb://root:password@mongo"
 #     )
 url = f"{os.environ['DATABASE_URL']}"
-client = motor.motor_asyncio.AsyncIOMotor(url)
 response = requests.get(url)
+client = motor.motor_asyncio.AsyncIOMotor(response)
 database = client.PaymentList
 collection = database.payment
 
