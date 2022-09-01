@@ -1,9 +1,9 @@
-from model import Account, AccountGetAll
+from model import AccountGetAll
 
 from bson.objectid import ObjectId
 import motor.motor_asyncio
 
-client = motor.motor_asyncio.AsyncIOMotorClient("mongodb://root:password@mongo")
+client=motor.motor_asyncio.AsyncIOMotorClient("mongodb://root:password@mongo")
 database = client.AccountList
 collection = database.account
 
@@ -33,7 +33,7 @@ async def fetch_one_account(id):
 
 async def create_account(Account):
     document = Account
-    result = await collection.insert_one(document)
+    await collection.insert_one(document)
     return document
 
 
@@ -46,10 +46,7 @@ async def update_account(id, name=None, password=None, email=None):
         var["password"] = password
     if email:
         var["email"] = email
-
-    # await collection.update_one({"_id": o_id}, {"$set":{
-    #     "name": name, "password": password, "email": email
-    # }})
+        
     await collection.update_one({"_id": o_id}, {"$set": var})
     document = await collection.find_one({"_id": o_id})
     return document

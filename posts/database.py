@@ -1,9 +1,9 @@
-from model import Post, PostGetAll
+from model import PostGetAll
 
 from bson.objectid import ObjectId
 import motor.motor_asyncio
 
-client = motor.motor_asyncio.AsyncIOMotorClient("mongodb://root:password@mongo")
+client=motor.motor_asyncio.AsyncIOMotorClient("mongodb://root:password@mongo")
 database = client.PostList
 collection = database.post
 
@@ -33,7 +33,7 @@ async def fetch_one_post(id):
 
 async def create_post(Post):
     document = Post
-    result = await collection.insert_one(document)
+    await collection.insert_one(document)
     return document
 
 

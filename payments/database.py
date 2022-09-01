@@ -1,9 +1,9 @@
-from model import Payment, PaymentGetAll
+from model import PaymentGetAll
 
 from bson.objectid import ObjectId
 import motor.motor_asyncio
 
-client = motor.motor_asyncio.AsyncIOMotorClient("mongodb://root:password@mongo")
+client=motor.motor_asyncio.AsyncIOMotorClient("mongodb://root:password@mongo")
 database = client.PaymentList
 collection = database.payment
 
@@ -33,7 +33,7 @@ async def fetch_all_payments():
 
 async def create_payment(Payment):
     document = Payment
-    result = await collection.insert_one(document)
+    await collection.insert_one(document)
     return document
 
 

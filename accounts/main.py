@@ -1,7 +1,7 @@
+from model import Account
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.testclient import TestClient
-from model import Account
 
 
 app = FastAPI()
@@ -50,7 +50,7 @@ async def post_account(account: Account):
     response = await create_account(account.dict())
     if response:
         return response
-    raise HTTPException(400, f"Something went wrong / Bad Request")
+    raise HTTPException(400, "Something went wrong / Bad Request")
 
 
 @app.put("/api/account/{id}", response_model=Account)
