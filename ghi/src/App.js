@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from './Nav';
 import MainPage from './MainPage';
 import HowItWorks from './HowItWorks'
-import PostForm from './NewPost';
 import SignupForm from './SignupForm';
 import SigninForm from './SigninForm';
+import PostForm from './PostForm';
 
 function App(props) {
   return (

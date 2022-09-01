@@ -1,13 +1,15 @@
+import os
 import motor.motor_asyncio
 from bson.objectid import ObjectId
 from model import PaymentGetAll
 
 
 client = motor.motor_asyncio.AsyncIOMotorClient(
-    "mongodb://root:password@mongo"
+    url = f"{os.environ['DATABASE_URL']}"
+    response = requests.get(url)
     )
-database = client.PaymentList
-collection = database.payment
+database = client.AccountList
+collection = database.account
 
 
 def move_ids_around(doc):

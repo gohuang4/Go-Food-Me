@@ -1,10 +1,13 @@
+import os
+import requests
 import motor.motor_asyncio
 from bson.objectid import ObjectId
 from model import AccountGetAll
 
 
 client = motor.motor_asyncio.AsyncIOMotorClient(
-    "mongodb://root:password@mongo"
+    url = f"{os.environ['DATABASE_URL']}"
+    response = requests.get(url)
     )
 database = client.AccountList
 collection = database.account
