@@ -31,7 +31,7 @@ function SignupForm(props) {
           labelText="Password"
           value={password}
           onChange={e => setPassword(e.target.value)}
-          type="text"/>
+          type="password"/>
         <BootstrapInput
           id="email"
           placeholder="Email"
