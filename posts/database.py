@@ -1,12 +1,14 @@
 import os
+import requests
 import motor.motor_asyncio
 from bson.objectid import ObjectId
 from model import PostGetAll
 
 
 client = motor.motor_asyncio.AsyncIOMotorClient(
-    f"{os.environ['DATABASE_URL']}"
+    url = f"{os.environ['DATABASE_URL']}"
     )
+response = requests.get(url)
 database = client.AccountList
 collection = database.account
 
