@@ -59,8 +59,8 @@ async def put_post(
     requested_amount: int | None = None,
 ):
     response = await update_post(
-    id=id, title=title, description=description,
-    requested_amount=requested_amount
+        id=id, title=title, description=description,
+        requested_amount=requested_amount
     )
     if response:
         return response

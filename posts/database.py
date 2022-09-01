@@ -1,9 +1,11 @@
+import motor.motor_asyncio
+from bson.objectid import ObjectId
 from model import PostGetAll
 
-from bson.objectid import ObjectId
-import motor.motor_asyncio
 
-client=motor.motor_asyncio.AsyncIOMotorClient("mongodb://root:password@mongo")
+client = motor.motor_asyncio.AsyncIOMotorClient(
+    "mongodb://root:password@mongo"
+    )
 database = client.PostList
 collection = database.post
 

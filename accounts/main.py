@@ -1,7 +1,7 @@
-from model import Account
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.testclient import TestClient
+from model import Account
 
 
 app = FastAPI()
