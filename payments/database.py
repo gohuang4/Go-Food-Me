@@ -6,8 +6,8 @@ from model import PaymentGetAll
 
 client = motor.motor_asyncio.AsyncIOMotorClient(
     url = f"{os.environ['DATABASE_URL']}"
+    response = requests.get(url)
     )
-response = requests.get(url)
 database = client.AccountList
 collection = database.account
 
