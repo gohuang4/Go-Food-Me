@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from './Nav';
 import MainPage from './MainPage';
 import HowItWorks from './HowItWorks'
-import PostForm from './NewPost';
+import PostForm from './PostForm';
 
 function App(props) {
   return (
