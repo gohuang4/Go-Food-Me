@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from './Nav';
 import MainPage from './MainPage';
 import HowItWorks from './HowItWorks'
+import PostForm from './NewPost';
 
 function App(props) {
   return (
@@ -12,6 +13,7 @@ function App(props) {
       <Routes>
         <Route path="" element={<MainPage />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
+        <Route path="/post-form" element={<PostForm />} />
       </Routes>
     </div>
     </BrowserRouter>
