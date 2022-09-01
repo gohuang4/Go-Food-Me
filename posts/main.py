@@ -1,10 +1,6 @@
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, HTTPException
 from model import Post
-
-
-app = FastAPI()
-
 from database import (
     fetch_one_post,
     fetch_all_post,
@@ -12,6 +8,10 @@ from database import (
     update_post,
     remove_post,
 )
+
+
+app = FastAPI()
+
 
 origins = ["https://localhost:3000"]
 
@@ -26,7 +26,7 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    return {"Go": "FoodMe"}
+    return {"Go":"FoodMe"}
 
 
 @app.get("/api/post")

@@ -1,11 +1,6 @@
 from model import Account
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-
-
-app = FastAPI()
-
-
 from database import (
     fetch_one_account,
     fetch_all_account,
@@ -13,6 +8,11 @@ from database import (
     update_account,
     remove_account,
 )
+
+
+app = FastAPI()
+
+
 
 origins = ["https://localhost:3000"]
 

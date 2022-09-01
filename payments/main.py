@@ -1,9 +1,6 @@
 from model import Payment
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, HTTPException
-
-app = FastAPI()
-
 from database import (
     fetch_one_payment,
     fetch_all_payments,
@@ -11,6 +8,9 @@ from database import (
     update_payment,
     remove_payment,
 )
+
+app = FastAPI()
+
 
 origins = ["https://localhost:3000"]
 
