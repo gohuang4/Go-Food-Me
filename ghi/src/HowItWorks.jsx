@@ -1,11 +1,11 @@
 const imageLogo = '/images/GoFoodMe-Logo.png';
-const image = '/images/Food-in-need.png';
-const image2 = '/images/no-hunger.png';
+// const image = '/images/Food-in-need.png';
+// const image2 = '/images/no-hunger.png';
 
 function HowItWorks() {
     return (
     <div>
-        <img src={imageLogo} className="mx-auto d-block" width="400"/>
+        <img src={imageLogo} alt="" className="mx-auto d-block" width="400"/>
       <div className="px-4 py-5 my-3 text-center">
         <h1>How Go Food Me Works</h1>
     </div>
