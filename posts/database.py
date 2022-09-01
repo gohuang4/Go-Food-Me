@@ -3,9 +3,7 @@ from bson.objectid import ObjectId
 from model import PostGetAll
 
 
-client = motor.motor_asyncio.AsyncIOMotorClient(
-    "mongodb://root:password@mongo"
-    )
+client = motor.motor_asyncio.AsyncIOMotorClient("mongodb://root:password@mongo")
 database = client.PostList
 collection = database.post
 
@@ -39,10 +37,7 @@ async def create_post(Post):
     return document
 
 
-async def update_post(
-    id=None, title=None,
-    description=None, requested_amount=None
-    ):
+async def update_post(id=None, title=None, description=None, requested_amount=None):
     o_id = ObjectId(id)
     var = {}
     o_id = ObjectId(id)
