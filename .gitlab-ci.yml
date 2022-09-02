@@ -1,6 +1,7 @@
 stages:
   - test 
   - build
+  # - deploy
 
 accounts-unit-test-job:
   image: python:3-bullseye
@@ -40,4 +41,23 @@ build-front-end-job:
     - cd ghi
     - npm install
     - npm run build
+
+build-accounts-api-image-job:  # RENAME THIS
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  stage: build
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  script:
+    # CHANGE THIS TO THE DIRECTORY THAT HAS YOUR Dockerfile
+    - cd accounts
+
+    # EVERYWHERE IT SHOWS fastapi_api BELOW, CHANGE THOSE
+    # TO A MORE MEANINGFUL SERVICE NAME (5 PLACES)
+    - docker build -t ${CI_REGISTRY_IMAGE}/accounts_api:latest .
+    - docker tag ${CI_REGISTRY_IMAGE}/accounts_api:latest ${CI_REGISTRY_IMAGE}/accounts_api:$CI_JOB_ID
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+    - docker push ${CI_REGISTRY_IMAGE}/accounts_api:$CI_JOB_ID
+    - docker push ${CI_REGISTRY_IMAGE}/accounts_api:latest
 

@@ -1,9 +1,13 @@
 import os
+import requests
 import motor.motor_asyncio
 from bson.objectid import ObjectId
 from model import PaymentGetAll
 
 
+# client = motor.motor_asyncio.AsyncIOMotorClient(
+#     "mongodb://root:password@mongo"
+#     )
 url = os.environ['DATABASE_URL']
 client = motor.motor_asyncio.AsyncIOMotorClient(url)
 database = client.PaymentList
