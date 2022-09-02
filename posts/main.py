@@ -1,3 +1,4 @@
+import os
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, HTTPException
 from model import Post
@@ -13,7 +14,10 @@ from database import (
 app = FastAPI()
 
 
-origins = ["https://localhost:3000"]
+origins = [
+    "https://localhost:3000",
+    os.environ.get("CORS_HOST", None),    
+]
 
 app.add_middleware(
     CORSMiddleware,
