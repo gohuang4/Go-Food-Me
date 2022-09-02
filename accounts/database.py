@@ -4,11 +4,7 @@ from bson.objectid import ObjectId
 from model import AccountGetAll
 
 url = os.environ.get('DATABASE_URL')
-print("url---->", url)
 client = motor.motor_asyncio.AsyncIOMotorClient(url)
-# client = motor.motor_asyncio.AsyncIOMotorClient(
-#     "mongodb://root:password@mongo"
-#     )
 database = client.AccountList
 collection = database.account
 

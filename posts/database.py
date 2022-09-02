@@ -4,10 +4,10 @@ from bson.objectid import ObjectId
 from model import PostGetAll
 
 
-url = os.environ['DATABASE_URL']
+url = os.environ.get('DATABASE_URL')
 client = motor.motor_asyncio.AsyncIOMotorClient(url)
-database = client.PaymentList
-collection = database.payment
+database = client.AccountList
+collection = database.account
 
 
 def move_ids_around(doc):
