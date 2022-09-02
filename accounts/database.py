@@ -4,7 +4,7 @@ from bson.objectid import ObjectId
 from model import AccountGetAll
 
 
-url = os.environ['DATABASE_URL']
+url = f"{os.environ['DATABASE_URL']}"
 client = motor.motor_asyncio.AsyncIOMotorClient(url)
 database = client.PaymentList
 collection = database.payment
