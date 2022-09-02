@@ -3,7 +3,7 @@ import motor.motor_asyncio
 from bson.objectid import ObjectId
 from model import AccountGetAll
 
-url = os.environ.get['DATABASE_URL']
+url = os.environ.get('DATABASE_URL')
 print("url---->", url)
 client = motor.motor_asyncio.AsyncIOMotorClient(url)
 # client = motor.motor_asyncio.AsyncIOMotorClient(
