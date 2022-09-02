@@ -7,6 +7,14 @@ from model import Post
 
 app=FastAPI()
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:8200",
+]
+CORS_ALLOW_CREDENTIALS = True
+
+
+
 from database import (
     fetch_one_post,
     fetch_all_post,

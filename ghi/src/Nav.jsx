@@ -16,7 +16,7 @@ function Nav() {
         </nav>
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link" to="/fundraiser"><button class="btn btn-outline-success me-4 " type="button">Fundraiser</button></NavLink>
+              <NavLink className="nav-link" to="/list-fundraisers"><button class="btn btn-outline-success me-4 " type="button">Fundraisers</button></NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/how-it-works"><button class="btn btn-outline-success me-4" type="button">How it Works</button></NavLink>
