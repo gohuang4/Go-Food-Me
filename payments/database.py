@@ -1,5 +1,4 @@
 import os
-import requests
 import motor.motor_asyncio
 from bson.objectid import ObjectId
 from model import PaymentGetAll

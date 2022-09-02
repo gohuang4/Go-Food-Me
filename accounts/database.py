@@ -8,6 +8,7 @@ client = motor.motor_asyncio.AsyncIOMotorClient(url)
 database = client.AccountList
 collection = database.account
 
+
 def move_ids_around(doc):
     document = doc.copy()
     document["id"] = str(document["_id"])

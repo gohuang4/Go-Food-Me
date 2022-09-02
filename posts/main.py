@@ -16,7 +16,7 @@ app = FastAPI()
 
 origins = [
     "https://localhost:3000",
-    os.environ.get("CORS_HOST", None),    
+    os.environ.get("CORS_HOST", None),  
 ]
 
 app.add_middleware(
