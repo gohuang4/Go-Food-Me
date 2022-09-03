@@ -77,8 +77,8 @@ deploy-accounts-api-image-job:  # RENAME THIS
     # IF THIS IS FOR A BACKGROUND SERVICE LIKE A POLLER,
     # CHANGE /web TO /worker (2 PLACES)
     - docker pull ${CI_REGISTRY_IMAGE}/accounts_api:latest
-    - docker tag ${CI_REGISTRY_IMAGE}/accounts_api:latest registry.heroku.com/HEROKU_ACCOUNT_API_APP/web:latest
-    - docker push registry.heroku.com/$HEROKU_ACCOUNT_API_APP/web:latest
+    - docker tag ${CI_REGISTRY_IMAGE}/accounts_api:latest registry.heroku.com/HEROKU_ACCOUNTS_API_APP/web:latest
+    - docker push registry.heroku.com/$HEROKU_ACCOUNTS_API_APP/web:latest
 
 release-accounts-api-image-job:  # RENAME THIS
   stage: deploy
