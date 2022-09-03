@@ -129,7 +129,7 @@ release-accounts-api-image-job:  # RENAME THIS
 
     # IF THIS IS FOR A BACKGROUND SERVICE LIKE A POLLER,
     # CHANGE web TO worker (1 PLACE)
-    - heroku container:release web --app $HEROKU_ACCOUNT_API_APP
+    - heroku container:release web --app $HEROKU_ACCOUNTS_API_APP
 
 build-payments-api-image-job:  # RENAME THIS
   rules:
