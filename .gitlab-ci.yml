@@ -34,6 +34,37 @@ lint-job:
     - pip install flake8
     - flake8 accounts payments posts
 
+build-front-end-job:
+  stage: build
+  image: node:lts-bullseye
+  variables:
+    PUBLIC_URL: https://404-team-not-found1.gitlab.io/go-food-me
+  script:
+    - cd ghi  # CHANGE THIS TO THE DIRECTORY THAT HAS package.json
+    - npm install
+    - npm run build
+    - cp build/index.html build/404.html  # Make this a SPA
+  artifacts:
+    paths:
+      - ghi/build/  # Save all of the files in the build path
+  
+pages:  # THIS STEP MUST BE NAME PAGES
+  stage: deploy
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  dependencies:
+    - build-front-end-job
+  needs:
+    - build-front-end-job
+  script:
+     # THE FIRST PART OF THIS COMMAND MUST BE THE DIRECTORY
+     # THAT YOU cd INTO TO BUILD IT PLUS THE build/ AT THE
+     # END
+    - mv ghi/build/ public
+  artifacts:
+    paths:
+      - public
+
 build-accounts-api-image-job:  # RENAME THIS
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
@@ -232,34 +263,3 @@ release-posts-api-image-job:  # RENAME THIS
     # IF THIS IS FOR A BACKGROUND SERVICE LIKE A POLLER,
     # CHANGE web TO worker (1 PLACE)
     - heroku container:release web --app $HEROKU_POSTS_API_APP
-
-build-front-end-job:
-  stage: build
-  image: node:lts-bullseye
-  variables:
-    PUBLIC_URL: https://404-team-not-found1.gitlab.io/go-food-me
-  script:
-    - cd ghi  # CHANGE THIS TO THE DIRECTORY THAT HAS package.json
-    - npm install
-    - npm run build
-    - cp build/index.html build/404.html  # Make this a SPA
-  artifacts:
-    paths:
-      - ghi/build/  # Save all of the files in the build path
-  
-pages:  # THIS STEP MUST BE NAME PAGES
-  stage: deploy
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-  dependencies:
-    - build-front-end-job
-  needs:
-    - build-front-end-job
-  script:
-     # THE FIRST PART OF THIS COMMAND MUST BE THE DIRECTORY
-     # THAT YOU cd INTO TO BUILD IT PLUS THE build/ AT THE
-     # END
-    - mv ghi/build/ public
-  artifacts:
-    paths:
-      - public
