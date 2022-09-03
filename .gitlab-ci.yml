@@ -248,7 +248,7 @@ release-posts-api-image-job:  # RENAME THIS
   stage: deploy
   image: node:10.17-alpine
   needs:
-    # CHANGE THIS TO THE JOB NAME FROM THE LAST STEP
+    # CHANGE THIS TO THE JOB NAME FROM THE LASTSTEP
     - deploy-posts-api-image-job
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
