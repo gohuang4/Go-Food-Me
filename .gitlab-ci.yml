@@ -84,6 +84,44 @@ build-accounts-api-image-job:  # RENAME THIS
     - docker push ${CI_REGISTRY_IMAGE}/accounts_api:$CI_JOB_ID
     - docker push ${CI_REGISTRY_IMAGE}/accounts_api:latest
 
+build-payments-api-image-job:  # RENAME THIS
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  stage: build
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  script:
+    # CHANGE THIS TO THE DIRECTORY THAT HAS YOUR Dockerfile
+    - cd payments
+
+    # EVERYWHERE IT SHOWS fastapi_api BELOW, CHANGE THOSE
+    # TO A MORE MEANINGFUL SERVICE NAME (5 PLACES)
+    - docker build -t ${CI_REGISTRY_IMAGE}/payments_api:latest .
+    - docker tag ${CI_REGISTRY_IMAGE}/payments_api:latest ${CI_REGISTRY_IMAGE}/payments_api:$CI_JOB_ID
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+    - docker push ${CI_REGISTRY_IMAGE}/payments_api:$CI_JOB_ID
+    - docker push ${CI_REGISTRY_IMAGE}/payments_api:latest
+
+build-posts-api-image-job:  # RENAME THIS
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  stage: build
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  script:
+    # CHANGE THIS TO THE DIRECTORY THAT HAS YOUR Dockerfile
+    - cd posts
+
+    # EVERYWHERE IT SHOWS fastapi_api BELOW, CHANGE THOSE
+    # TO A MORE MEANINGFUL SERVICE NAME (5 PLACES)
+    - docker build -t ${CI_REGISTRY_IMAGE}/posts_api:latest .
+    - docker tag ${CI_REGISTRY_IMAGE}/posts_api:latest ${CI_REGISTRY_IMAGE}/posts_api:$CI_JOB_ID
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+    - docker push ${CI_REGISTRY_IMAGE}/posts_api:$CI_JOB_ID
+    - docker push ${CI_REGISTRY_IMAGE}/posts_api:latest
+
 deploy-accounts-api-image-job:  # RENAME THIS
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
@@ -110,45 +148,6 @@ deploy-accounts-api-image-job:  # RENAME THIS
     - docker pull ${CI_REGISTRY_IMAGE}/accounts_api:latest
     - docker tag ${CI_REGISTRY_IMAGE}/accounts_api:latest registry.heroku.com/$HEROKU_ACCOUNTS_API_APP/web:latest
     - docker push registry.heroku.com/$HEROKU_ACCOUNTS_API_APP/web:latest
-
-release-accounts-api-image-job:  # RENAME THIS
-  stage: deploy
-  image: node:10.17-alpine
-  needs:
-    # CHANGE THIS TO THE JOB NAME FROM THE LAST STEP
-    - deploy-accounts-api-image-job
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-  before_script:
-    - apk add curl bash
-    - curl https://cli-assets.heroku.com/install.sh | sh
-  script:
-    # EVERYWHERE IT SHOWS HEROKU_SERVICE_APP BELOW, CHANGE
-    # THOSE TO THE VARIABLE NAME YOU CREATED FOR THE CI/CD
-    # SETTINGS (1 PLACE)
-
-    # IF THIS IS FOR A BACKGROUND SERVICE LIKE A POLLER,
-    # CHANGE web TO worker (1 PLACE)
-    - heroku container:release web --app $HEROKU_ACCOUNTS_API_APP
-
-build-payments-api-image-job:  # RENAME THIS
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-  stage: build
-  image: docker:20.10.16
-  services:
-    - docker:20.10.16-dind
-  script:
-    # CHANGE THIS TO THE DIRECTORY THAT HAS YOUR Dockerfile
-    - cd payments
-
-    # EVERYWHERE IT SHOWS fastapi_api BELOW, CHANGE THOSE
-    # TO A MORE MEANINGFUL SERVICE NAME (5 PLACES)
-    - docker build -t ${CI_REGISTRY_IMAGE}/payments_api:latest .
-    - docker tag ${CI_REGISTRY_IMAGE}/payments_api:latest ${CI_REGISTRY_IMAGE}/payments_api:$CI_JOB_ID
-    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-    - docker push ${CI_REGISTRY_IMAGE}/payments_api:$CI_JOB_ID
-    - docker push ${CI_REGISTRY_IMAGE}/payments_api:latest
 
 deploy-payments-api-image-job:  # RENAME THIS
   rules:
@@ -177,46 +176,6 @@ deploy-payments-api-image-job:  # RENAME THIS
     - docker tag ${CI_REGISTRY_IMAGE}/payments_api:latest registry.heroku.com/$HEROKU_PAYMENTS_API_APP/web:latest
     - docker push registry.heroku.com/$HEROKU_PAYMENTS_API_APP/web:latest
 
-release-payments-api-image-job:  # RENAME THIS
-  stage: deploy
-  image: node:10.17-alpine
-  needs:
-    # CHANGE THIS TO THE JOB NAME FROM THE LAST STEP
-    - deploy-payments-api-image-job
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-  before_script:
-    - apk add curl bash
-    - curl https://cli-assets.heroku.com/install.sh | sh
-  script:
-    # EVERYWHERE IT SHOWS HEROKU_SERVICE_APP BELOW, CHANGE
-    # THOSE TO THE VARIABLE NAME YOU CREATED FOR THE CI/CD
-    # SETTINGS (1 PLACE)
-
-    # IF THIS IS FOR A BACKGROUND SERVICE LIKE A POLLER,
-    # CHANGE web TO worker (1 PLACE)
-    - heroku container:release web --app $HEROKU_PAYMENTS_API_APP
-
-
-build-posts-api-image-job:  # RENAME THIS
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-  stage: build
-  image: docker:20.10.16
-  services:
-    - docker:20.10.16-dind
-  script:
-    # CHANGE THIS TO THE DIRECTORY THAT HAS YOUR Dockerfile
-    - cd posts
-
-    # EVERYWHERE IT SHOWS fastapi_api BELOW, CHANGE THOSE
-    # TO A MORE MEANINGFUL SERVICE NAME (5 PLACES)
-    - docker build -t ${CI_REGISTRY_IMAGE}/posts_api:latest .
-    - docker tag ${CI_REGISTRY_IMAGE}/posts_api:latest ${CI_REGISTRY_IMAGE}/posts_api:$CI_JOB_ID
-    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-    - docker push ${CI_REGISTRY_IMAGE}/posts_api:$CI_JOB_ID
-    - docker push ${CI_REGISTRY_IMAGE}/posts_api:latest
-
 deploy-posts-api-image-job:  # RENAME THIS
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
@@ -244,7 +203,48 @@ deploy-posts-api-image-job:  # RENAME THIS
     - docker tag ${CI_REGISTRY_IMAGE}/posts_api:latest registry.heroku.com/$HEROKU_POSTS_API_APP/web:latest
     - docker push registry.heroku.com/$HEROKU_POSTS_API_APP/web:latest
 
+release-accounts-api-image-job:  # RENAME THIS
+  stage: deploy
+  image: node:10.17-alpine
+  needs:
+    # CHANGE THIS TO THE JOB NAME FROM THE LAST STEP
+    - deploy-accounts-api-image-job
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  before_script:
+    - apk add curl bash
+    - curl https://cli-assets.heroku.com/install.sh | sh
+  script:
+    # EVERYWHERE IT SHOWS HEROKU_SERVICE_APP BELOW, CHANGE
+    # THOSE TO THE VARIABLE NAME YOU CREATED FOR THE CI/CD
+    # SETTINGS (1 PLACE)
+
+    # IF THIS IS FOR A BACKGROUND SERVICE LIKE A POLLER,
+    # CHANGE web TO worker (1 PLACE)
+    - heroku container:release web --app $HEROKU_ACCOUNTS_API_APP
+
+release-payments-api-image-job:  # RENAME THIS
+  stage: deploy
+  image: node:10.17-alpine
+  needs:
+    # CHANGE THIS TO THE JOB NAME FROM THE LAST STEP
+    - deploy-payments-api-image-job
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  before_script:
+    - apk add curl bash
+    - curl https://cli-assets.heroku.com/install.sh | sh
+  script:
+    # EVERYWHERE IT SHOWS HEROKU_SERVICE_APP BELOW, CHANGE
+    # THOSE TO THE VARIABLE NAME YOU CREATED FOR THE CI/CD
+    # SETTINGS (1 PLACE)
+
+    # IF THIS IS FOR A BACKGROUND SERVICE LIKE A POLLER,
+    # CHANGE web TO worker (1 PLACE)
+    - heroku container:release web --app $HEROKU_PAYMENTS_API_APP
+
 release-posts-api-image-job:  # RENAME THIS
+
   stage: deploy
   image: node:10.17-alpine
   needs:
