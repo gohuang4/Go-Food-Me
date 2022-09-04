@@ -54,3 +54,11 @@ Big win we got our backend up and running on all services and I got the Continuo
 ## Thursday September 1, 2022
 
 We had another good day everyone started working on their react pages. With our backend set we are in good spirits and full steam ahead. Had some issues with environment variables spent a long amount of time but did finally get them to work. Just needed to add .get to the os.environ (os.environ.get('DATABASE_URL')) and it worked! Now I can get back to focusing on the continuous deployment. Will aim to get it done tomorrow if not Saturday.
+
+## Friday September 3, 2022
+
+Started trying to fix the continuous deployment but not much work was done due to limited time and mandatory fun.
+
+## Saturday September 4, 2022 
+
+Got the continuous deployment page to deploy successfully. It was a long day of searching for a couple of obvious issues that I resolved quickly but then one silly lack of _api at the end of the heroku pages derailed me for several hours as i tried so many different solutions to try and get the cd pipeline to work but got there and did victory dance. Images did not render which does make the home button not functional but will look into that more tomorrow.  
