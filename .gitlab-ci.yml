@@ -64,6 +64,7 @@ pages:  # THIS STEP MUST BE NAME PAGES
   artifacts:
     paths:
       - public
+      - public/images
 
 build-accounts-api-image-job:  # RENAME THIS
   rules:
