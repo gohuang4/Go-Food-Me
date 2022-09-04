@@ -43,6 +43,7 @@ build-front-end-job:
     - cd ghi  # CHANGE THIS TO THE DIRECTORY THAT HAS package.json
     - npm install
     - npm run build
+    -rm -rf public
     - cp build/index.html build/404.html  # Make this a SPA
   artifacts:
     paths:
@@ -64,7 +65,6 @@ pages:  # THIS STEP MUST BE NAME PAGES
   artifacts:
     paths:
       - public
-      - public/images
 
 build-accounts-api-image-job:  # RENAME THIS
   rules:
