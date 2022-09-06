@@ -8,8 +8,10 @@ import SigninForm from './SigninForm';
 import PostForm from './PostForm';
 
 function App(props) {
+  const domain = /https:\/\/[^/]+/;
+  const basename = process.env.PUBLIC_URL.replace(domain, '');
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
     <Nav />
     <div className="container">
       <Routes>

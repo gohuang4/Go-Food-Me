@@ -4,10 +4,8 @@ from bson.objectid import ObjectId
 from model import PaymentGetAll
 
 
-client = motor.motor_asyncio.AsyncIOMotorClient(
-    url = f"{os.environ['DATABASE_URL']}"
-    response = requests.get(url)
-    )
+url = os.environ.get('DATABASE_URL')
+client = motor.motor_asyncio.AsyncIOMotorClient(url)
 database = client.AccountList
 collection = database.account
 
