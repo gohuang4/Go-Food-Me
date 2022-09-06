@@ -38,7 +38,7 @@ build-front-end-job:
   stage: build
   image: node:lts-bullseye
   variables:
-    PUBLIC_URL: https://404-team-not-found1.gitlab.io/go-food-me
+    PUBLIC_URL: /go-food-me
   script:
     - cd ghi  # CHANGE THIS TO THE DIRECTORY THAT HAS package.json
     - npm install
