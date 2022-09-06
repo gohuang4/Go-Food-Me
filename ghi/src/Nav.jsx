@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
-const imageIcon = '/images/GoFoodMe-Icon.png'
-const imageLogo = '/images/GoFoodMe-Logo.png';
+import imageIcon from '/images/GoFoodMe-Icon.png';
+import imageLogo from '/images/GoFoodMe-Logo.png';
 
 function Nav() {
     return (
