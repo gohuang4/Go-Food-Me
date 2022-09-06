@@ -6,9 +6,9 @@ import HowItWorks from './HowItWorks'
 import PostForm from './PostForm';
 
 function App(props) {
-  const basename = process.env.PUBLIC_URL;
+  // const basename = process.env.PUBLIC_URL;
   return (
-    <BrowserRouter basename={basename}>
+    <BrowserRouter basename="/go-good-me">
     <Nav />
     <div className="container">
       <Routes>
