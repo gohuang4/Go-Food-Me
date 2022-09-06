@@ -1,4 +1,4 @@
-import imageLogo from './images/GoFoodMe-Logo.png'
+import imageLogo from './public/images/GoFoodMe-Logo.png'
 
 function MainPage() {
     return (
