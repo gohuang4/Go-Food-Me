@@ -1,4 +1,4 @@
-import imageLogo from './GoFoodMe-Logo.png';
+const imageLogo = process.env.PUBLIC_URL +'/images/GoFoodMe-Logo.png';
 
 function MainPage() {
     return (
