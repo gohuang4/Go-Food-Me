@@ -6,8 +6,7 @@ import HowItWorks from './HowItWorks'
 import PostForm from './PostForm';
 
 function App(props) {
-  const domain = /https:\/\/[^/]+/;
-  const basename = process.env.PUBLIC_URL.replace(domain, '');
+  const basename = process.env.PUBLIC_URL;
   return (
     <BrowserRouter basename={basename}>
     <Nav />
