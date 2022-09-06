@@ -4,7 +4,7 @@ stages:
   - deploy
 
 variables:
-  PUBLIC_URL: /go-food-me
+  PUBLIC_URL: https://404-team-not-found1.gitlab.io/go-food-me/
 
 accounts-unit-test-job:
   image: python:3-bullseye
