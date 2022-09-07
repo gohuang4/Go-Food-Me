@@ -1,3 +1,5 @@
+
+
 const imageLogo = '/images/GoFoodMe-Logo.png';
 
 function MainPage() {
