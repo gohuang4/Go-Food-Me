@@ -61,4 +61,8 @@ Started trying to fix the continuous deployment but not much work was done due t
 
 ## Saturday September 4, 2022 
 
-Got the continuous deployment page to deploy successfully. It was a long day of searching for a couple of obvious issues that I resolved quickly but then one silly lack of _api at the end of the heroku pages derailed me for several hours as i tried so many different solutions to try and get the cd pipeline to work but got there and did victory dance. Images did not render which does make the home button not functional but will look into that more tomorrow.  
+Got the continuous deployment page to deploy successfully. It was a long day of searching for a couple of obvious issues that I resolved quickly but then one silly lack of _api at the end of the heroku pages derailed me for several hours as i tried so many different solutions to try and get the cd pipeline to work but got there and did victory dance. Images did not render which does make the home button not functional but will look into that more tomorrow.
+
+## Tuesday September 6, 2022 
+
+After working with Andrew was able to come up with a strange brute force to have the images show up on the hosted version of our site on gitlab by adding the publicURL to the image for some reason we could just not get a basic import to work. Starting to feel the pressure to get the MVP done. Had a lot of issues with my internet today due to a storm but hopefully will be on track to get work done tomorrow. 

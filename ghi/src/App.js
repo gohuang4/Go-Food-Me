@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Nav from './Nav';
+import Nav from './Nav'
 import MainPage from './MainPage';
 import HowItWorks from './HowItWorks'
 import SignupForm from './SignupForm';
@@ -8,8 +8,7 @@ import SigninForm from './SigninForm';
 import PostForm from './PostForm';
 
 function App(props) {
-  const domain = /https:\/\/[^/]+/;
-  const basename = process.env.PUBLIC_URL.replace(domain, '');
+  const basename = process.env.PUBLIC_URL;
   return (
     <BrowserRouter basename={basename}>
     <Nav />

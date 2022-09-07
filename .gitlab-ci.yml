@@ -3,6 +3,9 @@ stages:
   - build
   - deploy
 
+variables:
+  PUBLIC_URL: "/go-food-me"
+
 accounts-unit-test-job:
   image: python:3-bullseye
   stage: test
@@ -37,8 +40,6 @@ lint-job:
 build-front-end-job:
   stage: build
   image: node:lts-bullseye
-  variables:
-    PUBLIC_URL: https://404-team-not-found1.gitlab.io/go-food-me
   script:
     - cd ghi  # CHANGE THIS TO THE DIRECTORY THAT HAS package.json
     - npm install
