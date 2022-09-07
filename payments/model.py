@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+
 class PaymentGetAll(BaseModel):
     id: str
     name: str
@@ -9,6 +10,7 @@ class PaymentGetAll(BaseModel):
     donation_date: str
 <<<<<<< HEAD
 =======
+
 
 class Payment(BaseModel):
     name: str
