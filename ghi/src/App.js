@@ -6,7 +6,6 @@ import HowItWorks from './HowItWorks'
 import PostForm from './PostForm';
 
 function App(props) {
-
   const basename = process.env.PUBLIC_URL;
   return (
     <BrowserRouter basename={basename}>
