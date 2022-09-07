@@ -46,3 +46,19 @@ Was a rough day we thought that we had made headway with the UUID replacing _id 
 ## Tuesday August 30, 2022
 
 We had a good day after a rough start and a push in the right direction from our instructor. We were able to figure out how to select the Account by the ObjectId. We were able to do this with a half a dozen print statements and finally getting MongoDB Compass. With ObjectId glaring us in the face in our database realized that we had to assign the id value to the Object id. Tomorrow morning we will make some edits to our put method to ensure that it works and edit the other two services to match accounts.
+
+## Wednesday August 31, 2022
+
+Big win we got our backend up and running on all services and I got the Continuous Integration functioning. It was a long night of cleaning up the files that black couldn't fix but after a lot of trial and error got the double check marks on the ci pipeline. After ensuring all the backends were working with manual testing everyone decided to take the rest of the day to begin doing some research on react so they could start fresh on that in the morning.
+
+## Thursday September 1, 2022
+
+We had another good day everyone started working on their react pages. With our backend set we are in good spirits and full steam ahead. Had some issues with environment variables spent a long amount of time but did finally get them to work. Just needed to add .get to the os.environ (os.environ.get('DATABASE_URL')) and it worked! Now I can get back to focusing on the continuous deployment. Will aim to get it done tomorrow if not Saturday.
+
+## Friday September 3, 2022
+
+Started trying to fix the continuous deployment but not much work was done due to limited time and mandatory fun.
+
+## Saturday September 4, 2022 
+
+Got the continuous deployment page to deploy successfully. It was a long day of searching for a couple of obvious issues that I resolved quickly but then one silly lack of _api at the end of the heroku pages derailed me for several hours as i tried so many different solutions to try and get the cd pipeline to work but got there and did victory dance. Images did not render which does make the home button not functional but will look into that more tomorrow.  

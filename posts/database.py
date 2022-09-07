@@ -1,13 +1,13 @@
+import os
 import motor.motor_asyncio
 from bson.objectid import ObjectId
 from model import PostGetAll
 
 
-client = motor.motor_asyncio.AsyncIOMotorClient(
-    "mongodb://root:password@mongo"
-    )
-database = client.PostList
-collection = database.post
+url = os.environ.get('DATABASE_URL')
+client = motor.motor_asyncio.AsyncIOMotorClient(url)
+database = client.AccountList
+collection = database.account
 
 
 def move_ids_around(doc):

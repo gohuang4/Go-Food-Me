@@ -1,4 +1,4 @@
-const imageLogo = '/images/GoFoodMe-Logo.png';
+const imageLogo = process.env.PUBLIC_URL + '/images/GoFoodMe-Logo.png';
 // const image = '/images/Food-in-need.png';
 // const image2 = '/images/no-hunger.png';
 
