@@ -1,7 +1,7 @@
 import os
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, HTTPException
-from model import Post
+from model import Post, PostGetAll
 from database import (
     fetch_one_post,
     fetch_all_post,
@@ -14,7 +14,8 @@ from database import (
 app = FastAPI()
 
 origins = [
-    "https://localhost:3000",
+    "http://localhost:3000",
+    "http://localhost:8200",
     os.environ.get("CORS_HOST", None),
 ]
 
@@ -46,11 +47,19 @@ async def get_post_by_id(id: str):
     raise HTTPException(404, f"There is no post with this id.{id}")
 
 
-@app.post("/api/post", response_model=Post)
+# @app.post("/api/post", response_model=Post)
+@app.post("/api/post", response_model=PostGetAll)
 async def post_post(post: Post):
     response = await create_post(post.dict())
+    newdict = {
+        "id": str(response["_id"]),
+        "title":response["title"],
+        "description":response["description"],
+        "requested_amount":response["requested_amount"],
+        "created":response["created"]
+     }
     if response:
-        return response
+        return newdict
     raise HTTPException(400, "Something went wrong / Bad Request")
 
 
