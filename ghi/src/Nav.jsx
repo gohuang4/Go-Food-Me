@@ -1,7 +1,8 @@
 import { NavLink } from 'react-router-dom';
 
-const imageIcon = '/images/GoFoodMe-Icon.png'
-const imageLogo = '/images/GoFoodMe-Logo.png';
+const imageIcon = process.env.PUBLIC_URL + '/images/GoFoodMe-Icon.png'
+const imageLogo = process.env.PUBLIC_URL + '/images/GoFoodMe-Logo.png';
+
 
 function Nav() {
     return (

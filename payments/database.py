@@ -1,11 +1,14 @@
-from model import Payment, PaymentGetAll
-
-from bson.objectid import ObjectId
+import os
 import motor.motor_asyncio
+from bson.objectid import ObjectId
+from model import PaymentGetAll
 
-client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://root:password@mongo')
-database = client.PaymentList
-collection = database.payment
+
+url = os.environ.get('DATABASE_URL')
+client = motor.motor_asyncio.AsyncIOMotorClient(url)
+database = client.AccountList
+collection = database.account
+
 
 def move_ids_around(doc):
     document = doc.copy()
@@ -13,11 +16,13 @@ def move_ids_around(doc):
     del document["_id"]
     return document
 
+
 async def fetch_one_payment(id):
     o_id = ObjectId(id)
     document = await collection.find_one({"_id": o_id})
     print(document)
     return document
+
 
 async def fetch_all_payments():
     payments = []
@@ -27,20 +32,31 @@ async def fetch_all_payments():
         payments.append(PaymentGetAll(**doc))
     return payments
 
+
 async def create_payment(Payment):
     document = Payment
-    result = await collection.insert_one(document)
+    await collection.insert_one(document)
     return document
+
 
 async def update_payment(id, name, card_number, expiration_date, CVV):
     o_id = ObjectId(id)
-    await collection.update_one({"_id": o_id}, {"$set":{
-        "name": name, "card_number": card_number, "expiration_date": expiration_date, "CVV": CVV
-    }})
-    document = await collection.find_one({"_id":o_id})
+    await collection.update_one(
+        {"_id": o_id},
+        {
+            "$set": {
+                "name": name,
+                "card_number": card_number,
+                "expiration_date": expiration_date,
+                "CVV": CVV,
+            }
+        },
+    )
+    document = await collection.find_one({"_id": o_id})
     return document
+
 
 async def remove_payment(id):
     o_id = ObjectId(id)
-    await collection.delete_one({"_id":o_id})
+    await collection.delete_one({"_id": o_id})
     return True
