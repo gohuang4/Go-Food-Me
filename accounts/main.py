@@ -13,7 +13,7 @@ from database import (
 app = FastAPI()
 
 origins = [
-    "https://localhost:3000",
+    "http://localhost:3000",
     os.environ.get("CORS_HOST", None),
 ]
 
