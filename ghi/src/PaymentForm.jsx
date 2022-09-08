@@ -16,9 +16,39 @@ function PaymentForm(props) {
   const [card_number, setCardNumber] = useState('')
   const [expiration_date, setExpirationDate] = useState('')
   const [CVV, setCVV] = useState('')
+  const [donation_date, setDonationDate] = useState('')
+  const [isPending, setIsPending] = useState(false)
+  const handleSubmit= (e) => {
+    e.preventDefault();
+    const payment = {
+      "name": name,
+      "card_number": card_number,
+      "expiration_date": expiration_date,
+      "CVV": CVV,
+      "donation_date": donation_date,
+    }
+
+    setIsPending(true)
+
+    const paymentURL = e.currentTarget.action
+    const fetchConfig = {
+      method: 'POST',
+      body: JSON.stringify(payment),
+      headers: {
+        "Content-Type": "application/json",
+        'accept': 'application/json',
+      },
+      cache: "no-cache",
+    }
+    fetch(paymentURL, fetchConfig).then(() => {
+      console.log('new payment added')
+      setIsPending(false)
+    })
+
+  }
 
     return (
-      <form>
+      <form onSubmit={handleSubmit} action="http://localhost:8100/api/payment">
         <BootstrapInput
           id="name"
           placeholder="Name on card"
@@ -48,9 +78,19 @@ function PaymentForm(props) {
           value={CVV}
           onChange={e => setCVV(e.target.value)}
           type="password"/>
-      <div className="col-auto">
-        <button type="submit" className="btn btn-primary mb-3">Submit</button>
-      </div>
+        <BootstrapInput
+          id="donation_date"
+          placeholder="mm/dd/yyyy"
+          labelText="Date of Donation"
+          value={donation_date}
+          onChange={e => setDonationDate(e.target.value)}
+          type="text"/>
+        { !isPending && <button 
+          className='form-field'
+          type='submit'>Submit</button>}
+        { isPending && <button disabled
+          className='form-field'
+          type='submit'>Submitting...</button>}
       </form>
     )
 }
