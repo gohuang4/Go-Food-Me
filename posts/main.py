@@ -53,10 +53,10 @@ async def post_post(post: Post):
     response = await create_post(post.dict())
     newdict = {
         "id": str(response["_id"]),
-        "title":response["title"],
-        "description":response["description"],
-        "requested_amount":response["requested_amount"],
-        "created":response["created"]
+        "title": response["title"],
+        "description": response["description"],
+        "requested_amount": response["requested_amount"],
+        "created": response["created"]
      }
     if response:
         return newdict
