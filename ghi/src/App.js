@@ -4,7 +4,6 @@ import Nav from './Nav'
 import MainPage from './MainPage';
 import HowItWorks from './HowItWorks';
 import ListFundraisers from './ListFundraisers';
-import HowItWorks from './HowItWorks'
 import PostForm from './PostForm';
 
 function App(props) {
