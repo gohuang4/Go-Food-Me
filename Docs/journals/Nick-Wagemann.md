@@ -69,4 +69,6 @@ After working with Andrew was able to come up with a strange brute force to have
 
 ## Wednesday September 7, 2022
 
-After a long session of us working with Andrew and Daniel we got our Fundraiser submit form to work. The issue was that we were not feeding the id value to the front end which although we were not using it needed to send it since it is in the model. Afterwards took a look at Howard's Fundraiser List page and fixed a few bugs but missed a missing "await" luckily with some fresh eyes from Kieran he noticed it and we got two pages done today. 
+After a long session of us working with Andrew and Daniel we got our Fundraiser submit form to work. The issue was that we were not feeding the id value to the front end which although we were not using it needed to send it since it is in the model. Afterwards took a look at Howard's Fundraiser List page and fixed a few bugs but missed a missing "await" luckily with some fresh eyes from Kieran he noticed it and we got two pages done today.
+
+## Thursday September 8, 2022
