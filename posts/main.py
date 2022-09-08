@@ -6,6 +6,18 @@ from model import Post
 
 
 app=FastAPI()
+origins = [
+    "http://localhost:3000",
+    "http://localhost:8200",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+
+)
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
@@ -23,15 +35,15 @@ from database import (
     remove_post
 )
 
-origins = ['https://localhost:3000']
+# origins = ['https://localhost:3000']
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials = True,
-    allow_methods = ["*"],
-    allow_headers = ["*"],
-)
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=origins,
+#     allow_credentials = True,
+#     allow_methods = ["*"],
+#     allow_headers = ["*"],
+# )
 
 @app.get("/")
 def read_root():
