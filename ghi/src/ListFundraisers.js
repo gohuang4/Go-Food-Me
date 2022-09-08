@@ -6,11 +6,14 @@ function ListFundraisers() {
   useEffect(() => {
     async function getPost() {
       const url = 'http://localhost:8200/api/post';
-      const response = fetch(url);
+      const response = await fetch(url);
+      console.log(response);
       if (response.ok) {
         const data = await response.json();
         setPost(data);
         console.log(data);
+      } else {
+        console.log("fhasdsakldask")
       }
     }
     getPost();
@@ -19,7 +22,7 @@ function ListFundraisers() {
   // console.log(post);
 
   return (
-    
+    <>
     <table className="table table-striped">
         <thead>
           <tr>
@@ -33,7 +36,7 @@ function ListFundraisers() {
           {post.map(p => {
             console.log(p);
             return (
-              <tr key= {p.id.value}>
+              <tr key= {p.id}>
                 <td>{ p.title }</td>
                 <td>{ p.description }</td>
                 <td>{ p.requested_amount}</td>
@@ -43,6 +46,7 @@ function ListFundraisers() {
           })}
         </tbody>
     </table>
+    </>
   )
 }
 
