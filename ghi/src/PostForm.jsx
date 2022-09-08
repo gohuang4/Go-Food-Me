@@ -24,7 +24,7 @@ function BootstrapInput(props) {
     const post = {
       "title": title, 
       "description": description, 
-      "requested_amount": new Number(requested_amount), 
+      "requested_amount": requested_amount, 
       "created": created,
     }
 
