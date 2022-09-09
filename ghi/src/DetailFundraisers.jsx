@@ -8,9 +8,9 @@ function DetailFundraisers() {
   const [post, setPost] = useState([]);
   // const [newPost, setNewPost] = useState("");
   
+  const {id} = useParams();
   
   useEffect(() => {
-    const {id} = useParams();
     
     async function getPost() {
       const url = `http://localhost:8200/api/post${id}`;
