@@ -1,17 +1,17 @@
 import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 
-const split_url = document.URL.split("/")
-const id = split_url[split_url.length - 1]
+// const split_url = document.URL.split("/")
+// const id = split_url[split_url.length - 1]
 
 function DetailFundraisers() {
   const [post, setPost] = useState([]);
-  const [newPost, setNewPost] = useState("");
-  const {id} = useParams();
-
-
+  // const [newPost, setNewPost] = useState("");
+  
+  
   useEffect(() => {
-
+    const {id} = useParams();
+    
     async function getPost() {
       const url = `http://localhost:8200/api/post${id}`;
       const response = await fetch(url);

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 function ListFundraisers() {
@@ -25,7 +25,7 @@ function ListFundraisers() {
  
 
   
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   // const handleClick = (id) => navigate(`/fundraisers/631a9d2b3a662e8e685b8328`);
 
   return (
