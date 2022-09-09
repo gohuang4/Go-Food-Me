@@ -8,7 +8,6 @@ function DetailFundraisers() {
   const [post, setPost] = useState([]);
   // const [newPost, setNewPost] = useState("");
   
-  const {id} = useParams();
   
   useEffect(() => {
     
@@ -23,11 +22,12 @@ function DetailFundraisers() {
       } else {
         console.log("response failed")
       }
-
+      
     }
     getPost();
   }, [setPost] );
-
+  
+  const {id} = useParams();
 
   const removeData = (id) => {
     if (window.confirm("Are you sure?")) {
