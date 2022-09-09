@@ -17,13 +17,6 @@ def move_ids_around(doc):
     return document
 
 
-async def fetch_one_payment(id):
-    o_id = ObjectId(id)
-    document = await collection.find_one({"_id": o_id})
-    print(document)
-    return document
-
-
 async def fetch_all_payments():
     payments = []
     cursor = collection.find({})
@@ -33,13 +26,26 @@ async def fetch_all_payments():
     return payments
 
 
+async def fetch_one_payment(id):
+    o_id = ObjectId(id)
+    document = await collection.find_one({"_id": o_id})
+    return document
+
+
 async def create_payment(Payment):
     document = Payment
     await collection.insert_one(document)
     return document
 
 
-async def update_payment(id, name, card_number, expiration_date, CVV):
+async def update_payment(
+    id,
+    name,
+    card_number,
+    expiration_date,
+    CVV,
+    donation_date
+):
     o_id = ObjectId(id)
     await collection.update_one(
         {"_id": o_id},
@@ -49,6 +55,7 @@ async def update_payment(id, name, card_number, expiration_date, CVV):
                 "card_number": card_number,
                 "expiration_date": expiration_date,
                 "CVV": CVV,
+                "donation_date": donation_date
             }
         },
     )

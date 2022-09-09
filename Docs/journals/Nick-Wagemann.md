@@ -61,4 +61,16 @@ Started trying to fix the continuous deployment but not much work was done due t
 
 ## Saturday September 4, 2022 
 
-Got the continuous deployment page to deploy successfully. It was a long day of searching for a couple of obvious issues that I resolved quickly but then one silly lack of _api at the end of the heroku pages derailed me for several hours as i tried so many different solutions to try and get the cd pipeline to work but got there and did victory dance. Images did not render which does make the home button not functional but will look into that more tomorrow.  
+Got the continuous deployment page to deploy successfully. It was a long day of searching for a couple of obvious issues that I resolved quickly but then one silly lack of _api at the end of the heroku pages derailed me for several hours as i tried so many different solutions to try and get the cd pipeline to work but got there and did victory dance. Images did not render which does make the home button not functional but will look into that more tomorrow.
+
+## Tuesday September 6, 2022 
+
+After working with Andrew was able to come up with a strange brute force to have the images show up on the hosted version of our site on gitlab by adding the publicURL to the image for some reason we could just not get a basic import to work. Starting to feel the pressure to get the MVP done. Had a lot of issues with my internet today due to a storm but hopefully will be on track to get work done tomorrow.
+
+## Wednesday September 7, 2022
+
+After a long session of us working with Andrew and Daniel we got our Fundraiser submit form to work. The issue was that we were not feeding the id value to the front end which although we were not using it needed to send it since it is in the model. Afterwards took a look at Howard's Fundraiser List page and fixed a few bugs but missed a missing "await" luckily with some fresh eyes from Kieran he noticed it and we got two pages done today.
+
+## Thursday September 8, 2022
+
+We had another good day working on the front end. We got our list page to link over to the detail page. Setup the detail page and added a delete button to the page. We had some issues with the id yet again it is certainly the bane of this project. With that we have most of basic functionality setup we would now just need to get authentication setup and work on ensuring everything works when deployed which is currently and issue that endpoints don't function on the deployed site.

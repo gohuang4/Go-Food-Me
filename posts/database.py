@@ -33,8 +33,8 @@ async def fetch_one_post(id):
     return document
 
 
-async def create_post(Post):
-    document = Post
+async def create_post(post):
+    document = post
     await collection.insert_one(document)
     return document
 
