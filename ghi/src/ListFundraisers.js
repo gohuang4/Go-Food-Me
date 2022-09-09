@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 
 
 function ListFundraisers() {
@@ -8,6 +8,7 @@ function ListFundraisers() {
   useEffect(() => {
     async function getPost() {
       const url = 'http://localhost:8200/api/post';
+      console.log(url)
       const response = await fetch(url);
       console.log(response);
       if (response.ok) {
@@ -20,13 +21,15 @@ function ListFundraisers() {
     }
     getPost();
   }, [setPost] );
+  
+ 
 
-
+  
   const navigate = useNavigate();
-  const handleClick = () => navigate(`/fundraisers/63194d2dced42f71a3e4702c`);
+  // const handleClick = (id) => navigate(`/fundraisers/631a9d2b3a662e8e685b8328`);
 
   return (
-    <>
+  <>
     <table className="table table-striped">
         <thead>
           <tr>
@@ -38,15 +41,18 @@ function ListFundraisers() {
           {post.map(p => {
             console.log(p);
             return (
-              <tr key= {p.id} onClick={handleClick}>
+              <tr key= {p.id}>
                 <td>{ p.title }</td>
                 <td>{ p.created }</td>
+                <td>
+                  <Link to={`/list-fundraisers/fundraisers/${p.id}`}>Detail</Link>
+                </td>
               </tr>
             )
           })}
         </tbody>
     </table>
-    </>
+  </>
   )
 }
 

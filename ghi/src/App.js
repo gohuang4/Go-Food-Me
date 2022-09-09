@@ -7,6 +7,7 @@ import SigninForm from './SigninForm';
 import PaymentForm from './PaymentForm';
 import ListFundraisers from './ListFundraisers';
 import PostForm from './PostForm';
+import DetailFundraisers from './DetailFundraisers';
 
 function App(props) {
   const basename = process.env.PUBLIC_URL;
@@ -18,7 +19,7 @@ function App(props) {
         <Route path="" element={<MainPage />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/list-fundraisers" element={<ListFundraisers />} />
-        <Route path="/fundraisers/:id" element={<DetailFundraisers />} />
+        <Route path="/list-fundraisers/fundraisers/:id" element={<DetailFundraisers />} />
         <Route path="/post-form" element={<PostForm />} />
         <Route path="/sign-in" element={<SigninForm />} />
         <Route path="/sign-up" element={<SignupForm />} />
