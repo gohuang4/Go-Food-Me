@@ -6,8 +6,8 @@ from model import PostGetAll
 
 url = os.environ.get('DATABASE_URL')
 client = motor.motor_asyncio.AsyncIOMotorClient(url)
-database = client.AccountList
-collection = database.account
+database = client.PostList
+collection = database.post
 
 
 def move_ids_around(doc):

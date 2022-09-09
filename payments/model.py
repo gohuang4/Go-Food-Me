@@ -8,9 +8,6 @@ class PaymentGetAll(BaseModel):
     expiration_date: str
     CVV: str
     donation_date: str
-<<<<<<< HEAD
-=======
-
 
 class Payment(BaseModel):
     name: str

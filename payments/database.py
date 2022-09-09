@@ -6,8 +6,8 @@ from model import PaymentGetAll
 
 url = os.environ.get('DATABASE_URL')
 client = motor.motor_asyncio.AsyncIOMotorClient(url)
-database = client.AccountList
-collection = database.account
+database = client.PaymentsList
+collection = database.payments
 
 
 def move_ids_around(doc):
