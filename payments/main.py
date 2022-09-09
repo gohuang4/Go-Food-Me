@@ -1,5 +1,5 @@
 import os
-from model import Payment
+from model import Payment, PaymentGetAll
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, HTTPException
 from database import (
@@ -13,7 +13,8 @@ from database import (
 app = FastAPI()
 
 origins = [
-    "https://localhost:3000",
+    "http://localhost:3000",
+    "http://localhost:8100",
     os.environ.get("CORS_HOST", None),
 ]
 
@@ -45,11 +46,19 @@ async def get_payment_by_id(id: str):
     raise HTTPException(404, f"There is no payment with this id.{id}")
 
 
-@app.post("/api/payment", response_model=Payment)
+@app.post("/api/payment", response_model=PaymentGetAll)
 async def post_payment(payment: Payment):
     response = await create_payment(payment.dict())
+    newdict = {
+        "id": str(response["_id"]),
+        "name": response["name"],
+        "card_number": response["card_number"],
+        "expiration_date": response["expiration_date"],
+        "CVV": response["CVV"],
+        "donation_date": response["donation_date"]
+    }
     if response:
-        return response
+        return newdict
     raise HTTPException(400, "Something went wrong / Bad Request")
 
 

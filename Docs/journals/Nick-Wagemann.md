@@ -65,4 +65,10 @@ Got the continuous deployment page to deploy successfully. It was a long day of 
 
 ## Tuesday September 6, 2022 
 
-After working with Andrew was able to come up with a strange brute force to have the images show up on the hosted version of our site on gitlab by adding the publicURL to the image for some reason we could just not get a basic import to work. Starting to feel the pressure to get the MVP done. Had a lot of issues with my internet today due to a storm but hopefully will be on track to get work done tomorrow. 
+After working with Andrew was able to come up with a strange brute force to have the images show up on the hosted version of our site on gitlab by adding the publicURL to the image for some reason we could just not get a basic import to work. Starting to feel the pressure to get the MVP done. Had a lot of issues with my internet today due to a storm but hopefully will be on track to get work done tomorrow.
+
+## Wednesday September 7, 2022
+
+After a long session of us working with Andrew and Daniel we got our Fundraiser submit form to work. The issue was that we were not feeding the id value to the front end which although we were not using it needed to send it since it is in the model. Afterwards took a look at Howard's Fundraiser List page and fixed a few bugs but missed a missing "await" luckily with some fresh eyes from Kieran he noticed it and we got two pages done today.
+
+## Thursday September 8, 2022
