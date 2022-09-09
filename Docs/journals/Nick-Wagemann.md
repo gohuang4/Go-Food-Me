@@ -72,3 +72,5 @@ After working with Andrew was able to come up with a strange brute force to have
 After a long session of us working with Andrew and Daniel we got our Fundraiser submit form to work. The issue was that we were not feeding the id value to the front end which although we were not using it needed to send it since it is in the model. Afterwards took a look at Howard's Fundraiser List page and fixed a few bugs but missed a missing "await" luckily with some fresh eyes from Kieran he noticed it and we got two pages done today.
 
 ## Thursday September 8, 2022
+
+We had another good day working on the front end. We got our list page to link over to the detail page. Setup the detail page and added a delete button to the page. We had some issues with the id yet again it is certainly the bane of this project. With that we have most of basic functionality setup we would now just need to get authentication setup and work on ensuring everything works when deployed which is currently and issue that endpoints don't function on the deployed site.
