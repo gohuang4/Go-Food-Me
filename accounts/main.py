@@ -68,9 +68,9 @@ async def put_account(
     email: str | None = None,
 ):
     response = await update_account(
-        id=id, 
-        name=name, 
-        password=password, 
+        id=id,
+        name=name,
+        password=password,
         email=email
     )
     if response:
