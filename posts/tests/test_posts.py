@@ -1,10 +1,14 @@
 from fastapi.testclient import TestClient
 from main import app
-from database import fetch_all_post
+# from database import fetch_all_post
 
 client = TestClient(app)
 
 
+def test_read_main():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"Go": "FoodMe"}
 # class EmptyPostQueries:
 #     def fetch_all_post(self):
 #         return []
