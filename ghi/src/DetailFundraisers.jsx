@@ -7,6 +7,9 @@ import { useParams } from "react-router-dom";
 function DetailFundraisers() {
   const [post, setPost] = useState([]);
   // const [newPost, setNewPost] = useState("");
+  /* eslint-disable */
+  const {id} = useParams();
+  /* eslint-enabled */
   
   
   useEffect(() => {
@@ -27,7 +30,6 @@ function DetailFundraisers() {
     getPost();
   }, [setPost] );
   
-  const {id} = useParams();
 
   const removeData = (id) => {
     if (window.confirm("Are you sure?")) {
