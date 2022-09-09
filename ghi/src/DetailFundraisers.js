@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from "react";
-import { useNavigate } from 'react-router-dom';
 
-
-function ListFundraisers() {
+function DetailFundraisers() {
   const [post, setPost] = useState([]);
 
   useEffect(() => {
+    const split_url = document.URL.split("/")
+    const id = split_url[split_url.length - 1]
     async function getPost() {
-      const url = 'http://localhost:8200/api/post';
+      const url = `http://localhost:8200/api/post${id}`;
       const response = await fetch(url);
       console.log(response);
       if (response.ok) {
@@ -15,15 +15,11 @@ function ListFundraisers() {
         setPost(data);
         console.log(data);
       } else {
-        console.log("Response failed")
+        console.log("response failed")
       }
     }
     getPost();
   }, [setPost] );
-
-
-  const navigate = useNavigate();
-  const handleClick = () => navigate(`/fundraisers/63194d2dced42f71a3e4702c`);
 
   return (
     <>
@@ -31,23 +27,29 @@ function ListFundraisers() {
         <thead>
           <tr>
             <th>Title</th>
+            <th>Description</th>
+            <th>Requested Amount</th>
             <th>Created</th>
           </tr>
         </thead>
         <tbody>
-          {post.map(p => {
-            console.log(p);
-            return (
-              <tr key= {p.id} onClick={handleClick}>
-                <td>{ p.title }</td>
-                <td>{ p.created }</td>
+          {/* {post.map(p => { */}
+
+              <tr key= {post.id}>
+                <td>{ post.title }</td>
+                <td>{ post.description }</td>
+                <td>{ post.requested_amount}</td>
+                <td>{ post.created }</td>
               </tr>
-            )
-          })}
+            
+          {/* })} */}
         </tbody>
     </table>
     </>
   )
+
+
+
 }
 
-export default ListFundraisers
+export default DetailFundraisers

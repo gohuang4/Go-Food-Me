@@ -4,6 +4,7 @@ import Nav from './Nav'
 import MainPage from './MainPage';
 // import HowItWorks from './HowItWorks';
 import ListFundraisers from './ListFundraisers';
+import DetailFundraisers from './DetailFundraisers';
 import HowItWorks from './HowItWorks'
 import PostForm from './PostForm';
 
@@ -17,6 +18,7 @@ function App(props) {
         <Route path="" element={<MainPage />} />
         {/* <Route path="/how-it-works" element={<HowItWorks />} /> */}
         <Route path="/list-fundraisers" element={<ListFundraisers />} />
+        <Route path="/fundraisers/:id" element={<DetailFundraisers />} />
         <Route path="/post-form" element={<PostForm />} />
       </Routes>
     </div>
