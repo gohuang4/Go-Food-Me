@@ -21,7 +21,6 @@ function ListFundraisers() {
     }
     getPost();
   }, [setPost] );
-  
  
 
   

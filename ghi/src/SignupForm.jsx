@@ -41,7 +41,7 @@ function SignupForm(props) {
   }
 
     return (
-      <form onSubmit={handleSubmit} action="http://localhost:8000/api/account">
+      <form onSubmit={handleSubmit} action="go-food-me-accounts-api">
         <BootstrapInput
           id="name"
           placeholder="Username"
