@@ -7,7 +7,7 @@ function ListFundraisers() {
 
   useEffect(() => {
     async function getPost() {
-      const url = 'http://localhost:8200/api/post';
+      const url = 'https://go-food-me-posts-api.herokuapp.com';
       console.log(url)
       const response = await fetch(url);
       console.log(response);
