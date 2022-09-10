@@ -46,7 +46,8 @@ function BootstrapInput(props) {
     })
 }
     return (
-      <form onSubmit={handleSubmit} action="https://go-food-me-posts-api.herokuapp.com/api/post" >
+      // <form onSubmit={handleSubmit} action="https://go-food-me-posts-api.herokuapp.com/api/post" >
+      <form onSubmit={handleSubmit} action="http://localhost:8200/api/post" >
         {/* {submitted ? <div className="success-message">Donation post created!</div>} */}
         <BootstrapInput
           id="title"
