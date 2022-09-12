@@ -1,6 +1,9 @@
 import { useState } from 'react'
 // import React from "react-hook-form"
 
+const domain = /http:\/\/[^/]+/;
+const url = process.env.PUBLIC_URL_2.replace(domain, '')
+
 function BootstrapInput(props) {
   const { id, placeholder, labelText, value, onChange, type } = props
 
@@ -45,8 +48,9 @@ function BootstrapInput(props) {
       setIsPending(false)
     })
 }
+
     return (
-      <form onSubmit={handleSubmit} action="https://go-food-me-posts-api.herokuapp.com/api/post" >
+      <form onSubmit={handleSubmit} action={url} >
       {/* <form onSubmit={handleSubmit} action="http://localhost:8200/api/post" > */}
         {/* {submitted ? <div className="success-message">Donation post created!</div>} */}
         <BootstrapInput
