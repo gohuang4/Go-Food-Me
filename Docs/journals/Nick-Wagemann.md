@@ -74,3 +74,7 @@ After a long session of us working with Andrew and Daniel we got our Fundraiser 
 ## Thursday September 8, 2022
 
 We had another good day working on the front end. We got our list page to link over to the detail page. Setup the detail page and added a delete button to the page. We had some issues with the id yet again it is certainly the bane of this project. With that we have most of basic functionality setup we would now just need to get authentication setup and work on ensuring everything works when deployed which is currently and issue that endpoints don't function on the deployed site.
+
+## Friday September 9, 2022
+
+Having a rough time figuring out deployment issues. Worked with Neil for awhile to see if we could figure out the issues but keep getting cors issues that it appears as if they are unable to see the endpoints on the deployment site. The rest of the team is working on deployment issues.

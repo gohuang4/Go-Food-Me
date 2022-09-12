@@ -41,7 +41,8 @@ function SignupForm(props) {
   }
 
     return (
-      <form onSubmit={handleSubmit} action="http://localhost:8000/api/account">
+      <form onSubmit={handleSubmit} action='https://go-food-me-posts-api.herokuapp.com/api/account'>
+      {/* <form onSubmit={handleSubmit} action="http://localhost:8000/api/account"> */}
         <BootstrapInput
           id="name"
           placeholder="Username"
