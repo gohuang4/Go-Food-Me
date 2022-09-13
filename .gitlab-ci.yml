@@ -4,7 +4,7 @@ stages:
   - deploy
 
 variables:
-  PUBLIC_URL: "https://gitlab.com/404-team-not-found1/go-food-me"
+  PUBLIC_URL: "/go-food-me"
   PUBLIC_URL_POST: "https://go-food-me-posts-api.herokuapp.com"
 
 accounts-unit-test-job:
