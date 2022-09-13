@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { Link } from 'react-router-dom';
+import Card from "./Card.js";
+
 
 
 function ListFundraisers() {
@@ -22,36 +24,23 @@ function ListFundraisers() {
     getPost();
   }, [setPost] );
   
- 
-
-  
-  // const navigate = useNavigate();
-  // const handleClick = (id) => navigate(`/fundraisers/631a9d2b3a662e8e685b8328`);
 
   return (
   <>
-    <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Created</th>
-          </tr>
-        </thead>
-        <tbody>
-          {post.map(p => {
-            console.log(p);
-            return (
-              <tr key= {p.id}>
-                <td>{ p.title }</td>
-                <td>{ p.created }</td>
-                <td>
-                  <Link to={`/list-fundraisers/fundraisers/${p.id}`}>Detail</Link>
-                </td>
-              </tr>
-            )
-          })}
-        </tbody>
-    </table>
+    <div className="row">
+      {post.map(p => {
+        console.log(p);
+        return (
+          <Link to ={`/list-fundraisers/fundraisers/${p.id}`}>
+            <Card
+              title={p.title}
+              created={p.created}
+              description={p.description}
+            />
+          </Link>
+        )
+      })}
+    </div>
   </>
   )
 }
