@@ -8,6 +8,7 @@ import PaymentForm from './PaymentForm';
 import ListFundraisers from './ListFundraisers';
 import PostForm from './PostForm';
 import DetailFundraisers from './DetailFundraisers';
+import UpdateForm from './UpdatePost';
 
 function App(props) {
   const domain = /http:\/\/[^/]+/;
@@ -25,6 +26,7 @@ function App(props) {
         <Route path="/sign-in" element={<SigninForm />} />
         <Route path="/sign-up" element={<SignupForm />} />
         <Route path="/payment-form" element={<PaymentForm />} />
+        <Route path="/update-form/:id" element={<UpdateForm />} />
       </Routes>
     </div>
     </BrowserRouter>

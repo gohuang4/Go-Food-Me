@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 // const split_url = document.URL.split("/")
 // const id = split_url[split_url.length - 1]
@@ -30,30 +30,29 @@ function DetailFundraisers() {
     getPost();
   }, [setPost] );
   
+  // const updateData = (id) => {
+  //   if (window.confirm("Are you sure you want to update?")) {
 
-  const updateData = (id) => {
-    if (window.confirm("Are you sure you want to update?")) {
+  //       fetch(`http://localhost:8200/api/post${id}`,
+  //           {
+  //               method: 'PUT',
+  //               headers: {
+  //                   'Accept': 'application/json',
+  //                   'content-Type': 'application/json'
+  //               },
+  //               body: JSON.stringify({
+  //                 "title": title,
+  //                 "description": description,
+  //                 "requested_amount": requested_amount,
+  //                 "created": created,
+  //               }),
+  //           })
 
-        fetch(`http://localhost:8200/api/post${id}`,
-            {
-                method: 'PUT',
-                headers: {
-                    'Accept': 'application/json',
-                    'content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                  "title": title,
-                  "description": description,
-                  "requested_amount": requested_amount,
-                  "created": created,
-                }),
-            })
-
-            .then(console.log("Updated"))
-            .catch(err => console.log(err));
-            window.location.reload()
-        }
-    };
+  //           .then(console.log("Updated"))
+  //           .catch(err => console.log(err));
+  //           window.location.reload()
+  //       }
+  //   };
   
   const removeData = (id) => {
     if (window.confirm("Are you sure?")) {
