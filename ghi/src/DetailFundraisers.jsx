@@ -31,6 +31,30 @@ function DetailFundraisers() {
   }, [setPost] );
   
 
+  const updateData = (id) => {
+    if (window.confirm("Are you sure you want to update?")) {
+
+        fetch(`http://localhost:8200/api/post${id}`,
+            {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  "title": title,
+                  "description": description,
+                  "requested_amount": requested_amount,
+                  "created": created,
+                }),
+            })
+
+            .then(console.log("Updated"))
+            .catch(err => console.log(err));
+            window.location.reload()
+        }
+    };
+  
   const removeData = (id) => {
     if (window.confirm("Are you sure?")) {
 
@@ -70,6 +94,7 @@ function DetailFundraisers() {
                 <td>{ post.requested_amount}</td>
                 <td>{ post.created }</td>
                 <td><button id = {id} onClick={() => removeData(id)} className="btn btn-outline-danger btn-sm">Delete</button></td>
+                <td><button id = {id} onClick={() => updateData(id)} className="btn btn-outline-danger btn-sm">Update</button></td>
               </tr>
             
           {/* })} */}
