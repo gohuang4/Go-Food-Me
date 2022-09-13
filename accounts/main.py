@@ -2,15 +2,18 @@ import os
 from model import Account, AccountGetAll
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+import authentication
+from passlib.context import CryptContext
 from database import (
-    fetch_one_account,
-    fetch_all_account,
+    fetch_all_accounts,
     create_account,
-    update_account,
     remove_account,
 )
 
 app = FastAPI()
+app.include_router(authentication.router)
+
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 origins = [
     "http://localhost:3000",
@@ -33,26 +36,22 @@ def read_root():
 
 
 @app.get("/api/account")
-async def get_account():
-    response = await fetch_all_account()
+async def get_accounts():
+    response = await fetch_all_accounts()
     return response
-
-
-@app.get("/api/account/{id}", response_model=Account)
-async def get_account_byid(id: str):
-    response = await fetch_one_account(id)
-    if response:
-        return response
-    raise HTTPException(404, f"There is no account with this id.{id}")
-
 
 @app.post("/api/account", response_model=AccountGetAll)
 async def post_account(account: Account):
-    response = await create_account(account.dict())
+
+    hashdict = account.dict()
+    hashdict["hashed_password"] = pwd_context.hash(hashdict["password"])
+    hashdict.pop("password")
+
+    response = await create_account(hashdict)
     newdict = {
         "id": str(response["_id"]),
         "name": response["name"],
-        "password": response["password"],
+        "hashed_password": response["hashed_password"],
         "email": response["email"]
     }
     if response:
@@ -60,22 +59,22 @@ async def post_account(account: Account):
     raise HTTPException(400, "Something went wrong / Bad Request")
 
 
-@app.put("/api/account/{id}", response_model=Account)
-async def put_account(
-    id: str,
-    name: str | None = None,
-    password: str | None = None,
-    email: str | None = None,
-):
-    response = await update_account(
-        id=id,
-        name=name,
-        password=password,
-        email=email
-    )
-    if response:
-        return response
-    raise HTTPException(404, f"There is no account with this id.{id}")
+# @app.put("/api/account/{id}", response_model=AccountGetAll)
+ #async def put_account(
+    #id: str,
+    #name: str | None = None,
+    #password: str | None = None,
+    #email: str | None = None,
+#):
+    #response = await update_account(
+        #id=id,
+        #name=name,
+        #hashed_password=password,
+        #email=email
+    #)
+    #if response:
+        #return response
+    #raise HTTPException(404, f"There is no account with this id.{id}")
 
 
 @app.delete("/api/account/{id}")

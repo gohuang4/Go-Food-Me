@@ -1,6 +1,9 @@
 import os
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI, HTTPException
+from fastapi.security import OAuth2PasswordBearer
+from fastapi import FastAPI, HTTPException, Depends, status
+from jose import JWTError, jwt
+from typing import Optional
 from model import Post, PostGetAll
 from database import (
     fetch_one_post,
@@ -10,6 +13,23 @@ from database import (
     remove_post,
 )
 
+SIGNING_KEY = os.environ["SIGNING_KEY"]
+ALGORITHM = "HS256"
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token", auto_error=False)
+
+
+async def get_current_user(
+    token: Optional[str] = Depends(oauth2_scheme),
+):
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Invalid authentication credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    try:
+        return jwt.decode(token, SIGNING_KEY, algorithms=[ALGORITHM])
+    except (JWTError, AttributeError):
+        raise credentials_exception
 
 app = FastAPI()
 
@@ -49,7 +69,14 @@ async def get_post_by_id(id: str):
 
 # @app.post("/api/post", response_model=Post)
 @app.post("/api/post", response_model=PostGetAll)
-async def post_post(post: Post):
+async def post_post(
+    post: Post,
+    request,
+    user_info = Depends(get_current_user)
+    ):
+    print(user_info)
+    print(request)
+    print("FJKJKFJKKKKKFFFFF")
     response = await create_post(post.dict())
     newdict = {
         "id": str(response["_id"]),
@@ -87,3 +114,5 @@ async def delete_post(id: str):
     if response:
         return "Sucessfully deleted post"
     raise HTTPException(404, f"There is no post with this id.{id}")
+
+    
