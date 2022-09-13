@@ -37,6 +37,7 @@ lint-job:
   script:
     - pip install flake8
     - flake8 accounts payments posts
+  allow_failure : true
 
 build-front-end-job:
   stage: build
