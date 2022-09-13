@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom';
 
-const imageIcon = process.env.PUBLIC_URL + '/images/GoFoodMe-Icon.png'
-const imageLogo = process.env.PUBLIC_URL + '/images/GoFoodMe-Logo.png';
+const domain = /https:\/\/[^/]+/;
+const basename = process.env.PUBLIC_URL.replace(domain, '');
+const imageIcon = basename + '/images/GoFoodMe-Icon.png'
+const imageLogo = basename + '/images/GoFoodMe-Logo.png';
 
 
 function Nav() {

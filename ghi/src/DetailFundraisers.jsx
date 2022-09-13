@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 
-// const split_url = document.URL.split("/")
-// const id = split_url[split_url.length - 1]
+// const DEPLOY_POST_URL = "https://go-food-me-posts-api.herokuapp.com/api/post"
+// const LOCAL_POST_URL = "http://localhost:8200/api/post"
 
 function DetailFundraisers() {
   const [post, setPost] = useState([]);
