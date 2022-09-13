@@ -5,8 +5,6 @@ import Card from "./Card.js";
 // const DEPLOY_POST_URL = "https://go-food-me-posts-api.herokuapp.com/api/posts"
 // const LOCAL_POST_URL = "http://localhost:8200/api/post"
 
-// const DEPLOY_POST_URL = "https://go-food-me-posts-api.herokuapp.com/api/posts"
-// const LOCAL_POST_URL = "http://localhost:8200/api/post"
 
 function ListFundraisers() {
   const [post, setPost] = useState([]);
