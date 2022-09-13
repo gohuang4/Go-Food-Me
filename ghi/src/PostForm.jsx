@@ -1,10 +1,10 @@
 import { useState } from 'react'
 // import React from "react-hook-form"
 
-const domain = /http:\/\/[^/]+/;
+// const domain = /http:\/\/[^/]+/;
 const url = process.env.PUBLIC_URL_POST
 const PostURL = url + "/api/posts"
-console.log(url)
+console.log(process.env)
 
 function BootstrapInput(props) {
   const { id, placeholder, labelText, value, onChange, type } = props
