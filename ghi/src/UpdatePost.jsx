@@ -17,7 +17,7 @@ function BootstrapInput(props) {
   )
 }
 
- function PostForm(props) {
+ function UpdateForm(props) {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [requested_amount, setRequestedAmount] = useState(0)
@@ -37,7 +37,7 @@ function BootstrapInput(props) {
 
     const postURL = e.currentTarget.action
     const fetchConfig = {
-      method: 'POST',
+      method: 'PUT',
       body: JSON.stringify(post),
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ function BootstrapInput(props) {
       cache: "no-cache",
     }
     fetch(postURL, fetchConfig).then(() => {
-      console.log('new post added')
+      console.log(' post updated')
       setIsPending(false)
     })
 }
@@ -92,4 +92,4 @@ function BootstrapInput(props) {
       </form>
     )
 }
-export default PostForm
+export default UpdateForm

@@ -9,6 +9,7 @@ class PaymentGetAll(BaseModel):
     CVV: str
     donation_date: str
 
+
 class Payment(BaseModel):
     name: str
     card_number: str
