@@ -5,7 +5,7 @@ stages:
 
 variables:
   PUBLIC_URL: "/go-food-me"
-  PUBLIC_URL_2: "https://go-food-me-posts-api.herokuapp.com/api/post"
+  PUBLIC_URL_POST: "https://go-food-me-posts-api.herokuapp.com"
 
 accounts-unit-test-job:
   image: python:3-bullseye

@@ -2,7 +2,9 @@ import { useState } from 'react'
 // import React from "react-hook-form"
 
 const domain = /http:\/\/[^/]+/;
-const url = process.env.PUBLIC_URL_2.replace(domain, '')
+const url = process.env.PUBLIC_URL_POST
+const PostURL = url + "/api/posts"
+console.log(url)
 
 function BootstrapInput(props) {
   const { id, placeholder, labelText, value, onChange, type } = props
@@ -50,8 +52,8 @@ function BootstrapInput(props) {
 }
 
     return (
-      <form onSubmit={handleSubmit} action={url} >
-      {/* <form onSubmit={handleSubmit} action="http://localhost:8200/api/post" > */}
+      <form onSubmit={handleSubmit} action={PostURL} >
+      {/* // <form onSubmit={handleSubmit} action="http://localhost:8200/api/post" > */}
         {/* {submitted ? <div className="success-message">Donation post created!</div>} */}
         <BootstrapInput
           id="title"
