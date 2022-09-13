@@ -1,12 +1,10 @@
 import { useState } from 'react'
 // import React from "react-hook-form"
 
-
-const url = process.env.REACT_APP_FastAPI_posts
-const PostURL = url + "/api/post"
-console.log(PostURL)
-// const DEPLOY_POST_URL = "https://go-food-me-posts-api.herokuapp.com/api/post"
-// const LOCAL_POST_URL = "http://localhost:8200/api/post"
+// const domain = /http:\/\/[^/]+/;
+const url = process.env.PUBLIC_URL_POST
+const PostURL = url + "/api/posts"
+console.log(process.env)
 
 function BootstrapInput(props) {
   const { id, placeholder, labelText, value, onChange, type } = props
@@ -19,7 +17,7 @@ function BootstrapInput(props) {
   )
 }
 
- function PostForm(props) {
+ function UpdateForm(props) {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [requested_amount, setRequestedAmount] = useState(0)
@@ -39,7 +37,7 @@ function BootstrapInput(props) {
 
     const postURL = e.currentTarget.action
     const fetchConfig = {
-      method: 'POST',
+      method: 'PUT',
       body: JSON.stringify(post),
       headers: {
         "Content-Type": "application/json",
@@ -48,14 +46,14 @@ function BootstrapInput(props) {
       cache: "no-cache",
     }
     fetch(postURL, fetchConfig).then(() => {
-      console.log('new post added')
+      console.log(' post updated')
       setIsPending(false)
     })
 }
 
     return (
       <form onSubmit={handleSubmit} action={PostURL} >
-      {/* // <form onSubmit={handleSubmit} action={LOCAL_POST_URL} > */}
+      {/* // <form onSubmit={handleSubmit} action="http://localhost:8200/api/post" > */}
         {/* {submitted ? <div className="success-message">Donation post created!</div>} */}
         <BootstrapInput
           id="title"
@@ -94,4 +92,4 @@ function BootstrapInput(props) {
       </form>
     )
 }
-export default PostForm
+export default UpdateForm

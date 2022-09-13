@@ -10,7 +10,7 @@ import PostForm from './PostForm';
 import DetailFundraisers from './DetailFundraisers';
 
 function App(props) {
-  const domain = /http:\/\/[^/]+/;
+  const domain = /https:\/\/[^/]+/;
   const basename = process.env.PUBLIC_URL.replace(domain, '');
   return (
     <BrowserRouter basename={basename}>

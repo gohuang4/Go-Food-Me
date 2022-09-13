@@ -1,6 +1,7 @@
 
-
-const imageLogo = process.env.PUBLIC_URL +'/images/GoFoodMe-Logo.png';
+const domain = /https:\/\/[^/]+/;
+const basename = process.env.PUBLIC_URL.replace(domain, '');
+const imageLogo = basename +'/images/GoFoodMe-Logo.png';
 
 function MainPage() {
     return (

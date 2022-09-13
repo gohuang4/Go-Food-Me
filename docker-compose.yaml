@@ -20,6 +20,7 @@ services:
         volumes:
             - ./accounts:/app
         environment:
+            SIGNING_KEY: 26373b9ea24f7e169e921f89ef4591046241eba5e6c30af3709cf6aa5a711b40
             DATABASE_URL: mongodb://root:password@mongo
             DATABASE_NAME: mongo-data
             WAIT_HOSTS: mongo:27017
@@ -32,6 +33,7 @@ services:
         volumes:
             - ./payments:/app
         environment:
+            SIGNING_KEY: 26373b9ea24f7e169e921f89ef4591046241eba5e6c30af3709cf6aa5a711b40
             DATABASE_URL: mongodb://root:password@mongo
             DATABASE_NAME: mongo-data
             WAIT_HOSTS: mongo:27017
@@ -44,6 +46,7 @@ services:
         volumes:
             - ./posts:/app
         environment:
+            SIGNING_KEY: 26373b9ea24f7e169e921f89ef4591046241eba5e6c30af3709cf6aa5a711b40
             DATABASE_URL: mongodb://root:password@mongo
             DATABASE_NAME: mongo-data
             WAIT_HOSTS: mongo:27017
@@ -62,3 +65,5 @@ services:
             REACT_APP_FASTAPI_accounts: http://localhost:8000
             REACT_APP_FastAPI_payments: http://localhost:8100
             REACT_APP_FastAPI_posts: http://localhost:8200
+            PUBLIC_URL: ""
+            PUBLIC_URL_POST: "http://localhost:8200"

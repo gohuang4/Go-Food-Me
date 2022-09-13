@@ -6,3 +6,6 @@ motor==3.0.0
 black==22.3.0
 pytest
 requests
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.5

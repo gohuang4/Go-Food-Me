@@ -2,16 +2,22 @@ import React, {useState, useEffect} from "react";
 import { Link } from 'react-router-dom';
 import Card from "./Card.js";
 
+// const DEPLOY_POST_URL = "https://go-food-me-posts-api.herokuapp.com/api/posts"
+// const LOCAL_POST_URL = "http://localhost:8200/api/post"
 
+// const DEPLOY_POST_URL = "https://go-food-me-posts-api.herokuapp.com/api/posts"
+// const LOCAL_POST_URL = "http://localhost:8200/api/post"
 
 function ListFundraisers() {
   const [post, setPost] = useState([]);
-
+  
   useEffect(() => {
     async function getPost() {
-      const url = 'http://localhost:8200/api/post';
-      console.log(url)
-      const response = await fetch(url);
+      // const url = {DEPLOY_POST_URL};
+      const url = process.env.REACT_APP_FastAPI_posts
+      const POSTURL = url + "/api/post"
+      console.log(POSTURL)
+      const response = await fetch(POSTURL);
       console.log(response);
       if (response.ok) {
         const data = await response.json();
@@ -23,7 +29,6 @@ function ListFundraisers() {
     }
     getPost();
   }, [setPost] );
-  
 
   return (
   <>
