@@ -1,15 +1,9 @@
 import React, {useState, useEffect} from "react";
 import { useParams, Link } from "react-router-dom";
 
-// const DEPLOY_POST_URL = "https://go-food-me-posts-api.herokuapp.com/api/post"
-// const LOCAL_POST_URL = "http://localhost:8200/api/post"
-
-
-
 
 function DetailFundraisers() {
   const [post, setPost] = useState([]);
-  // const [newPost, setNewPost] = useState("");
   /* eslint-disable */
   const {id} = useParams();
   /* eslint-enabled */
@@ -20,8 +14,6 @@ function DetailFundraisers() {
     async function getPost() {
       const url = process.env.REACT_APP_FastAPI_posts
       const POSTURL = url + `/api/post${id}`
-      console.log(POSTURL)
-      // const url = `http://localhost:8200/api/post${id}`;
       const response = await fetch(POSTURL);
       console.log(response);
       if (response.ok) {
