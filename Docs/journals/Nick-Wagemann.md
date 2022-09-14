@@ -78,3 +78,5 @@ We had another good day working on the front end. We got our list page to link o
 ## Friday September 9, 2022
 
 Having a rough time figuring out deployment issues. Worked with Neil for awhile to see if we could figure out the issues but keep getting cors issues that it appears as if they are unable to see the endpoints on the deployment site. The rest of the team is working on deployment issues.
+
+## Monday September 12, 2022
