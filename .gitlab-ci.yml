@@ -8,6 +8,9 @@ variables:
   PUBLIC_URL_POST: "https://go-food-me-posts-api.herokuapp.com"
   SIGNING_KEY: 26373b9ea24f7e169e921f89ef4591046241eba5e6c30af3709cf6aa5a711b40
   REACT_APP_FastAPI_posts: $REACT_APP_FastAPI_posts
+  REACT_APP_FASTAPI_accounts: $REACT_APP_FastAPI_accounts
+  REACT_APP_FastAPI_payments: $REACT_APP_FastAPI_payments
+
 
 accounts-unit-test-job:
   image: python:3-bullseye

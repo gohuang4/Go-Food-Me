@@ -18,8 +18,11 @@ function DetailFundraisers() {
   useEffect(() => {
     
     async function getPost() {
-      const url = `http://localhost:8200/api/post${id}`;
-      const response = await fetch(url);
+      const url = process.env.REACT_APP_FastAPI_posts
+      const POSTURL = url + `/api/post${id}`
+      console.log(POSTURL)
+      // const url = `http://localhost:8200/api/post${id}`;
+      const response = await fetch(POSTURL);
       console.log(response);
       if (response.ok) {
         const data = await response.json();
@@ -104,7 +107,7 @@ function DetailFundraisers() {
                 <td>{ post.requested_amount}</td>
                 <td>{ post.created }</td>
                 <td><button id = {id} onClick={() => removeData(id)} className="btn btn-outline-danger btn-sm">Delete</button></td>
-                <td><Link to={`/update-post/${post.id}`} className="btn btn-primary">Update</Link></td>
+                <td><Link to={`/update-post/${id}`} className="btn btn-primary">Update</Link></td>
               </tr>
             
           {/* })} */}
