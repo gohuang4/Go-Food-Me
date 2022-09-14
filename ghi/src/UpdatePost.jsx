@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 // import React from "react-hook-form"
 
@@ -22,8 +22,9 @@ function BootstrapInput(props) {
 
  function UpdateForm(_props) {
   const {id} = useParams();
+  console.log(id)
   const url = process.env.REACT_APP_FastAPI_posts
-  const PostURL = url + `/api/post${id}`
+  const PostURL = url + `/api/post/${id}`
   // console.log(process.env)
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')

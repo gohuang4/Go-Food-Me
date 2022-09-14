@@ -1,5 +1,9 @@
 import { useState } from 'react'
 
+const url = process.env.REACT_APP_FastAPI_payments
+const PAYMENTSURL = url + "/api/payment"
+console.log(PAYMENTSURL)
+
 function BootstrapInput(props) {
   const { id, placeholder, labelText, value, onChange, type } = props
 
@@ -48,7 +52,7 @@ function PaymentForm(props) {
   }
 
     return (
-      <form onSubmit={handleSubmit} action="http://localhost:8100/api/payment">
+      <form onSubmit={handleSubmit} action={PAYMENTSURL}>
         <BootstrapInput
           id="name"
           placeholder="Name on card"
