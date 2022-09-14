@@ -71,12 +71,9 @@ async def get_post_by_id(id: str):
 @app.post("/api/post", response_model=PostGetAll)
 async def post_post(
     post: Post,
-    request,
-    user_info = Depends(get_current_user)
+    # request,
+    # user_info = Depends(get_current_user)
     ):
-    print(user_info)
-    print(request)
-    print("FJKJKFJKKKKKFFFFF")
     response = await create_post(post.dict())
     newdict = {
         "id": str(response["_id"]),
