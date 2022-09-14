@@ -2,7 +2,7 @@ import os
 from model import Account, AccountGetAll
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-import authentication
+# import authentication
 from passlib.context import CryptContext
 from database import (
     fetch_all_accounts,
@@ -11,7 +11,7 @@ from database import (
 )
 
 app = FastAPI()
-app.include_router(authentication.router)
+# app.include_router(authentication.router)
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
