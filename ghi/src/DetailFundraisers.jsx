@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 // const DEPLOY_POST_URL = "https://go-food-me-posts-api.herokuapp.com/api/post"
 // const LOCAL_POST_URL = "http://localhost:8200/api/post"
+
+
+
 
 function DetailFundraisers() {
   const [post, setPost] = useState([]);
@@ -29,31 +32,38 @@ function DetailFundraisers() {
     }
     getPost();
   }, [setPost] );
+
+
+    
+  // let navigate = useNavigate(); 
+  // const routeChange = () =>{ 
+  //   let path = `/update-post/:id`; 
+  //   navigate(path);
+  // }
   
+  // const updateData = (id) => {
+  //   if (window.confirm("Are you sure you want to update?")) {
 
-  const updateData = (id) => {
-    if (window.confirm("Are you sure you want to update?")) {
+  //       fetch(`http://localhost:8200/api/post${id}`,
+  //           {
+  //               method: 'PUT',
+  //               headers: {
+  //                   'Accept': 'application/json',
+  //                   'content-Type': 'application/json'
+  //               },
+  //               // body: JSON.stringify({
+  //               //   "title": title,
+  //               //   "description": description,
+  //               //   "requested_amount": requested_amount,
+  //               //   "created": created,
+  //               // }),
+  //           })
 
-        fetch(`http://localhost:8200/api/post${id}`,
-            {
-                method: 'PUT',
-                headers: {
-                    'Accept': 'application/json',
-                    'content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                  "title": title,
-                  "description": description,
-                  "requested_amount": requested_amount,
-                  "created": created,
-                }),
-            })
-
-            .then(console.log("Updated"))
-            .catch(err => console.log(err));
-            window.location.reload()
-        }
-    };
+  //           .then(console.log("Updated"))
+  //           .catch(err => console.log(err));
+  //           window.location.reload()
+  //       }
+  //   };
   
   const removeData = (id) => {
     if (window.confirm("Are you sure?")) {
@@ -111,7 +121,7 @@ function DetailFundraisers() {
                 <td>{ post.created }</td>
                 <td><button id = {id} onClick={() => updateData(id)} className="btn btn-outline-info btn-sm">Update</button></td>
                 <td><button id = {id} onClick={() => removeData(id)} className="btn btn-outline-danger btn-sm">Delete</button></td>
-                <td><button id = {id} onClick={() => updateData(id)} className="btn btn-outline-danger btn-sm">Update</button></td>
+                <td><Link to={`/update-post/${post.id}`} className="btn btn-primary">Update</Link></td>
               </tr>
             
           {/* })} */}
