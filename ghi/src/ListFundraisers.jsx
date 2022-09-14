@@ -10,9 +10,10 @@ function ListFundraisers() {
   useEffect(() => {
     async function getPost() {
       // const url = {DEPLOY_POST_URL};
-      const url = "https://go-food-me-posts-api.herokuapp.com/api/post";
-      console.log(url)
-      const response = await fetch(url);
+      const url = process.env.REACT_APP_FastAPI_posts
+      const POSTURL = url + "/api/post"
+      console.log(POSTURL)
+      const response = await fetch(POSTURL);
       console.log(response);
       if (response.ok) {
         const data = await response.json();

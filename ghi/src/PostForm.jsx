@@ -1,11 +1,11 @@
 import { useState } from 'react'
 // import React from "react-hook-form"
 
-// const domain = /http:\/\/[^/]+/;
-// const url = process.env.REACT_APP_FastAPI_posts.replace(domain, '')
-// const PostURL = url + "/api/post"
-// console.log(PostURL)
-const DEPLOY_POST_URL = "https://go-food-me-posts-api.herokuapp.com/api/post"
+
+const url = process.env.REACT_APP_FastAPI_posts
+const PostURL = url + "/api/post"
+console.log(PostURL)
+// const DEPLOY_POST_URL = "https://go-food-me-posts-api.herokuapp.com/api/post"
 // const LOCAL_POST_URL = "http://localhost:8200/api/post"
 
 function BootstrapInput(props) {
@@ -54,7 +54,7 @@ function BootstrapInput(props) {
 }
 
     return (
-      <form onSubmit={handleSubmit} action={DEPLOY_POST_URL} >
+      <form onSubmit={handleSubmit} action={PostURL} >
       {/* // <form onSubmit={handleSubmit} action={LOCAL_POST_URL} > */}
         {/* {submitted ? <div className="success-message">Donation post created!</div>} */}
         <BootstrapInput
