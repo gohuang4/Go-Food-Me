@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const url = process.env.REACT_APP_FASTAPI_accounts
+const url = process.env.REACT_APP_FastAPI_accounts
 const ACCOUNT_URL = url + "/api/account"
 console.log(ACCOUNT_URL)
 // const DEPLOY_ACCOUNT_URL = 'https://go-food-me-accounts-api.herokuapp.com/api/account'
