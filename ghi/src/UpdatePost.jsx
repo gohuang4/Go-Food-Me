@@ -24,7 +24,7 @@ function BootstrapInput(props) {
   const {id} = useParams();
   const url = process.env.REACT_APP_FastAPI_posts
   const PostURL = url + `/api/post${id}`
-  console.log(process.env)
+  // console.log(process.env)
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [requested_amount, setRequestedAmount] = useState(0)
@@ -39,6 +39,7 @@ function BootstrapInput(props) {
       "requested_amount": requested_amount, 
       "created": created,
     }
+    console.log(post)
 
     setIsPending(true)
 
@@ -53,7 +54,7 @@ function BootstrapInput(props) {
       cache: "no-cache",
     }
     fetch(postURL, fetchConfig).then(() => {
-      console.log(' post updated')
+      // console.log(' post updated')
       setIsPending(false)
     })
 }

@@ -12,15 +12,15 @@ function ListFundraisers() {
       // const url = {DEPLOY_POST_URL};
       const url = process.env.REACT_APP_FastAPI_posts
       const POSTURL = url + "/api/post"
-      console.log(POSTURL)
+      // console.log(POSTURL)
       const response = await fetch(POSTURL);
-      console.log(response);
+      // console.log(response);
       if (response.ok) {
         const data = await response.json();
         setPost(data);
-        console.log(data);
+        // console.log(data);
       } else {
-        console.log("Response failed")
+        // console.log("Response failed")
       }
     }
     getPost();
@@ -42,7 +42,7 @@ function ListFundraisers() {
         </thead>
         <tbody>
           {post.map(p => {
-            console.log(p);
+            // console.log(p);
             return (
               <tr key= {p.id}>
                 <td>{ p.title }</td>
