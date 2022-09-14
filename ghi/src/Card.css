@@ -11,8 +11,7 @@
 	transition: 200ms;
     max-width: 380px;
     margin: 60px auto;
-    display: inline-block;
-	grid-template-columns: 3fr;
+	grid-template: 3fr;
 }
 
 .card:hover {

@@ -34,13 +34,15 @@ function ListFundraisers() {
       {post.map(p => {
         console.log(p);
         return (
-          <Link to ={`/list-fundraisers/fundraisers/${p.id}`}>
-            <Card
-              title={p.title}
-              created={p.created}
-              description={p.description}
-            />
-          </Link>
+          <div className="col">
+            <Link to ={`/list-fundraisers/fundraisers/${p.id}`}>
+              <Card
+                title={p.title}
+                created={p.created}
+                description={p.description}
+              />
+            </Link>
+          </div>
         )
       })}
     </div>
