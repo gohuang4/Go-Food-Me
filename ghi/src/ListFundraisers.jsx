@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Link } from 'react-router-dom';
-import Card from "./Card.js";
+import Card from "./Card.jsx";
 
 // const DEPLOY_POST_URL = "https://go-food-me-posts-api.herokuapp.com/api/posts"
 // const LOCAL_POST_URL = "http://localhost:8200/api/post"
