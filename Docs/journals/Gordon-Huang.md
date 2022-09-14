@@ -33,3 +33,11 @@ Currently trying to figure out how to make a unique identifier
 
 08/29/2022
 Over the weekend Nick got a working home page along with other static pages with a navigation bar working that goes to those static pages.
+
+08/30/2022
+Currently doing more research on using React Hooks on a form. Spent the rest of the day doing research and went through several youtube videos. Incorporated what I could from the videos on Learn
+
+09/01/2022
+Did more research on Reach hooks and tried other ways to implement the handleSubmit with hooks. Spent more time doing research on youtube and found some useful videos on it.
+
+09/02/2022
