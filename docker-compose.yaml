@@ -62,7 +62,7 @@ services:
             HOST_OS: ${OS}
             NODE_ENV: development
             HOST: "0.0.0.0"
-            REACT_APP_FASTAPI_accounts: http://localhost:8000
+            REACT_APP_FastAPI_accounts: http://localhost:8000
             REACT_APP_FastAPI_payments: http://localhost:8100
             REACT_APP_FastAPI_posts: http://localhost:8200
             PUBLIC_URL: ""

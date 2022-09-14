@@ -5,6 +5,9 @@ import { useParams, Link } from "react-router-dom";
 
 // const domain = /http:\/\/[^/]+/;
 
+// const url = process.env.REACT_APP_FastAPI_posts
+// const PostURL = url + "/api/post"
+// console.log("posturl", PostURL)
 
 function BootstrapInput(props) {
   const { id, placeholder, labelText, value, onChange, type } = props

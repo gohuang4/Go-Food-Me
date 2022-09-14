@@ -18,8 +18,11 @@ function DetailFundraisers() {
   useEffect(() => {
     
     async function getPost() {
-      const url = `http://localhost:8200/api/post${id}`;
-      const response = await fetch(url);
+      const url = process.env.REACT_APP_FastAPI_posts
+      const POSTURL = url + `/api/post${id}`
+      console.log(POSTURL)
+      // const url = `http://localhost:8200/api/post${id}`;
+      const response = await fetch(POSTURL);
       console.log(response);
       if (response.ok) {
         const data = await response.json();
