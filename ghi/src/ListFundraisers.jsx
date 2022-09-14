@@ -1,14 +1,16 @@
 import React, {useState, useEffect} from "react";
 import { Link } from 'react-router-dom';
 
+// const DEPLOY_POST_URL = "https://go-food-me-posts-api.herokuapp.com/api/posts"
+// const LOCAL_POST_URL = "http://localhost:8200/api/post"
 
 function ListFundraisers() {
   const [post, setPost] = useState([]);
-
+  
   useEffect(() => {
     async function getPost() {
-      // const url = 'https://go-food-me-posts-api.herokuapp.com/api/post';
-      const url = 'http://localhost:8200/api/post';
+      // const url = {DEPLOY_POST_URL};
+      const url = "https://go-food-me-posts-api.herokuapp.com/api/post";
       console.log(url)
       const response = await fetch(url);
       console.log(response);
