@@ -78,3 +78,11 @@ We had another good day working on the front end. We got our list page to link o
 ## Friday September 9, 2022
 
 Having a rough time figuring out deployment issues. Worked with Neil for awhile to see if we could figure out the issues but keep getting cors issues that it appears as if they are unable to see the endpoints on the deployment site. The rest of the team is working on deployment issues.
+
+## Monday September 12, 2022
+
+Been struggling reconfiguring environmental variables on the front end to allow for the local and development api endpoints to work simultaneously without manual switching have tried a few different ways but cant find much documentation to go off of so really just plug and playing a lot of things.
+
+## Tuesday September 13, 2022
+
+Worked with a few seirs but when Andrew helped me out today figured out the way to solve the environment issues took a bit to reconfigure but have it working entirely for posts though strangely at the end of the night now have it working locally but on the deployed site getting a CORS 503 error. Will have to come back to this tomorrow morning
