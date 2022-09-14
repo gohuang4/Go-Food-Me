@@ -41,3 +41,28 @@ Currently doing more research on using React Hooks on a form. Spent the rest of 
 Did more research on Reach hooks and tried other ways to implement the handleSubmit with hooks. Spent more time doing research on youtube and found some useful videos on it.
 
 09/02/2022
+was able to get some direction going to implement the handlesubmit through a react youtube video. Implementing the handleSubmit is a lot closer to using a class component than I thought. Still having some issues
+
+09/05/2022
+Was able to get some more guidance on getting the handle submit to work. The form is having issues connecting to the backend. It seems like our biggest issue is connecting the front end to the backend.
+
+09/06/2022
+After getting some instructor help we added some fields to the body. Nick was able to finalize the changes to get the form to actually work and connect to the back end.
+
+09/07/2022
+After finallying getting the post form to work after implementing fields into the fast api and on the form body, we applied it to other forms. Other forms are now working based off of the code from the post form.
+
+09/08/2022
+We are still struggling on auth and ci/cd. It sounds like we would have to change our IDs in order for auth to work.
+
+09/09/2022
+the last few things we need are just auth and deployment. Our list page for our fundraisers is essentially finished as well.
+
+09/12/2022
+detail page is now completed along with the list page. THe delete button has been implemented on the detail page as well for the specific fundraiser
+
+09/13/2022
+added the update feature to the detail page
+got the update button to work
+got the update button to redirect to the upate form
+update form fields fill out 
