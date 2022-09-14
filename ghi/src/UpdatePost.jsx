@@ -1,10 +1,10 @@
 import { useState } from 'react'
+import { useParams, Link } from "react-router-dom";
+
 // import React from "react-hook-form"
 
 // const domain = /http:\/\/[^/]+/;
-const url = process.env.PUBLIC_URL_POST
-const PostURL = url + "/api/posts"
-console.log(process.env)
+
 
 function BootstrapInput(props) {
   const { id, placeholder, labelText, value, onChange, type } = props
@@ -17,7 +17,11 @@ function BootstrapInput(props) {
   )
 }
 
- function UpdateForm(props) {
+ function UpdateForm(_props) {
+  const {id} = useParams();
+  const url = process.env.REACT_APP_FastAPI_posts
+  const PostURL = url + `/api/post${id}`
+  console.log(process.env)
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [requested_amount, setRequestedAmount] = useState(0)
