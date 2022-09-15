@@ -8,6 +8,7 @@ import PaymentForm from './PaymentForm';
 import ListFundraisers from './ListFundraisers';
 import PostForm from './PostForm';
 import DetailFundraisers from './DetailFundraisers';
+import Footer from './Footer';
 import UpdateForm from './UpdatePost';
 import { AuthProvider } from './useToken';
 
@@ -31,6 +32,7 @@ function App(props) {
           <Route path="/update-post/:id" element={<UpdateForm />} />
         </Routes>
       </div>
+      {/* <Footer /> */}
       </BrowserRouter>
     </AuthProvider>
   );
