@@ -69,15 +69,17 @@ async def post_account(account: Account):
     hashdict["hashed_password"] = pwd_context.hash(hashdict["password"])
     hashdict.pop("password")
 
-    allaccounts = await fetch_all_accounts
-    print(allaccounts)
+    # allaccounts = await fetch_all_accounts
+    # print(allaccounts)
 
     response = await create_account(hashdict)
     newdict = {
         "id": str(response["_id"]),
         "name": response["name"],
         "hashed_password": response["hashed_password"],
-        "email": response["email"]
+        "email": response["email"],
+        "firstName": response["firstName"],
+        "lastName": response["lastName"],
     }
     if response:
         return newdict

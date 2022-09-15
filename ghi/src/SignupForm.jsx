@@ -18,6 +18,8 @@ function SignupForm(props) {
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
+  const [firstName, setfirstName] = useState('')
+  const [lastName, setlastName] = useState('')
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,6 +27,8 @@ function SignupForm(props) {
       "name": name,
       "password": password,
       "email": email,
+      "firstName": firstName,
+      "lastName": lastName
     }
 
     const accountURL = e.currentTarget.action 
