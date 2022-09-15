@@ -61,9 +61,11 @@ function DetailFundraisers() {
   //   };
   
   const removeData = (id) => {
+    const url = process.env.REACT_APP_FastAPI_posts
+    const POSTURL = url + `/api/post${id}`
     if (window.confirm("Are you sure?")) {
 
-        fetch(`http://localhost:8200/api/post${id}`,
+        fetch(POSTURL,
             {
                 method: 'DELETE',
                 headers: {
