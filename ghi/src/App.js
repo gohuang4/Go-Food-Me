@@ -8,9 +8,10 @@ import PaymentForm from './PaymentForm';
 import ListFundraisers from './ListFundraisers';
 import PostForm from './PostForm';
 import DetailFundraisers from './DetailFundraisers';
+import UpdateForm from './UpdatePost';
 
 function App(props) {
-  const domain = /http:\/\/[^/]+/;
+  const domain = /https:\/\/[^/]+/;
   const basename = process.env.PUBLIC_URL.replace(domain, '');
   return (
     <BrowserRouter basename={basename}>
@@ -25,6 +26,7 @@ function App(props) {
         <Route path="/sign-in" element={<SigninForm />} />
         <Route path="/sign-up" element={<SignupForm />} />
         <Route path="/payment-form" element={<PaymentForm />} />
+        <Route path="/update-post/:id" element={<UpdateForm />} />
       </Routes>
     </div>
     </BrowserRouter>
