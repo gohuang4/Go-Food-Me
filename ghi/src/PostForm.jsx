@@ -4,9 +4,6 @@ import { useAuthContext, getToken, getTokenInternal } from "./useToken";
 
 const url = process.env.REACT_APP_FastAPI_posts
 const PostURL = url + "/api/post"
-console.log(PostURL)
-// const DEPLOY_POST_URL = "https://go-food-me-posts-api.herokuapp.com/api/post"
-// const LOCAL_POST_URL = "http://localhost:8200/api/post"
 
 function BootstrapInput(props) {
   const { id, placeholder, labelText, value, onChange, type } = props
@@ -61,7 +58,6 @@ function PostForm(props) {
 
     return (
       <form onSubmit={handleSubmit} action={PostURL} >
-      {/* // <form onSubmit={handleSubmit} action={LOCAL_POST_URL} > */}
         {/* {submitted ? <div className="success-message">Donation post created!</div>} */}
         <BootstrapInput
           id="title"
