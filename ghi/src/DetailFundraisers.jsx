@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Form } from "react-router-dom";
 
 
 function DetailFundraisers() {
@@ -99,32 +99,42 @@ function DetailFundraisers() {
   
   return (
     <>
-    <img src={post.picture_url} width="200" />
-    <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Requested Amount</th>
-            <th>Created</th>
-          </tr>
-        </thead>
-        <tbody>
-          {/* {post.map(p => { */}
+    <div className="container">
+    <div className="row">
+    <div className="m-4 col-sm">
+    <div className="image">
+    <img src={post.picture_url} width="400"/>
+    </div>
+    </div>
+    <div className="m-4 col-sm">
+      <h1>{post.title}</h1>
+      <h3>{post.created}</h3>
+      <h3>{post.requested_amount}</h3>
+      <h4>{post.description}</h4>
+    </div>
+    <div className="m-4 col-sm">
+    <div className="m-2">
+    <Link to={`/update-post/${id}`} className="btn btn-outline-primary">Update Fundraiser</Link>
+    </div>
+    <div className="m-2">
+    <Link to={`/payment-form`} className="btn btn-outline-success">Donate to Fundraiser</Link>
+    </div>
+    <div className="m-2">
+    <button id = {id} onClick={() => removeData(id)} className="btn btn-outline-danger">Delete</button>
+    </div>
+    </div>
+    </div>
+    </div>
+      
 
-              <tr key= {post.id}>
-                <td>{ post.title }</td>
-                <td>{ post.description }</td>
-                <td>{ post.requested_amount}</td>
-                <td>{ post.created }</td>
-                <td><Link to={`/update-post/${id}`} className="btn btn-outline-primary">Update Fundraiser</Link></td>
-                <td><Link to={`/payment-form`} className="btn btn-outline-success">Donate to Fundraiser</Link></td>
-                <td><button id = {id} onClick={() => removeData(id)} className="btn btn-outline-danger">Delete</button></td>
-              </tr>
-            
-          {/* })} */}
-        </tbody>
-    </table>
+    <div className="buttons">
+    <div className="m-2 p-2">
+    </div>
+    <div className="m-2 p-2">
+    </div>
+    <div className="m-2 p-2">
+    </div>
+    </div>
     </>
   )
 

@@ -36,7 +36,7 @@ function ListFundraisers() {
               <Card
                 title={p.title}
                 created={p.created}
-                description={p.description}
+                requested_amount={p.requested_amount}
                 picture_url={p.picture_url}
               />
             </Link>
