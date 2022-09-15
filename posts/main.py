@@ -2,7 +2,7 @@ import os
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordBearer
 from fastapi import FastAPI, HTTPException, Depends, status
-# from jose import JWTError, jwt
+from jose import JWTError, jwt
 from typing import Optional
 from model import Post, PostGetAll
 from database import (
@@ -18,18 +18,18 @@ ALGORITHM = "HS256"
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token", auto_error=False)
 
 
-# async def get_current_user(
-#     token: Optional[str] = Depends(oauth2_scheme),
-# ):
-#     credentials_exception = HTTPException(
-#         status_code=status.HTTP_401_UNAUTHORIZED,
-#         detail="Invalid authentication credentials",
-#         headers={"WWW-Authenticate": "Bearer"},
-#     )
-#     try:
-#         return jwt.decode(token, SIGNING_KEY, algorithms=[ALGORITHM])
-#     except (JWTError, AttributeError):
-#         raise credentials_exception
+async def get_current_user(
+    token: Optional[str] = Depends(oauth2_scheme),
+):
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Invalid authentication credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    try:
+        return jwt.decode(token, SIGNING_KEY, algorithms=[ALGORITHM])
+    except (JWTError, AttributeError):
+        raise credentials_exception
 
 app = FastAPI()
 
@@ -73,7 +73,6 @@ async def post_post(
     post: Post,
     user_info = Depends(get_current_user)
     ):
-    print("🚀 ~ file: main.py ~ line 75 ~ user_info", user_info)
     response = await create_post(post.dict())
     newdict = {
         "id": str(response["_id"]),
