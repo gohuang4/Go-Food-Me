@@ -12,5 +12,5 @@ def test_read_main():
 
 def test_bad_id():
     response = client.get("/api/account/123")
-    assert response.status_code == 404
+    assert response.status_code == 405
     assert response.json() == ["There is no account with this id.123"]
