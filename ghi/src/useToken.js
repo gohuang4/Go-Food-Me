@@ -87,6 +87,7 @@ export function useToken() {
   async function login(username, password) {
     const url = `${process.env.REACT_APP_FastAPI_accounts}/token`;
     console.log('login function', url);
+    console.log(process.env)
     const form = new FormData();
     form.append("username", username);
     form.append("password", password);

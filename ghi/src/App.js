@@ -8,9 +8,14 @@ import PaymentForm from './PaymentForm';
 import ListFundraisers from './ListFundraisers';
 import PostForm from './PostForm';
 import DetailFundraisers from './DetailFundraisers';
-import Footer from './Footer';
+// import Footer from './Footer';
 import UpdateForm from './UpdatePost';
-import { AuthProvider } from './useToken';
+import { AuthProvider, useToken } from './useToken';
+
+function InvisibleToken() {
+  useToken();
+  return null
+}
 
 function App(props) {
   const domain = /https:\/\/[^/]+/;
@@ -18,6 +23,7 @@ function App(props) {
   return (
     <AuthProvider>
       <BrowserRouter basename={basename}>
+        <InvisibleToken />
       <Nav />
       <div className="container">
         <Routes>

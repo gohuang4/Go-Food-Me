@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useAuthContext, getToken, getTokenInternal } from "./useToken";
+import { useAuthContext } from "./useToken";
 
 
 const url = process.env.REACT_APP_FastAPI_posts
@@ -28,7 +28,6 @@ function PostForm(props) {
   // const [submitted,  setSubmitted] = useState(true)
   const handleSubmit= (e) => {
     e.preventDefault();
-    // const token = getTokenPF();
     const post = {
       "title": title,
       "picture_url": picture_url, 
