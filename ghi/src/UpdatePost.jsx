@@ -1,13 +1,5 @@
 import { useState } from 'react'
-import { useParams, Link } from "react-router-dom";
-
-// import React from "react-hook-form"
-
-// const domain = /http:\/\/[^/]+/;
-
-// const url = process.env.REACT_APP_FastAPI_posts
-// const PostURL = url + "/api/post"
-// console.log("posturl", PostURL)
+import { useParams } from "react-router-dom";
 
 function BootstrapInput(props) {
   const { id, placeholder, labelText, value, onChange, type } = props
@@ -22,15 +14,14 @@ function BootstrapInput(props) {
 
  function UpdateForm(_props) {
   const {id} = useParams();
+  console.log(id)
   const url = process.env.REACT_APP_FastAPI_posts
-  const PostURL = url + `/api/post${id}`
-  console.log(process.env)
+  const PostURL = url + `/api/post/${id}`
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [requested_amount, setRequestedAmount] = useState(0)
   const [created, setCreated] = useState('')
   const [isPending, setIsPending] = useState(false)
-  // const [submitted,  setSubmitted] = useState(true)
   const handleSubmit= (e) => {
     e.preventDefault();
     const post = {
@@ -39,6 +30,7 @@ function BootstrapInput(props) {
       "requested_amount": requested_amount, 
       "created": created,
     }
+    console.log(post)
 
     setIsPending(true)
 
@@ -53,14 +45,12 @@ function BootstrapInput(props) {
       cache: "no-cache",
     }
     fetch(postURL, fetchConfig).then(() => {
-      console.log(' post updated')
       setIsPending(false)
     })
 }
 
     return (
       <form onSubmit={handleSubmit} action={PostURL} >
-      {/* // <form onSubmit={handleSubmit} action="http://localhost:8200/api/post" > */}
         {/* {submitted ? <div className="success-message">Donation post created!</div>} */}
         <BootstrapInput
           id="title"

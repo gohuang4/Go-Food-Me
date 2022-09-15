@@ -2,7 +2,7 @@ import os
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordBearer
 from fastapi import FastAPI, HTTPException, Depends, status
-# from jose import JWTError, jwt
+from jose import JWTError, jwt
 from typing import Optional
 from model import Post, PostGetAll
 from database import (
@@ -18,6 +18,23 @@ ALGORITHM = "HS256"
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token", auto_error=False)
 
 
+async def get_current_user(
+    # token: Optional[str] = Depends(oauth2_scheme),
+    fastapi_access_token: Optional[str] = Depends(oauth2_scheme),
+):
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Invalid authentication credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    try:
+        print("!!!!!!!!!")
+        print(dir(fastapi_access_token))
+        decodedToken = jwt.decode(fastapi_access_token, SIGNING_KEY, algorithms=[ALGORITHM])
+        print("!!!!!!!!", decodedToken)
+        return decodedToken
+    except (JWTError, AttributeError):
+        raise credentials_exception
 # async def get_current_user(
 #     token: Optional[str] = Depends(oauth2_scheme),
 # ):
@@ -72,7 +89,7 @@ async def get_post_by_id(id: str):
 async def post_post(
     post: Post,
     # request,
-    # user_info = Depends(get_current_user)
+    user_info = Depends(get_current_user)
     ):
     response = await create_post(post.dict())
     newdict = {
@@ -87,18 +104,18 @@ async def post_post(
     raise HTTPException(400, "Something went wrong / Bad Request")
 
 
-@app.put("/api/post{id}", response_model=Post)
-async def put_post(
-    id: str,
-    title: str | None = None,
-    description: str | None = None,
-    requested_amount: int | None = None,
+@app.put("/api/post/{id}", response_model=Post)
+async def put_post(id:str, post:Post
+    # id: str,
+    # title: str | None = None,
+    # description: str | None = None,
+    # requested_amount: int | None = None,
 ):
     response = await update_post(
         id=id,
-        title=title,
-        description=description,
-        requested_amount=requested_amount
+        title=post.title,
+        description=post.description,
+        requested_amount=post.requested_amount
     )
     if response:
         return response

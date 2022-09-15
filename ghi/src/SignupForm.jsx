@@ -2,9 +2,6 @@ import { useState } from 'react';
 
 const url = process.env.REACT_APP_FastAPI_accounts
 const ACCOUNT_URL = url + "/api/account"
-console.log(ACCOUNT_URL)
-// const DEPLOY_ACCOUNT_URL = 'https://go-food-me-accounts-api.herokuapp.com/api/account'
-// const LOCAL_ACCOUNT_URL = 'http://localhost:8000/api/account'
 
 function BootstrapInput(props) {
   const { id, placeholder, labelText, value, onChange, type } = props
@@ -48,7 +45,6 @@ function SignupForm(props) {
 
     return (
       <form onSubmit={handleSubmit} action={ACCOUNT_URL}>
-      {/* <form onSubmit={handleSubmit} action={LOCAL_ACCOUNT_URL}> */}
         <BootstrapInput
           id="name"
           placeholder="Username"

@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from "react";
+import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Card from "./Card.jsx";
-
-// const DEPLOY_POST_URL = "https://go-food-me-posts-api.herokuapp.com/api/posts"
-// const LOCAL_POST_URL = "http://localhost:8200/api/post"
 
 
 function ListFundraisers() {
@@ -11,16 +9,12 @@ function ListFundraisers() {
   
   useEffect(() => {
     async function getPost() {
-      // const url = {DEPLOY_POST_URL};
       const url = process.env.REACT_APP_FastAPI_posts
       const POSTURL = url + "/api/post"
-      console.log(POSTURL)
       const response = await fetch(POSTURL);
-      console.log(response);
       if (response.ok) {
         const data = await response.json();
         setPost(data);
-        console.log(data);
       } else {
         console.log("Response failed")
       }
@@ -30,6 +24,9 @@ function ListFundraisers() {
 
   return (
   <>
+  <div className="position-relative">
+  <NavLink to={"/post-form"}><button type="button" className="m-3 btn-lg btn-outline-success center">Create Fundraiser</button></NavLink>
+  </div>
     <div className="row">
       {post.map(p => {
         console.log(p);

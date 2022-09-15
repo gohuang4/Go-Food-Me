@@ -8,28 +8,33 @@ import PaymentForm from './PaymentForm';
 import ListFundraisers from './ListFundraisers';
 import PostForm from './PostForm';
 import DetailFundraisers from './DetailFundraisers';
+import Footer from './Footer';
 import UpdateForm from './UpdatePost';
+import { AuthProvider } from './useToken';
 
 function App(props) {
   const domain = /https:\/\/[^/]+/;
   const basename = process.env.PUBLIC_URL.replace(domain, '');
   return (
-    <BrowserRouter basename={basename}>
-    <Nav />
-    <div className="container">
-      <Routes>
-        <Route path="" element={<MainPage />} />
-        <Route path="/how-it-works" element={<HowItWorks />} />
-        <Route path="/list-fundraisers" element={<ListFundraisers />} />
-        <Route path="/list-fundraisers/fundraisers/:id" element={<DetailFundraisers />} />
-        <Route path="/post-form" element={<PostForm />} />
-        <Route path="/sign-in" element={<SigninForm />} />
-        <Route path="/sign-up" element={<SignupForm />} />
-        <Route path="/payment-form" element={<PaymentForm />} />
-        <Route path="/update-post/:id" element={<UpdateForm />} />
-      </Routes>
-    </div>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter basename={basename}>
+      <Nav />
+      <div className="container">
+        <Routes>
+          <Route path="" element={<MainPage />} />
+          <Route path="/how-it-works" element={<HowItWorks />} />
+          <Route path="/list-fundraisers" element={<ListFundraisers />} />
+          <Route path="/list-fundraisers/fundraisers/:id" element={<DetailFundraisers />} />
+          <Route path="/post-form" element={<PostForm />} />
+          <Route path="/sign-in" element={<SigninForm />} />
+          <Route path="/sign-up" element={<SignupForm />} />
+          <Route path="/payment-form" element={<PaymentForm />} />
+          <Route path="/update-post/:id" element={<UpdateForm />} />
+        </Routes>
+      </div>
+      {/* <Footer /> */}
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
