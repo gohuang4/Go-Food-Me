@@ -17,3 +17,6 @@ Added post and payment models, still trying to get the optional fields up and ru
 8/25/2022
 Figured out the null value issue, getting the optional fields to work for payments, bootstrap added to index
 8/29/2022
+
+9/13/2022
+List page now properly showing cards in columns. Made each card link to their respective update pages.

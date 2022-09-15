@@ -35,7 +35,7 @@ function ListFundraisers() {
         console.log(p);
         return (
           <div className="col">
-            <Link to ={`/list-fundraisers/fundraisers/${p.id}`}>
+            <Link style={{textDecoration: 'none' }} to ={`/list-fundraisers/fundraisers/${p.id}`}>
               <Card
                 title={p.title}
                 created={p.created}
