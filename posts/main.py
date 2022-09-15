@@ -19,7 +19,8 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token", auto_error=False)
 
 
 async def get_current_user(
-    token: Optional[str] = Depends(oauth2_scheme),
+    # token: Optional[str] = Depends(oauth2_scheme),
+    fastapi_access_token: Optional[str] = Depends(oauth2_scheme),
 ):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -27,7 +28,11 @@ async def get_current_user(
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        return jwt.decode(token, SIGNING_KEY, algorithms=[ALGORITHM])
+        print("!!!!!!!!!")
+        print(dir(fastapi_access_token))
+        decodedToken = jwt.decode(fastapi_access_token, SIGNING_KEY, algorithms=[ALGORITHM])
+        print("!!!!!!!!", decodedToken)
+        return decodedToken
     except (JWTError, AttributeError):
         raise credentials_exception
 
@@ -72,7 +77,7 @@ async def get_post_by_id(id: str):
 async def post_post(
     post: Post,
     # request,
-    # user_info = Depends(get_current_user)
+    user_info = Depends(get_current_user)
     ):
     response = await create_post(post.dict())
     newdict = {

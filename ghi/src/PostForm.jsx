@@ -1,5 +1,5 @@
 import { useState } from 'react'
-// import React from "react-hook-form"
+import { useAuthContext, getToken, getTokenInternal } from "./useToken";
 
 
 const url = process.env.REACT_APP_FastAPI_posts
@@ -19,7 +19,9 @@ function BootstrapInput(props) {
   )
 }
 
- function PostForm(props) {
+function PostForm(props) {
+  const { token } = useAuthContext();
+  // console.log(token);
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [requested_amount, setRequestedAmount] = useState(0)
@@ -28,6 +30,7 @@ function BootstrapInput(props) {
   // const [submitted,  setSubmitted] = useState(true)
   const handleSubmit= (e) => {
     e.preventDefault();
+    // const token = getTokenPF();
     const post = {
       "title": title, 
       "description": description, 
@@ -37,17 +40,20 @@ function BootstrapInput(props) {
 
     setIsPending(true)
 
-    const postURL = e.currentTarget.action
-    const fetchConfig = {
+    const postURL = e.currentTarget.action;
+    const postFetchConfig = {
+      // credentials: "include",
       method: 'POST',
       body: JSON.stringify(post),
       headers: {
+        "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json",
         'accept': 'application/json',
       },
       cache: "no-cache",
     }
-    fetch(postURL, fetchConfig).then(() => {
+    console.log('headers', postFetchConfig.headers);
+    fetch(postURL, postFetchConfig).then(() => {
       console.log('new post added')
       setIsPending(false)
     })

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useToken } from './useToken'
 // import login from './LoginFunction'
 
 function BootstrapInput(props) {
@@ -12,10 +13,10 @@ function BootstrapInput(props) {
   )
 }
 
-async function login(username, password) {
+async function Login(username, password) {
   // For FastAPI account services, use this one
   const url = `${process.env.REACT_APP_FastAPI_accounts}/token`;
-  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!", process.env);
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!", url);
 
   const form = new FormData();
   form.append("username", username);
@@ -28,7 +29,6 @@ async function login(username, password) {
   });
   if (response.ok) {  
     const tokenUrl = `${process.env.REACT_APP_FastAPI_accounts}/token`;
-
     try {
       const response = await fetch(tokenUrl, {
         credentials: "include",
@@ -36,9 +36,6 @@ async function login(username, password) {
       if (response.ok) {
         const data = await response.json();
         const token = data.token;
-        console.log(token);
-        // DO SOMETHING WITH THE TOKEN SO YOU CAN USE IT
-        // IN REQUESTS TO YOUR NON-ACCOUNTS SERVICES
       }
     } catch (e) {}
     return false;
@@ -48,6 +45,7 @@ async function login(username, password) {
 }
 
 function SigninForm(props) {
+  const [token, login] = useToken();
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
 
