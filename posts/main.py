@@ -89,11 +89,12 @@ async def get_post_by_id(id: str):
 async def post_post(
     post: Post,
     # request,
-    user_info = Depends(get_current_user)
+    # user_info = Depends(get_current_user)
     ):
     response = await create_post(post.dict())
     newdict = {
         "id": str(response["_id"]),
+        "picture_url": str(response["picture_url"]),
         "title": response["title"],
         "description": response["description"],
         "requested_amount": response["requested_amount"],
@@ -113,6 +114,7 @@ async def put_post(id:str, post:Post
 ):
     response = await update_post(
         id=id,
+        picture_url=post.picture_url,
         title=post.title,
         description=post.description,
         requested_amount=post.requested_amount

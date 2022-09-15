@@ -99,6 +99,7 @@ function DetailFundraisers() {
   
   return (
     <>
+    <img src={post.picture_url} width="200" />
     <table className="table table-striped">
         <thead>
           <tr>

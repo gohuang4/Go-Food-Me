@@ -10,10 +10,10 @@ export default function Card(props) {
           <div className="card-header">
             <div className="card-title-group">
               <h5 className="card-title">{props.title}</h5>
-              <div className="card-date">{props.created}</div>
+          <img className="card-image" src={props.picture_url} alt="Logo" />
             </div>
           </div>
-          <img className="card-image" src={imageIcon} alt="Logo" />
+              <div className="card-date">{props.created}</div>
           <div className="card-text">{props.description}</div>
         </div>
       </div>

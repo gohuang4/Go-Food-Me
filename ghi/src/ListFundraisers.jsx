@@ -37,6 +37,7 @@ function ListFundraisers() {
                 title={p.title}
                 created={p.created}
                 description={p.description}
+                picture_url={p.picture_url}
               />
             </Link>
           </div>
