@@ -115,6 +115,7 @@ function DetailFundraisers() {
                 <td>{ post.requested_amount}</td>
                 <td>{ post.created }</td>
                 <td><Link to={`/update-post/${id}`} className="btn btn-outline-primary">Update Fundraiser</Link></td>
+                <td><Link to={`/payment-form`} className="btn btn-outline-primary">Donate to Fundraiser</Link></td>
                 <td><button id = {id} onClick={() => removeData(id)} className="btn btn-outline-danger">Delete</button></td>
               </tr>
             
