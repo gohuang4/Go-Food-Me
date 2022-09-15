@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useToken } from './useToken'
+// import login from './LoginFunction'
 
 function BootstrapInput(props) {
   const { id, placeholder, labelText, value, onChange, type } = props
@@ -11,13 +13,70 @@ function BootstrapInput(props) {
   )
 }
 
+async function Login(username, password) {
+  // For FastAPI account services, use this one
+  const url = `${process.env.REACT_APP_FastAPI_accounts}/token`;
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!", url);
+
+  const form = new FormData();
+  form.append("username", username);
+  form.append("password", password);
+
+  const response = await fetch(url, {
+    method: "post",
+    credentials: "include",
+    body: form,
+  });
+  if (response.ok) {  
+    const tokenUrl = `${process.env.REACT_APP_FastAPI_accounts}/token`;
+    try {
+      const response = await fetch(tokenUrl, {
+        credentials: "include",
+      });
+      if (response.ok) {
+        const data = await response.json();
+        const token = data.token;
+      }
+    } catch (e) {}
+    return false;
+  }
+  let error = await response.json();
+  // DO SOMETHING WITH THE ERROR, IF YOU WANT
+}
+
 function SigninForm(props) {
+  const [token, login] = useToken();
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
-  const [email, setEmail] = useState('')
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    login(name, password);
+  }
+  //   const account = {
+  //     "name": name,
+  //     "password": password,
+  //     "email": email,
+  //   }
+
+  //   const accountURL = e.currentTarget.action 
+  //   const fetchConfig = {
+  //     method: 'POST',
+  //     body: JSON.stringify(account),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "accept": "application/json"
+  //     },
+  //     cache: "no-cache",
+  //   }
+  //   console.log(fetchConfig.body);
+  //   fetch(accountURL, fetchConfig).then(() => {
+  //     console.log('new account added')
+  //   })
+  // }
 
     return (
-      <form>
+      <form onSubmit={handleSubmit} action="http://localhost:8000/api/account">
         <BootstrapInput
           id="name"
           placeholder="Username"
@@ -32,13 +91,6 @@ function SigninForm(props) {
           value={password}
           onChange={e => setPassword(e.target.value)}
           type="password"/>
-        <BootstrapInput
-          id="email"
-          placeholder="Email"
-          labelText="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          type="integer"/>
       <div className="col-auto">
         <button type="submit" className="btn btn-primary mb-3">Sign in</button>
       </div>
