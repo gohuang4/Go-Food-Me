@@ -1,2 +1,2 @@
-npm install -S react-router-dom
+npm install -S
 npm start

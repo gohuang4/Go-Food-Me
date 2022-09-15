@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useAuthContext, getToken, getTokenInternal } from "./useToken";
+import { useAuthContext } from "./useToken";
 
 
 const url = process.env.REACT_APP_FastAPI_posts
@@ -20,6 +20,7 @@ function PostForm(props) {
   const { token } = useAuthContext();
   // console.log(token);
   const [title, setTitle] = useState('')
+  const [picture_url, setPictureURL] = useState('')
   const [description, setDescription] = useState('')
   const [requested_amount, setRequestedAmount] = useState(0)
   const [created, setCreated] = useState('')
@@ -27,9 +28,9 @@ function PostForm(props) {
   // const [submitted,  setSubmitted] = useState(true)
   const handleSubmit= (e) => {
     e.preventDefault();
-    // const token = getTokenPF();
     const post = {
-      "title": title, 
+      "title": title,
+      "picture_url": picture_url, 
       "description": description, 
       "requested_amount": requested_amount, 
       "created": created,
@@ -49,7 +50,6 @@ function PostForm(props) {
       },
       cache: "no-cache",
     }
-    console.log('headers', postFetchConfig.headers);
     fetch(postURL, postFetchConfig).then(() => {
       console.log('new post added')
       setIsPending(false)
@@ -65,6 +65,13 @@ function PostForm(props) {
           labelText="Title"
           value={title}
           onChange={e => setTitle(e.target.value)}
+          type="text"/>
+        <BootstrapInput
+          id="picture_url"
+          placeholder="Your image url"
+          labelText="Image Url"
+          value={picture_url}
+          onChange={e => setPictureURL(e.target.value)}
           type="text"/>
         <BootstrapInput
           id="description"

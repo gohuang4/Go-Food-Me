@@ -1,3 +1,4 @@
+
 const imageLogo = process.env.PUBLIC_URL + '/images/GoFoodMe-Logo.png';
 
 function HowItWorks() {

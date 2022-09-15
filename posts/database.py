@@ -42,6 +42,7 @@ async def create_post(post):
 async def update_post(
     id=None,
     title=None,
+    picture_url=None,
     description=None,
     requested_amount=None
 ):
@@ -52,6 +53,8 @@ async def update_post(
         var["id"] = o_id
     if title:
         var["title"] = title
+    if picture_url:
+        var["picture_url"] = picture_url
     if description:
         var["description"] = description
     if requested_amount:

@@ -5,7 +5,7 @@ from typing import Optional
 from model import Account, AccountGetAll
 from fastapi import FastAPI, HTTPException, Depends, status
 from fastapi.middleware.cors import CORSMiddleware
-# import authentication
+import authentication
 from passlib.context import CryptContext
 from database import (
     fetch_all_accounts,
@@ -33,7 +33,7 @@ async def get_current_user(
 
 
 app = FastAPI()
-# app.include_router(authentication.router)
+app.include_router(authentication.router)
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 

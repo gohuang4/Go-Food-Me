@@ -19,7 +19,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token", auto_error=False)
 
 
 async def get_current_user(
-    token: Optional[str] = Depends(oauth2_scheme),
+    fastapi_access_token: Optional[str] = Depends(oauth2_scheme),
 ):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -27,7 +27,8 @@ async def get_current_user(
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        return jwt.decode(token, SIGNING_KEY, algorithms=[ALGORITHM])
+        decodedToken = jwt.decode(fastapi_access_token, SIGNING_KEY, algorithms=[ALGORITHM])
+        return decodedToken
     except (JWTError, AttributeError):
         raise credentials_exception
 
@@ -76,6 +77,7 @@ async def post_post(
     response = await create_post(post.dict())
     newdict = {
         "id": str(response["_id"]),
+        "picture_url": str(response["picture_url"]),
         "title": response["title"],
         "description": response["description"],
         "requested_amount": response["requested_amount"],
@@ -87,14 +89,17 @@ async def post_post(
 
 
 @app.put("/api/post/{id}", response_model=Post)
-async def put_post(id:str, post:Post
+async def put_post(id:str, post:Post, user_info = Depends(get_current_user)
     # id: str,
+    # picture_url: str | None = None,
     # title: str | None = None,
     # description: str | None = None,
     # requested_amount: int | None = None,
 ):
+    
     response = await update_post(
         id=id,
+        picture_url=post.picture_url,
         title=post.title,
         description=post.description,
         requested_amount=post.requested_amount
@@ -105,7 +110,7 @@ async def put_post(id:str, post:Post
 
 
 @app.delete("/api/post{id}")
-async def delete_post(id: str):
+async def delete_post(id: str, user_info = Depends(get_current_user)):
     response = await remove_post(id)
     if response:
         return "Sucessfully deleted post"

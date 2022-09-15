@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { useToken } from './useToken'
 // import login from './LoginFunction'
 
+const url = process.env.REACT_APP_FastAPI_accounts
+const ACCOUNT_URL = url + "/api/account"
+
 function BootstrapInput(props) {
   const { id, placeholder, labelText, value, onChange, type } = props
 
@@ -16,7 +19,6 @@ function BootstrapInput(props) {
 async function Login(username, password) {
   // For FastAPI account services, use this one
   const url = `${process.env.REACT_APP_FastAPI_accounts}/token`;
-  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!", url);
 
   const form = new FormData();
   form.append("username", username);
@@ -76,7 +78,7 @@ function SigninForm(props) {
   // }
 
     return (
-      <form onSubmit={handleSubmit} action="http://localhost:8000/api/account">
+      <form onSubmit={handleSubmit} action={ACCOUNT_URL}>
         <BootstrapInput
           id="name"
           placeholder="Username"
