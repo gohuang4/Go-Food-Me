@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Card from "./Card.jsx";
 
@@ -23,6 +24,9 @@ function ListFundraisers() {
 
   return (
   <>
+  <div className="position-relative">
+  <NavLink to={"/post-form"}><button type="button" className="m-3 btn-lg btn-outline-success center">Create Fundraiser</button></NavLink>
+  </div>
     <div className="row">
       {post.map(p => {
         console.log(p);
