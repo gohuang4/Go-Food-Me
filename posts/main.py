@@ -89,12 +89,14 @@ async def post_post(
 
 
 @app.put("/api/post/{id}", response_model=Post)
-async def put_post(id:str, post:Post
+async def put_post(id:str, post:Post, user_info = Depends(get_current_user)
     # id: str,
+    # picture_url: str | None = None,
     # title: str | None = None,
     # description: str | None = None,
     # requested_amount: int | None = None,
 ):
+    
     response = await update_post(
         id=id,
         picture_url=post.picture_url,
@@ -108,7 +110,7 @@ async def put_post(id:str, post:Post
 
 
 @app.delete("/api/post{id}")
-async def delete_post(id: str):
+async def delete_post(id: str, user_info = Depends(get_current_user)):
     response = await remove_post(id)
     if response:
         return "Sucessfully deleted post"

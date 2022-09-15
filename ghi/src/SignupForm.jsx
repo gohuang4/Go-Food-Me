@@ -37,7 +37,6 @@ function SignupForm(props) {
       },
       cache: "no-cache",
     }
-    console.log(fetchConfig.body);
     fetch(accountURL, fetchConfig).then(() => {
       console.log('new account added')
     })

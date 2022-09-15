@@ -50,7 +50,6 @@ function PostForm(props) {
       },
       cache: "no-cache",
     }
-    console.log('headers', postFetchConfig.headers);
     fetch(postURL, postFetchConfig).then(() => {
       console.log('new post added')
       setIsPending(false)
