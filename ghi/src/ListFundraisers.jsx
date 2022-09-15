@@ -29,9 +29,8 @@ function ListFundraisers() {
   </div>
     <div className="row">
       {post.map(p => {
-        console.log(p);
         return (
-          <div className="col">
+          <div key={p.id} className="col">
             <Link to ={`/list-fundraisers/fundraisers/${p.id}`}>
               <Card
                 title={p.title}
