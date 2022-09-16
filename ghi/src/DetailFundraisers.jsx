@@ -109,7 +109,7 @@ function DetailFundraisers() {
           </tr>
         </thead>
         <tbody>
-          {/* {post.map(p => { */}
+
 
               <tr key= {post.id}>
                 <td>{ post.title }</td>
@@ -121,7 +121,7 @@ function DetailFundraisers() {
                 <td><button id = {id} onClick={() => removeData(id)} className="btn btn-outline-danger">Delete</button></td>
               </tr>
             
-          {/* })} */}
+
         </tbody>
     </table>
     </>

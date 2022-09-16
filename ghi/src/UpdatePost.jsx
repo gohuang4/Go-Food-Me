@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+
 
 function BootstrapInput(props) {
   const { id, placeholder, labelText, value, onChange, type } = props
@@ -18,14 +19,17 @@ function BootstrapInput(props) {
   const url = process.env.REACT_APP_FastAPI_posts
   const PostURL = url + `/api/post/${id}`
   const [title, setTitle] = useState('')
+  const [picture_url, setPictureURL] = useState('')
   const [description, setDescription] = useState('')
   const [requested_amount, setRequestedAmount] = useState(0)
   const [created, setCreated] = useState('')
   const [isPending, setIsPending] = useState(false)
+  const navigate = useNavigate()
   const handleSubmit= (e) => {
     e.preventDefault();
     const post = {
-      "title": title, 
+      "title": title,
+      "picture_url": picture_url, 
       "description": description, 
       "requested_amount": requested_amount, 
       "created": created,
@@ -47,6 +51,7 @@ function BootstrapInput(props) {
     fetch(postURL, fetchConfig).then(() => {
       setIsPending(false)
     })
+    navigate(-1)
 }
 
     return (
@@ -58,6 +63,13 @@ function BootstrapInput(props) {
           labelText="Title"
           value={title}
           onChange={e => setTitle(e.target.value)}
+          type="text"/>
+        <BootstrapInput
+          id="picture_url"
+          placeholder="Your image Url"
+          labelText="Image url"
+          value={picture_url}
+          onChange={e => setPictureURL(e.target.value)}
           type="text"/>
         <BootstrapInput
           id="description"

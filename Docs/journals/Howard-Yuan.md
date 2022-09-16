@@ -1,5 +1,5 @@
 8/15/2022
-Group created. Discussed ideas, decided on a crowd-source food donation app based on GoFundMe, but specifically to purchase food for a person in need off of their grocery list
+Group created. Discussed ideas, decided on a crowd-source food donation app based on GoFundMe, but specifically to purchase food for a person in /need off of their grocery list/
 8/16/2022
 Conducted some research into GoFundMe and other sites with multiple item registries. Mapped out our ideas on Excalidraw.
 8/17/2022
@@ -20,3 +20,6 @@ Figured out the null value issue, getting the optional fields to work for paymen
 
 9/13/2022
 List page now properly showing cards in columns. Made each card link to their respective update pages.
+
+9/15/2022
+spent the whole day trying to pre-fill the update page input forms with the previous data so that you don't need to re-type the whole thing, and can instead just edit. Got the data to show, but it wouldn't allow any changes. Tried to style the css to be more in line with source material, but couldn't figure it out. I ended up giving up on everything, reverting back to how they were, and added a redirect to previous screen on update. that's it.
