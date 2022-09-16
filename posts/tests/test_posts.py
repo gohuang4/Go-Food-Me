@@ -10,6 +10,11 @@ def test_read_main():
     assert response.status_code == 200
     assert response.json() == {"Go": "FoodMe"}
 
+def test_get_all():
+    response = client.get("/api/post")
+    assert response.status_code == 200
+    assert response.json() == {}
+
 
 # def test_invalid_post_id1():
 #     response = client.get("/list-fundraisers/fundraisers/abc")
