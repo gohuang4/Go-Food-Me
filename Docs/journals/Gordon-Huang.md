@@ -101,4 +101,3 @@ Worked on some CSS stuff to make our detail page look better.
 Was able to use grid to get the information to display side by side
 Created tests
 Just need to deploy
-haha
