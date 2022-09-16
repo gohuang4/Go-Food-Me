@@ -1,5 +1,5 @@
 from fastapi.testclient import TestClient
-from main import app
+from main import app, delete_post
 from typing import Union
 from fastapi import Depends, FastAPI
 
@@ -22,3 +22,5 @@ def test_delete_post():
     response = client.delete("/api/post/1")
     assert response.status_code == 200
     assert response == "Sucessfully deleted post"
+
+app.dependency_overrides = {}
