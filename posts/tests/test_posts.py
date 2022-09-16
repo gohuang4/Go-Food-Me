@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 from main import app
-# from database import fetch_all_post
+from database import fetch_all_post
 
 client = TestClient(app)
 
@@ -37,7 +37,7 @@ def test_invalid_post_id1():
     assert response.json() == {'detail': 'Not Found'}
 
 def test_get_all():
-    fake_db = {[]}
+    fake_db = []
     app.dependency_overrides[fetch_all_post] = fake_db
     response = client.get("/api/post")
     assert response.status_code == 200
