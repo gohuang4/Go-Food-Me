@@ -19,6 +19,7 @@ accounts-unit-test-job:
     - cd accounts
     - pip install -r requirements.txt
     - python -m pytest
+  allow_failure : true
 
 payments-unit-test-job:
   image: python:3-bullseye
@@ -27,6 +28,7 @@ payments-unit-test-job:
     - cd payments
     - pip install -r requirements.txt
     - python -m pytest
+  allow_failure : true
 
 posts-unit-test-job:
   image: python:3-bullseye
@@ -35,6 +37,7 @@ posts-unit-test-job:
     - cd posts
     - pip install -r requirements.txt
     - python -m pytest
+  allow_failure : true
 
 lint-job:
   image: python:3-bullseye
