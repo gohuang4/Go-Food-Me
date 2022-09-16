@@ -65,7 +65,7 @@ async def get_post_by_id(id: str):
     response = await fetch_one_post(id)
     if response:
         return response
-    raise HTTPException('detail': 'Not Found')
+    raise HTTPException('Not Found')
 
 
 # @app.post("/api/post", response_model=Post)
