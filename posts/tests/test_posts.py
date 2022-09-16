@@ -10,11 +10,10 @@ def test_read_main():
     assert response.status_code == 200
     assert response.json() == {"Go": "FoodMe"}
 
-def test_delete():
+def test_bad_id():
     response = client.get("/api/post/123")
-    assert response.status_code == 404
-    assert response.json() == (404, "There is no post with this id.123")
-
+    assert response.status_code == 405
+    assert response.json() == {"detail": "Method Not Allowed"}
 
 # def test_invalid_post_id1():
 #     response = client.get("/list-fundraisers/fundraisers/abc")
