@@ -4,7 +4,7 @@ from bson.objectid import ObjectId
 from model import PaymentGetAll
 
 
-url = os.environ.get('DATABASE_URL')
+url = os.environ.get("DATABASE_URL")
 client = motor.motor_asyncio.AsyncIOMotorClient(url)
 database = client.PaymentsList
 collection = database.payments
@@ -55,7 +55,7 @@ async def update_payment(
                 "card_number": card_number,
                 "expiration_date": expiration_date,
                 "CVV": CVV,
-                "donation_date": donation_date
+                "donation_date": donation_date,
             }
         },
     )

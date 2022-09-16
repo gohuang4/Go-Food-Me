@@ -8,8 +8,9 @@ import PaymentForm from './PaymentForm';
 import ListFundraisers from './ListFundraisers';
 import PostForm from './PostForm';
 import DetailFundraisers from './DetailFundraisers';
-// import Footer from './Footer';
+import Footer from './Footer';
 import UpdateForm from './UpdatePost';
+import TheWolf from './TheWolf'
 import { AuthProvider, useToken } from './useToken';
 
 function InvisibleToken() {
@@ -24,8 +25,9 @@ function App(props) {
     <AuthProvider>
       <BrowserRouter basename={basename}>
         <InvisibleToken />
+      <div id="outer-div" className="d-flex flex-column vh-100 vw-96">
       <Nav />
-      <div className="container">
+      <div className="container pb-5">
         <Routes>
           <Route path="" element={<MainPage />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
@@ -36,9 +38,11 @@ function App(props) {
           <Route path="/sign-up" element={<SignupForm />} />
           <Route path="/payment-form" element={<PaymentForm />} />
           <Route path="/update-post/:id" element={<UpdateForm />} />
+          <Route path="/wolf" element={<TheWolf />} />
         </Routes>
       </div>
-      {/* <Footer /> */}
+      <Footer />
+      </div>
       </BrowserRouter>
     </AuthProvider>
   );

@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+
 
 function BootstrapInput(props) {
   const { id, placeholder, labelText, value, onChange, type } = props
@@ -23,6 +24,7 @@ function BootstrapInput(props) {
   const [requested_amount, setRequestedAmount] = useState(0)
   const [created, setCreated] = useState('')
   const [isPending, setIsPending] = useState(false)
+  const navigate = useNavigate()
   const handleSubmit= (e) => {
     e.preventDefault();
     const post = {
@@ -49,6 +51,7 @@ function BootstrapInput(props) {
     fetch(postURL, fetchConfig).then(() => {
       setIsPending(false)
     })
+    navigate(-1)
 }
 
     return (
