@@ -31,7 +31,7 @@ function ListFundraisers() {
       {post.map(p => {
         return (
           <div key={p.id} className="col">
-            <Link to ={`/list-fundraisers/fundraisers/${p.id}`}>
+            <Link style={{textDecoration: 'none' }} to ={`/list-fundraisers/fundraisers/${p.id}`}>
               <Card
                 title={p.title}
                 created={p.created}
