@@ -10,6 +10,7 @@ import PostForm from './PostForm';
 import DetailFundraisers from './DetailFundraisers';
 import Footer from './Footer';
 import UpdateForm from './UpdatePost';
+import TheWolf from './TheWolf'
 import { AuthProvider, useToken } from './useToken';
 
 function InvisibleToken() {
@@ -37,6 +38,7 @@ function App(props) {
           <Route path="/sign-up" element={<SignupForm />} />
           <Route path="/payment-form" element={<PaymentForm />} />
           <Route path="/update-post/:id" element={<UpdateForm />} />
+          <Route path="/wolf" element={<TheWolf />} />
         </Routes>
       </div>
       <Footer />

@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom'
 
+const domain = /https:\/\/[^/]+/;
+const basename = process.env.PUBLIC_URL.replace(domain, '');
+const wolf = basename +'/images/wolf.png';
+
 function Footer() {
 
   return(
@@ -66,6 +70,8 @@ function Footer() {
       </section>
       <div className="text-center p-4" style={{backgroundColor: '#02a95c'}}>
         <a className="text-reset fw-bold" href="https://gitlab.com/404-team-not-found1/go-food-me">&copy; 2022 Go Food Me</a>
+        <div></div>
+        <a className="text-reset fw-bold" href="go-food-me/wolf"><img src={wolf}/></a>
       </div>
     </footer>
     
