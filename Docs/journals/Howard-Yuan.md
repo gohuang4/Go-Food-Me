@@ -17,3 +17,9 @@ Added post and payment models, still trying to get the optional fields up and ru
 8/25/2022
 Figured out the null value issue, getting the optional fields to work for payments, bootstrap added to index
 8/29/2022
+
+9/13/2022
+List page now properly showing cards in columns. Made each card link to their respective update pages.
+
+9/15/2022
+spent the whole day trying to pre-fill the update page input forms with the previous data so that you don't need to re-type the whole thing, and can instead just edit. Got the data to show, but it wouldn't allow any changes. Tried to style the css to be more in line with source material, but couldn't figure it out. I ended up giving up on everything, reverting back to how they were, and added a redirect to previous screen on update. that's it.
