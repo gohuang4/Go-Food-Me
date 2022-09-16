@@ -65,7 +65,7 @@ async def get_post_by_id(id: str):
     response = await fetch_one_post(id)
     if response:
         return response
-    raise HTTPException(404, f"There is no post with this id.{id}")
+    raise HTTPException(404, f"There is no post with this id.")
 
 
 # @app.post("/api/post", response_model=Post)
