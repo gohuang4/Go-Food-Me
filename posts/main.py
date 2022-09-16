@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordBearer
 from fastapi import FastAPI, HTTPException, Depends, status
 
+from jose import JWTError, jwt
 # from jose import JWTError, jwt
 from typing import Optional
 from model import Post, PostGetAll

@@ -40,7 +40,11 @@ async def create_post(post):
 
 
 async def update_post(
-    id=None, title=None, picture_url=None, description=None, requested_amount=None
+    id=None,
+    title=None,
+    picture_url=None,
+    description=None,
+    requested_amount=None
 ):
     o_id = ObjectId(id)
     var = {}

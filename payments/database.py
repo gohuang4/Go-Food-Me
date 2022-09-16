@@ -38,7 +38,14 @@ async def create_payment(Payment):
     return document
 
 
-async def update_payment(id, name, card_number, expiration_date, CVV, donation_date):
+async def update_payment(
+    id,
+    name,
+    card_number,
+    expiration_date,
+    CVV,
+    donation_date
+):
     o_id = ObjectId(id)
     await collection.update_one(
         {"_id": o_id},

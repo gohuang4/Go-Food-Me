@@ -9,7 +9,8 @@ from fastapi import (
     Request,
 )
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from jose import JWTError, jwt, jws, JWSError
+# from jose import JWTError, jwt, jws, JWSError
+from jose import JWTError, jwt
 from passlib.context import CryptContext
 from pydantic import BaseModel
 from typing import Optional
@@ -44,7 +45,11 @@ def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
 
 
-async def authenticate_user(repo: AccountsQueries, username: str, password: str):
+async def authenticate_user(
+    repo: AccountsQueries,
+    username: str,
+    password: str
+):
     user = await repo.get_user_auth(username)
     if not user:
         return False
@@ -55,7 +60,11 @@ async def authenticate_user(repo: AccountsQueries, username: str, password: str)
 
 def create_access_token(data: dict):
     to_encode = data.copy()
-    encoded_jwt = jwt.encode(to_encode, SIGNING_KEY, algorithm=ALGORITHM)
+    encoded_jwt = jwt.encode(
+        to_encode,
+        SIGNING_KEY,
+        algorithm=ALGORITHM
+    )
     return encoded_jwt
 
 
@@ -73,7 +82,11 @@ async def get_current_user(
     if not token and cookie_token:
         token = cookie_token
     try:
-        payload = jwt.decode(token, SIGNING_KEY, algorithms=[ALGORITHM])
+        payload = jwt.decode(
+            token,
+            SIGNING_KEY,
+            algorithms=[ALGORITHM]
+        )
         username = payload.get("sub")
         if username is None:
             raise credentials_exception
@@ -92,7 +105,11 @@ async def login_for_access_token(
     form_data: OAuth2PasswordRequestForm = Depends(),
     repo: AccountsQueries = Depends(),
 ):
-    user = await authenticate_user(repo, form_data.username, form_data.password)
+    user = await authenticate_user(
+        repo,
+        form_data.username,
+        form_data.password
+    )
 
     if not user:
         raise HTTPException(
