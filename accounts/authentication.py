@@ -73,7 +73,8 @@ async def get_current_user(
     cookie_token: Optional[str] | None = (
         Cookie(default=None,
         alias=COOKIE_NAME
-    )),
+        )
+    ),
     repo: AccountsQueries = Depends(),
 ):
     credentials_exception = HTTPException(

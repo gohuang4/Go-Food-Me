@@ -88,3 +88,5 @@ Been struggling reconfiguring environmental variables on the front end to allow 
 Worked with a few seirs but when Andrew helped me out today figured out the way to solve the environment issues took a bit to reconfigure but have it working entirely for posts though strangely at the end of the night now have it working locally but on the deployed site getting a CORS 503 error. Will have to come back to this tomorrow morning
 
 ## Wednesday September 14, 2022
+
+t
