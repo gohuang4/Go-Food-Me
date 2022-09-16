@@ -65,7 +65,7 @@ async def get_post():
     return response
 
 
-@app.get("/api/post{id}", response_model=Post)
+@app.get("/api/post/{id}", response_model=Post)
 async def get_post_by_id(id: str):
     response = await fetch_one_post(id)
     if response:
@@ -114,7 +114,7 @@ async def put_post(
     raise HTTPException(404, f"There is no post with this id.{id}")
 
 
-@app.delete("/api/post{id}")
+@app.delete("/api/post/{id}")
 async def delete_post(id: str, user_info=Depends(get_current_user)):
     response = await remove_post(id)
     if response:
