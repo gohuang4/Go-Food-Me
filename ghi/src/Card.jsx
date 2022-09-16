@@ -1,6 +1,5 @@
 import React from "react";
 import "./Card.css";
-import imageIcon from "./assets/GoFoodMe-Icon.png";
 
 
 export default function Card(props) {

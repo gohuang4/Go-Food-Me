@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 from main import app
-from database import fetch_all_post
+# from database import fetch_all_post
 
 client = TestClient(app)
 

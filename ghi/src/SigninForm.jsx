@@ -15,7 +15,7 @@ function BootstrapInput(props) {
     </div>
   )
 }
-
+  /* eslint-disable */
 async function Login(username, password) {
   // For FastAPI account services, use this one
   const url = `${process.env.REACT_APP_FastAPI_accounts}/token`;
@@ -45,12 +45,12 @@ async function Login(username, password) {
   let error = await response.json();
   // DO SOMETHING WITH THE ERROR, IF YOU WANT
 }
-
 function SigninForm(props) {
   const [token, login] = useToken();
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
-
+  
+  /* eslint-enable */
   const handleSubmit = (e) => {
     e.preventDefault();
     login(name, password);
