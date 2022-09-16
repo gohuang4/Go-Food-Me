@@ -12,7 +12,7 @@ def test_read_main():
     assert response.json() == {"Go": "FoodMe"}
 
 @pytest.fixture(scope="function")
-def app() => Generator[FastAPI, Any, None]:
+def app() -> Generator[FastAPI, Any, None]:
     """
     Create a fresh database on each test case.
     """
@@ -23,7 +23,7 @@ def app() => Generator[FastAPI, Any, None]:
 
 
 @pytest.fixture(scope="function")
-def db_session(app: FastAPI) => Generator[SessionTesting, Any, None]:
+def db_session(app: FastAPI) -> Generator[SessionTesting, Any, None]:
     connection = engine.connect()
     transaction = connection.begin()
     session = SessionTesting(bind=connection)
