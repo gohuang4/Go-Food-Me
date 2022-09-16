@@ -14,7 +14,7 @@ function ListFundraisers() {
       const response = await fetch(POSTURL);
       if (response.ok) {
         const data = await response.json();
-        setPost(data);
+        setPost(data);  
       } else {
         console.log("Response failed")
       }
