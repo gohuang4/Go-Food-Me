@@ -23,6 +23,8 @@ def test_read_main():
 #     assert response.json() == {"post": []}
 
 
+
+
 def test_posts():
     response = client.get("/list-fundraisers")
     assert response.status_code == 200
