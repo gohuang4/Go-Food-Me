@@ -15,7 +15,7 @@ async def override_dependency(id:str):
 app.dependency_overrides[delete_payment] = override_dependency
 
 def test_delete_post():
-    response = client.delete("/api/payments/1")
+    response = client.delete("/api/payments/1/")
     assert response.status_code == 200
     assert response == "Sucessfully deleted payment"
 
