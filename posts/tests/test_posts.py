@@ -30,7 +30,7 @@ class EmptyPostQueries:
 
 
 def test_get_all():
-    app.dependency_overrides({fetch_all_post: EmptyPostQueries})
+    app.dependency_overrides(fetch_all_post: EmptyPostQueries)
     response = client.get("/api/post")
     assert response.status_code == 200
     assert response.json() == {"post": []}
