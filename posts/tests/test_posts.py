@@ -21,3 +21,15 @@ def test_read_main():
 
 #     assert response.status_code == 200
 #     assert response.json() == {"post": []}
+
+
+def test_posts():
+    response = client.get("/list-fundraisers")
+    assert response.status_code == 200
+    assert response.json() == {"Go": "FoodMe"}
+
+
+def test_invalid_post_id1():
+    response = client.get("/list-fundraisers/fundraisers/abc")
+    assert response.status_code == 404
+    assert response.json() == {'detail': 'id not found'}
