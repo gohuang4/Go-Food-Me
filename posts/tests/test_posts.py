@@ -1,15 +1,23 @@
-# from fastapi.testclient import TestClient
+from fastapi.testclient import TestClient
 from main import app
+import json
 # from database import fetch_all_post
 from httpx import AsyncClient
-# client = TestClient(app)
+client = TestClient(app)
 
-@pytest.mark.anyio
+
 def test_read_main():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        response = await ac.get("/")
+    response = client.get("/")
     assert response.status_code == 200
     assert response.json() == {"Go": "FoodMe"}
+
+
+
+def test_create_user(client):
+    data = {"id":"6323678424e973e93b226bbd","title": "test","picture_url": "test","description": "test", "requested_amount": 100}
+    response = client.post("/post",json.dumps(data))
+    assert response.status_code == 200 
+    assert response.json()["title"] == "test"
 
 # def test_bad_id():
 #     response = client.get("/api/post/123")
