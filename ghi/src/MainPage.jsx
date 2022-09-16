@@ -13,7 +13,7 @@ function MainPage() {
           <p className="fs-2 fw-bold lead mb-4">
             Here to help you feed your neighbor
           </p>
-          <NavLink to={"/post-form"}><button type="button" class="btn-lg btn-outline-success">Create Fundraiser</button></NavLink>
+          <NavLink to={"/post-form"}><button type="button" className="btn-lg btn-outline-success">Create Fundraiser</button></NavLink>
         </div>
       </div>
       </div>
