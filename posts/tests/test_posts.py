@@ -36,9 +36,14 @@ def test_invalid_post_id1():
     assert response.status_code == 404
     assert response.json() == {'detail': 'Not Found'}
 
+
+class EmptyPostQueries:
+    def fetch_all_post(self):
+        return []
+        
 def test_get_all():
-    fake_db = []
-    app.dependency_overrides[fetch_all_post] = fake_db
+    # fake_db = []
+    app.dependency_overrides[fetch_all_post] = EmptyPostQueries
     response = client.get("/api/post")
     assert response.status_code == 200
     assert response.json() == {'post': []}
