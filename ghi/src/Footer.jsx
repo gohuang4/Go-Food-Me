@@ -60,9 +60,9 @@ function Footer() {
             </div>
 
             <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0">
-              <h6 className="text-uppercase fw-bold mb-3">Contact</h6>
-              <p><i className="bi bi-house-door-fill"></i> Barangaroo, NSW 2000, ASTL</p>
-              <p><i className="bi bi-envelope-fill"></i> info@gofoodme.com</p>
+              <h6 className="text-uppercase fw-bold mb-3">Want to make something like this click the link below</h6>
+              <a href="https://www.hackreactor.com/"
+                target="_blank" rel="noreferrer" className="text-reset">Join Hack Reactor</a>
             </div>
 
           </div>
