@@ -11,10 +11,10 @@ def test_read_main():
     assert response.json() == {"Go": "FoodMe"}
 
 
-# def test_invalid_post_id1():
-#     response = client.get("/list-fundraisers/fundraisers/abc")
-#     assert response.status_code == 404
-#     assert response.json() == {'detail': 'Not Found'}
+def test_invalid_post_id1():
+    response = client.get("/list-fundraisers/fundraisers/abc")
+    assert response.status_code == 404
+    assert response.json() == {'detail': 'Not Found'}
 
 
 # class EmptyPostQueries:
