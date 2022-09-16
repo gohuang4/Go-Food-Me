@@ -7,7 +7,7 @@ client = TestClient(app)
 def test_read_main():
     response = client.get("/")
     assert response.status_code == 401
-    assert response.json() == {"Go": "FoodMe"}
+    assert response.json() == {'detail': 'Invalid authentication credentials'}
 
 
 def test_bad_id():
