@@ -5,7 +5,7 @@ from fastapi import Depends, FastAPI
 
 # from database import fetch_all_post
 
-# client = TestClient(app)
+client = TestClient(app)
 
 
 def test_read_main():
