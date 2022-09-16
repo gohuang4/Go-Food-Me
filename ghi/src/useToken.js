@@ -8,7 +8,7 @@ export function getToken() {
 
 export async function getTokenInternal() {
   const url = process.env.REACT_APP_FastAPI_accounts
-  const Internal_Token_Url = url + "/token/";
+  const Internal_Token_Url = url + "/token";
   try {
     const response = await fetch(Internal_Token_Url, {
       credentials: "include",
@@ -88,7 +88,7 @@ export function useToken() {
 
   async function login(username, password) {
     const url = process.env.REACT_APP_FastAPI_accounts
-    const Token_Url = url + "/token/";
+    const Token_Url = url + "/token";
     const form = new FormData();
     form.append("username", username);
     form.append("password", password);
