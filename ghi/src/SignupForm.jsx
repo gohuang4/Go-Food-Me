@@ -63,6 +63,20 @@ function SignupForm(props) {
           onChange={e => setPassword(e.target.value)}
           type="password"/>
         <BootstrapInput
+          id="firstname"
+          placeholder="Enter your first name"
+          labelText="First Name"
+          value={firstName}
+          onChange={e => setfirstName(e.target.value)}
+          type="text"/>
+        <BootstrapInput
+          id="lastname"
+          placeholder="Enter your last name"
+          labelText="Last Name"
+          value={lastName}
+          onChange={e => setlastName(e.target.value)}
+          type="text"/>
+        <BootstrapInput
           id="email"
           placeholder="Email"
           labelText="Email"

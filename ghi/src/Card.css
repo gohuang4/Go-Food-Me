@@ -8,17 +8,18 @@
 	border: 0px;
 	border-color: tomato;
 	border-style: solid;
-	transition: 200ms;
+	transition: 10ms;
     max-width: 380px;
     margin: 60px auto;
 	grid-template: 3fr;
 }
 
 .card:hover {
-	transition: 200ms;
+	transition: 10ms;
 	border: 3px;
 	border-color: tomato;
 	border-style: solid;
+	text-decoration: none !important;
 }
 
 .card-header {

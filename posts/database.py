@@ -4,7 +4,7 @@ from bson.objectid import ObjectId
 from model import PostGetAll
 
 
-url = os.environ.get('DATABASE_URL')
+url = os.environ.get("DATABASE_URL")
 client = motor.motor_asyncio.AsyncIOMotorClient(url)
 database = client.PostList
 collection = database.post

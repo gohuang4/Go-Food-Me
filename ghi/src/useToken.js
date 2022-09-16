@@ -7,9 +7,10 @@ export function getToken() {
 }
 
 export async function getTokenInternal() {
-  const url = `${process.env.REACT_APP_FastAPI_accounts}/token`;
+  const url = process.env.REACT_APP_FastAPI_accounts
+  const Internal_Token_Url = url + "/token";
   try {
-    const response = await fetch(url, {
+    const response = await fetch(Internal_Token_Url, {
       credentials: "include",
     });
     if (response.ok) {
@@ -75,20 +76,23 @@ export function useToken() {
 
   async function logout() {
     if (token) {
-      const url = `${process.env.REACT_APP_FastAPI_accounts}/logout/`;
-      await fetch(url, { method: "delete", credentials: "include" });
+      const url = process.env.REACT_APP_FastAPI_accounts
+      const Logout_Url = url + "/logout";
+      await fetch(Logout_Url, { method: "delete", credentials: "include" });
       internalToken = null;
       setToken(null);
       navigate("/");
     }
   }
 
+
   async function login(username, password) {
-    const url = `${process.env.REACT_APP_FastAPI_accounts}/token`;
+    const url = process.env.REACT_APP_FastAPI_accounts
+    const Token_Url = url + "/token";
     const form = new FormData();
     form.append("username", username);
     form.append("password", password);
-    const response = await fetch(url, {
+    const response = await fetch(Token_Url, {
       method: "post",
       credentials: "include",
       body: form,
@@ -103,8 +107,9 @@ export function useToken() {
   }
 
   async function signup(username, password, email, firstName, lastName) {
-    const url = `${process.env.REACT_APP_FastAPI_accounts}/api/accounts/`;
-    const response = await fetch(url, {
+    const url = process.env.REACT_APP_FastAPI_accounts
+    const Signup_Url = url + "/api/account";
+    const response = await fetch(Signup_Url, {
       method: "post",
       body: JSON.stringify({
         username,
@@ -124,8 +129,9 @@ export function useToken() {
   }
 
   async function update(username, password, email, firstName, lastName) {
-    const url = `${process.env.REACT_APP_FastAPI_accounts}/api/accounts/`;
-    const response = await fetch(url, {
+    const url = process.env.REACT_APP_FastAPI_accounts
+    const Update_Url = url + "/api/account";
+    const response = await fetch(Update_Url, {
       method: "post",
       body: JSON.stringify({
         username,
