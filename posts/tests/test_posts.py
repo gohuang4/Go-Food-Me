@@ -35,3 +35,14 @@ def test_invalid_post_id1():
     response = client.get("/list-fundraisers/fundraisers/abc")
     assert response.status_code == 404
     assert response.json() == {'detail': 'Not Found'}
+
+def test_get_all():
+    fake_db = {[]}
+    app.dependency_overrides[fetch_all_post] = fake_db
+    response = client.get("/api/post")
+    assert response.status_code == 200
+    assert response.json() == {'post': []}
+
+
+    
+
