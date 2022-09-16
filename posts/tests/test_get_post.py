@@ -11,6 +11,6 @@ def test_posts():
 
 
 def test_invalid_post_id1():
-    response = client.get("/list-fundraisers/fundraisers/${id}")
+    response = client.get("/list-fundraisers/fundraisers/abc")
     assert response.status_code == 404
     assert response.json() == {'detail': 'id not found'}
