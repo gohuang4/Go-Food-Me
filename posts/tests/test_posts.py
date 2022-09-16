@@ -34,4 +34,4 @@ def test_read_main():
 def test_invalid_post_id1():
     response = client.get("/list-fundraisers/fundraisers/abc")
     assert response.status_code == 404
-    assert response.json() == {404, f"There is no post with this id."}
+    assert response.json() == {'detail': 'Not Found'}
