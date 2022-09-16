@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 from main import app
-# from database import fetch_all_post
+from database import fetch_all_post
 
 client = TestClient(app)
 
@@ -20,7 +20,6 @@ class EmptyPostQueries:
     post = []
 
 def test_get_all():
-    # fake_db = []
     app.dependency_overrides[fetch_all_post] = EmptyPostQueries
     response = client.get("/api/post")
     assert response.status_code == 200
