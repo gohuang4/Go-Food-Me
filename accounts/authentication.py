@@ -36,6 +36,7 @@ class TokenData(BaseModel):
 class AccessToken(BaseModel):
     token: str
 
+
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
@@ -60,9 +61,7 @@ def create_access_token(data: dict):
 
 async def get_current_user(
     bearer_token: Optional[str] = Depends(oauth2_scheme),
-    cookie_token: Optional[str] | None = (
-        Cookie(default=None, alias=COOKIE_NAME)
-    ),
+    cookie_token: Optional[str] | None = (Cookie(default=None, alias=COOKIE_NAME)),
     repo: AccountsQueries = Depends(),
 ):
     credentials_exception = HTTPException(

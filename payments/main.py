@@ -55,7 +55,7 @@ async def post_payment(payment: Payment):
         "card_number": response["card_number"],
         "expiration_date": response["expiration_date"],
         "CVV": response["CVV"],
-        "donation_date": response["donation_date"]
+        "donation_date": response["donation_date"],
     }
     if response:
         return newdict
@@ -79,10 +79,7 @@ async def put_payment(
         expiration_date = get_payment["expiration_date"]
     if CVV is None:
         CVV = get_payment["CVV"]
-    response = await update_payment(
-        id, name, card_number,
-        expiration_date, CVV
-        )
+    response = await update_payment(id, name, card_number, expiration_date, CVV)
     if response:
         return response
     raise HTTPException(404, f"There is no payment with this id.{id}")

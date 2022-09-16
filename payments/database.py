@@ -4,7 +4,7 @@ from bson.objectid import ObjectId
 from model import PaymentGetAll
 
 
-url = os.environ.get('DATABASE_URL')
+url = os.environ.get("DATABASE_URL")
 client = motor.motor_asyncio.AsyncIOMotorClient(url)
 database = client.PaymentsList
 collection = database.payments
@@ -38,14 +38,7 @@ async def create_payment(Payment):
     return document
 
 
-async def update_payment(
-    id,
-    name,
-    card_number,
-    expiration_date,
-    CVV,
-    donation_date
-):
+async def update_payment(id, name, card_number, expiration_date, CVV, donation_date):
     o_id = ObjectId(id)
     await collection.update_one(
         {"_id": o_id},
@@ -55,7 +48,7 @@ async def update_payment(
                 "card_number": card_number,
                 "expiration_date": expiration_date,
                 "CVV": CVV,
-                "donation_date": donation_date
+                "donation_date": donation_date,
             }
         },
     )

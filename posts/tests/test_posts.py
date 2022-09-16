@@ -10,6 +10,7 @@ def test_read_main():
     assert response.status_code == 200
     assert response.json() == {"Go": "FoodMe"}
 
+
 # def test_invalid_post_id1():
 #     response = client.get("/list-fundraisers/fundraisers/abc")
 #     assert response.status_code == 404
@@ -19,12 +20,9 @@ def test_read_main():
 class EmptyPostQueries:
     post = []
 
+
 def test_get_all():
     app.dependency_overrides[fetch_all_post] = EmptyPostQueries
     response = client.get("/api/post")
     assert response.status_code == 200
-    assert response.json() == {'post': []}
-
-
-    
-
+    assert response.json() == {"post": []}

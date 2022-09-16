@@ -4,7 +4,7 @@ from bson.objectid import ObjectId
 from model import PostGetAll
 
 
-url = os.environ.get('DATABASE_URL')
+url = os.environ.get("DATABASE_URL")
 client = motor.motor_asyncio.AsyncIOMotorClient(url)
 database = client.PostList
 collection = database.post
@@ -40,11 +40,7 @@ async def create_post(post):
 
 
 async def update_post(
-    id=None,
-    title=None,
-    picture_url=None,
-    description=None,
-    requested_amount=None
+    id=None, title=None, picture_url=None, description=None, requested_amount=None
 ):
     o_id = ObjectId(id)
     var = {}

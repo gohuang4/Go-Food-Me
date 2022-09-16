@@ -13,4 +13,4 @@ client = TestClient(app)
 def test_bad_id():
     response = client.get("/api/account/123")
     assert response.status_code == 405
-    assert response.json() == {'detail': 'Method Not Allowed'}
+    assert response.json() == {"detail": "Method Not Allowed"}

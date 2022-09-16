@@ -24,7 +24,7 @@ function App(props) {
     <AuthProvider>
       <BrowserRouter basename={basename}>
         <InvisibleToken />
-      <div id="outer-div" className="d-flex flex-column vh1-100 vw-96">
+      <div id="outer-div" className="d-flex flex-column vh-100 vw-96">
       <Nav />
       <div className="container pb-5">
         <Routes>
