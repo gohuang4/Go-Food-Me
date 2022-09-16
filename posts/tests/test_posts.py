@@ -15,9 +15,9 @@ def test_read_main():
 #     assert response.status_code == 405
 #     assert response.json() == {"detail": "Method Not Allowed"}
 
-def test_get_todo_by_title():
-    response = client.get("/api/post")
-    assert response.status_code == 200
+# def test_get_todo_by_title():
+#     response = client.get("/api/post")
+#     assert response.status_code == 200
 
 # def test_invalid_post_id1():
 #     response = client.get("/list-fundraisers/fundraisers/abc")
@@ -25,15 +25,15 @@ def test_get_todo_by_title():
 #     assert response.json() == {'detail': 'Not Found'}
 
 
-# class EmptyPostQueries:
-#     post = []
+class EmptyPostQueries:
+    post = []
 
 
-# def test_get_all():
-#     app.dependency_overrides[fetch_all_post] = EmptyPostQueries
-#     response = client.get("/api/post")
-#     assert response.status_code == 200
-#     assert response.json() == {"post": []}
+def test_get_all():
+    app.dependency_overrides[fetch_all_post] = EmptyPostQueries
+    response = client.get("/api/post")
+    assert response.status_code == 200
+    assert response.json() == {"post": []}
 
 
 
