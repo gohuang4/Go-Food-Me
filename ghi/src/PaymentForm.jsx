@@ -2,7 +2,6 @@ import { useState } from 'react'
 
 const url = process.env.REACT_APP_FastAPI_payments
 const PAYMENTSURL = url + "/api/payment"
-console.log(PAYMENTSURL)
 
 function BootstrapInput(props) {
   const { id, placeholder, labelText, value, onChange, type } = props

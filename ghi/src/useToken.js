@@ -67,7 +67,6 @@ export function useToken() {
     async function fetchToken() {
       const token = await getTokenInternal();
       setToken(token);
-      console.log('token', token);
     }
     if (!token) {
       fetchToken();
@@ -86,7 +85,6 @@ export function useToken() {
 
   async function login(username, password) {
     const url = `${process.env.REACT_APP_FastAPI_accounts}/token`;
-    console.log('login function', url);
     const form = new FormData();
     form.append("username", username);
     form.append("password", password);

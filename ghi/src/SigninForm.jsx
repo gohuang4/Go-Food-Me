@@ -19,7 +19,6 @@ function BootstrapInput(props) {
 async function Login(username, password) {
   // For FastAPI account services, use this one
   const url = `${process.env.REACT_APP_FastAPI_accounts}/token`;
-  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!", url);
 
   const form = new FormData();
   form.append("username", username);

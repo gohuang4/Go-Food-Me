@@ -14,7 +14,7 @@ function ListFundraisers() {
       const response = await fetch(POSTURL);
       if (response.ok) {
         const data = await response.json();
-        setPost(data);
+        setPost(data);  
       } else {
         console.log("Response failed")
       }
@@ -29,14 +29,14 @@ function ListFundraisers() {
   </div>
     <div className="row">
       {post.map(p => {
-        console.log(p);
         return (
-          <div className="col">
+          <div key={p.id} className="col">
             <Link style={{textDecoration: 'none' }} to ={`/list-fundraisers/fundraisers/${p.id}`}>
               <Card
                 title={p.title}
                 created={p.created}
-                description={p.description}
+                requested_amount={p.requested_amount}
+                picture_url={p.picture_url}
               />
             </Link>
           </div>
