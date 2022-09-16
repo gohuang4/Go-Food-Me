@@ -1,22 +1,20 @@
-# from fastapi.testclient import TestClient
+from fastapi.testclient import TestClient
 from main import app
-import pytest
-from httpx import AsyncClient
+import
 # from database import fetch_all_post
 
-# client = TestClient(app)
+client = TestClient(app)
 
-@pytest.mark.anyio
-def test_read_root():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        response = await ac.get("/")
+
+def test_read_main():
+    response = client.get("/")
     assert response.status_code == 200
     assert response.json() == {"Go": "FoodMe"}
 
-def test_get_all():
-    response = client.get("/api/post")
-    assert response.status_code == 200
-    assert response.json() == {}
+def test_delete():
+    response = client.get("/api/post/123")
+    assert response.status_code == 404
+    assert response.json() == (404, "There is no post with this id.123")
 
 
 # def test_invalid_post_id1():
