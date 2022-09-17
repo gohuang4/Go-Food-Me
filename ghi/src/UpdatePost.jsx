@@ -81,7 +81,7 @@ function BootstrapInput(props) {
         <BootstrapInput
           id="created"
           placeholder="Created"
-          labelText="Ceated"
+          labelText="Created"
           value={created}
           onChange={e => setCreated(e.target.value)}
           type="text"/>
