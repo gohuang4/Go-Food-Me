@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useAuthContext } from "./useToken";
 
 
 function DetailFundraisers() {
@@ -7,13 +8,13 @@ function DetailFundraisers() {
   /* eslint-disable */
   const {id} = useParams();
   /* eslint-enabled */
-  
+  const { token } = useAuthContext();
   
   useEffect(() => {
     
     async function getPost() {
       const url = process.env.REACT_APP_FastAPI_posts
-      const POSTURL = url + `/api/post${id}`
+      const POSTURL = url + `/api/post/${id}`
       const response = await fetch(POSTURL);
       console.log(response);
       if (response.ok) {
@@ -28,7 +29,11 @@ function DetailFundraisers() {
     getPost();
   }, [setPost] );
 
-
+  function handleSubmit(e){
+    e.preventDefault();
+    console.log("you clicked delete")
+    removeData(e.target.id)
+  }
     
   // let navigate = useNavigate(); 
   // const routeChange = () =>{ 
@@ -61,14 +66,16 @@ function DetailFundraisers() {
   //   };
   
   const removeData = (id) => {
+    console.log("token",token)
     const url = process.env.REACT_APP_FastAPI_posts
-    const POSTURL = url + `/api/post${id}`
+    const POSTURL = url + `/api/post/${id}`
     if (window.confirm("Are you sure?")) {
 
         fetch(POSTURL,
             {
                 method: 'DELETE',
                 headers: {
+                    "Authorization": `Bearer ${token}`,
                     'Accept': 'application/json',
                     'content-Type': 'application/json'
                 }
@@ -79,23 +86,7 @@ function DetailFundraisers() {
             window.location.reload()
         }
     };
-  
-  // const updateData = (id) => {
 
-  //       fetch(`http://localhost:8200/api/post${id}`,
-  //           {
-  //               method: 'PUT',
-  //               headers: {
-  //                   'Accept': 'application/json',
-  //                   'content-Type': 'application/json'
-  //               }
-  //           })
-
-  //           .then(console.log("Updated"))
-  //           .catch(err => console.log(err));
-            
-        
-  //   };
   
   return (
     <>
@@ -120,7 +111,7 @@ function DetailFundraisers() {
     <Link to={`/payment-form`} className="btn btn-outline-success">Donate to Fundraiser</Link>
     </div>
     <div className="m-2">
-    <button id = {id} onClick={() => removeData(id)} className="btn btn-outline-danger">Delete</button>
+    <button id = {id} onClick={handleSubmit} className="btn btn-outline-danger">Delete</button>
     </div>
     </div>
     </div>

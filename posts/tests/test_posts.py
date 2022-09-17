@@ -1,5 +1,8 @@
 from fastapi.testclient import TestClient
-from main import app
+from main import app, delete_post
+from typing import Union
+from fastapi import Depends, FastAPI
+
 # from database import fetch_all_post
 
 client = TestClient(app)
@@ -10,19 +13,14 @@ def test_read_main():
     assert response.status_code == 200
     assert response.json() == {"Go": "FoodMe"}
 
+async def override_dependency(id:str, user_info):
+    return "Sucessfully deleted post"
 
-# def test_invalid_post_id1():
-#     response = client.get("/list-fundraisers/fundraisers/abc")
-#     assert response.status_code == 404
-#     assert response.json() == {'detail': 'Not Found'}
+app.dependency_overrides[delete_post] = override_dependency
 
+def test_delete_post():
+    response = client.delete("/api/post/1")
+    assert response.status_code == 200
+    assert response == "Sucessfully deleted post"
 
-# class EmptyPostQueries:
-#     post = []
-
-
-# def test_get_all():
-#     app.dependency_overrides[fetch_all_post] = EmptyPostQueries
-#     response = client.get("/api/post")
-#     assert response.status_code == 200
-#     assert response.json() == {"post": []}
+app.dependency_overrides = {}

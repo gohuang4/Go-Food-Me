@@ -89,4 +89,13 @@ Worked with a few seirs but when Andrew helped me out today figured out the way 
 
 ## Wednesday September 14, 2022
 
-tt
+We dived into authentication which has got us stomped on how to plug it in. We are able to create it and we see it but it is not present when we go over to our post page which requires it in order to make a post. We have been banging our heads trying alot of things we have looked up and instructors have told us but have not found a working solution yet.
+
+
+## Thursday September 15, 2022
+
+Curtis joined us and helped resolve our biggest issue with authenticaion. We were able to generate the token on the login page where it was created but not able to carry it to other pages. The solution was simple that we needed to plug in the token as the invisible token in app.js which gets called on each page so the token stays with you as you move across each page.
+
+## Friday September 16, 2022
+
+Had last minute issues with cors and a failed import that we were having trouble tracking down. Neil eventully came up with the solution that after making authentication.py on the back end i never added it to the dockerfile so it was not able to be referenced by Heroku. After that we had bug issues with update and delete not working. 
