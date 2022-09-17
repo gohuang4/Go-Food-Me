@@ -15,7 +15,6 @@ function BootstrapInput(props) {
 
  function UpdateForm(_props) {
   const {id} = useParams();
-  console.log(id)
   const url = process.env.REACT_APP_FastAPI_posts
   const PostURL = url + `/api/post/${id}`
   const [title, setTitle] = useState('')
