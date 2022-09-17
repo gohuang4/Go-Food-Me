@@ -18,26 +18,29 @@ function BootstrapInput(props) {
   /* eslint-disable */
 async function Login(username, password) {
   // For FastAPI account services, use this one
-  const url = `${process.env.REACT_APP_FastAPI_accounts}/token`;
+  const url = process.env.REACT_APP_FastAPI_accounts
+  const Login_URl =  url + "/token";
 
   const form = new FormData();
   form.append("username", username);
   form.append("password", password);
 
-  const response = await fetch(url, {
+  const response = await fetch(Login_URl, {
     method: "post",
     credentials: "include",
     body: form,
   });
-  if (response.ok) {  
-    const tokenUrl = `${process.env.REACT_APP_FastAPI_accounts}/token`;
+  if (response.ok) {
+    const url = process.env.REACT_APP_FastAPI_accounts
+    const Token_url =  url + "/token";  
     try {
-      const response = await fetch(tokenUrl, {
+      const response = await fetch(Token_url, {
         credentials: "include",
       });
       if (response.ok) {
         const data = await response.json();
         const token = data.token;
+        console.log("signin:token-->",token)
       }
     } catch (e) {}
     return false;
@@ -46,6 +49,7 @@ async function Login(username, password) {
   // DO SOMETHING WITH THE ERROR, IF YOU WANT
 }
 function SigninForm(props) {
+  // const [token, login] = useToken();
   const [token, login] = useToken();
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')

@@ -71,7 +71,7 @@ function Footer() {
       <div className="text-center p-4" style={{backgroundColor: '#02a95c'}}>
         <a className="text-reset fw-bold" href="https://gitlab.com/404-team-not-found1/go-food-me">&copy; 2022 Go Food Me</a>
         <div></div>
-        <a className="text-reset fw-bold" href="go-food-me/wolf"><img src={wolf} alt="the wolf"/></a>
+        <a className="text-reset fw-bold" href="/wolf"><img src={wolf} alt="the wolf"/></a>
       </div>
     </footer>
     

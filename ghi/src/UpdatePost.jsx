@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useParams, useNavigate } from "react-router-dom";
+import { useAuthContext } from "./useToken";
 
 
 function BootstrapInput(props) {
@@ -15,6 +16,7 @@ function BootstrapInput(props) {
 
  function UpdateForm(_props) {
   const {id} = useParams();
+  const { token } = useAuthContext();
   const url = process.env.REACT_APP_FastAPI_posts
   const PostURL = url + `/api/post/${id}`
   const [title, setTitle] = useState('')
@@ -33,7 +35,6 @@ function BootstrapInput(props) {
       "requested_amount": requested_amount, 
       "created": created,
     }
-    console.log(post)
 
     setIsPending(true)
 
@@ -42,6 +43,7 @@ function BootstrapInput(props) {
       method: 'PUT',
       body: JSON.stringify(post),
       headers: {
+        "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json",
         'accept': 'application/json',
       },
