@@ -71,7 +71,9 @@ def create_access_token(data: dict):
 
 async def get_current_user(
     bearer_token: Optional[str] = Depends(oauth2_scheme),
-    cookie_token: Optional[str] | None = (Cookie(default=None, alias=COOKIE_NAME)),
+    cookie_token: Optional[str] | None = (
+        Cookie(default=None, alias=COOKIE_NAME)
+    ),
     repo: AccountsQueries = Depends(),
 ):
     credentials_exception = HTTPException(
@@ -106,7 +108,11 @@ async def login_for_access_token(
     form_data: OAuth2PasswordRequestForm = Depends(),
     repo: AccountsQueries = Depends(),
 ):
-    user = await authenticate_user(repo, form_data.username, form_data.password)
+    user = await authenticate_user(
+        repo,
+        form_data.username,
+        form_data.password
+    )
 
     if not user:
         raise HTTPException(

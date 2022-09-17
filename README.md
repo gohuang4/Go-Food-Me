@@ -6,8 +6,7 @@
 * Cameron Webbe
 * Howard Yuan
 
-A Food Donation crowdfunding application aimed at helping those experiencing challenging circumstances 
-gain access to food during trying times.
+A Food Donation crowdfunding application aimed at helping those experiencing challenging circumstances gain access to food during trying times.
 
 ## Design
 
@@ -51,4 +50,10 @@ that need food and those that wish to aid those in need of food.
 * Allow Food Banks to make posts for necessary food products needed by their organization
 * Featured Post of the day
 * Charity fundraiser related news on landing page
-  
+
+# Startup
+* Fork the project
+* Clone the project
+* Run - docker volume create mongo-data
+* Run - docker compose build
+* Run - docker compose up
