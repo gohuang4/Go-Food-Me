@@ -33,7 +33,6 @@ async def get_current_user(
             fastapi_access_token, SIGNING_KEY, algorithms=[ALGORITHM]
         )
         return decodedToken
-        
     except (JWTError, AttributeError):
         raise credentials_exception
 
