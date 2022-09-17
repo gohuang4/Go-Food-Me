@@ -32,7 +32,6 @@ async def get_current_user(
         decodedToken = jwt.decode(
             fastapi_access_token, SIGNING_KEY, algorithms=[ALGORITHM]
         )
-        print("____>",decodedToken)
         return decodedToken
         
     except (JWTError, AttributeError):
