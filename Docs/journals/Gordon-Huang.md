@@ -10,7 +10,6 @@ Doing FAST API
 added tasksto trello board
 Added a logo for our site along with a nice title header
 
-
 08/22/2022
 Made our MVP more of an MVP by simplifying the MVP
 Took out the delivery aspect of the project and made it more similar Go Fund Me.
@@ -101,3 +100,6 @@ Worked on some CSS stuff to make our detail page look better.
 Was able to use grid to get the information to display side by side
 Created tests
 Just need to deploy
+
+09/16/2022
+Project done! 
