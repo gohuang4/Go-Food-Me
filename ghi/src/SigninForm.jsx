@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useToken } from './useToken'
-// import login from './LoginFunction'
 
 const url = process.env.REACT_APP_FastAPI_accounts
 const ACCOUNT_URL = url + "/api/account"
@@ -15,9 +14,7 @@ function BootstrapInput(props) {
     </div>
   )
 }
-  /* eslint-disable */
 async function Login(username, password) {
-  // For FastAPI account services, use this one
   const url = process.env.REACT_APP_FastAPI_accounts
   const Login_URl =  url + "/token";
 
@@ -46,41 +43,16 @@ async function Login(username, password) {
     return false;
   }
   let error = await response.json();
-  // DO SOMETHING WITH THE ERROR, IF YOU WANT
 }
 function SigninForm(props) {
-  // const [token, login] = useToken();
   const [token, login] = useToken();
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   
-  /* eslint-enable */
   const handleSubmit = (e) => {
     e.preventDefault();
     login(name, password);
   }
-  //   const account = {
-  //     "name": name,
-  //     "password": password,
-  //     "email": email,
-  //   }
-
-  //   const accountURL = e.currentTarget.action 
-  //   const fetchConfig = {
-  //     method: 'POST',
-  //     body: JSON.stringify(account),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "accept": "application/json"
-  //     },
-  //     cache: "no-cache",
-  //   }
-  //   console.log(fetchConfig.body);
-  //   fetch(accountURL, fetchConfig).then(() => {
-  //     console.log('new account added')
-  //   })
-  // }
-
     return (
       <form onSubmit={handleSubmit} action={ACCOUNT_URL}>
         <BootstrapInput

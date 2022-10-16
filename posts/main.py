@@ -4,7 +4,6 @@ from fastapi.security import OAuth2PasswordBearer
 from fastapi import FastAPI, HTTPException, Depends, status
 
 from jose import JWTError, jwt
-# from jose import JWTError, jwt
 from typing import Optional
 from model import Post, PostGetAll
 from database import (
@@ -73,7 +72,6 @@ async def get_post_by_id(id: str):
     raise HTTPException("Not Found")
 
 
-# @app.post("/api/post", response_model=Post)
 @app.post("/api/post", response_model=PostGetAll)
 async def post_post(post: Post, user_info=Depends(get_current_user)):
     response = await create_post(post.dict())
@@ -95,11 +93,6 @@ async def put_post(
     id: str,
     post: Post,
     user_info=Depends(get_current_user)
-    # id: str,
-    # picture_url: str | None = None,
-    # title: str | None = None,
-    # description: str | None = None,
-    # requested_amount: int | None = None,
 ):
 
     response = await update_post(

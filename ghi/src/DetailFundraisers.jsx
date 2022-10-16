@@ -5,9 +5,7 @@ import { useAuthContext } from "./useToken";
 
 function DetailFundraisers() {
   const [post, setPost] = useState([]);
-  /* eslint-disable */
   const {id} = useParams();
-  /* eslint-enabled */
   const { token } = useAuthContext();
   
   useEffect(() => {
@@ -34,37 +32,7 @@ function DetailFundraisers() {
     console.log("you clicked delete")
     removeData(e.target.id)
   }
-    
-  // let navigate = useNavigate(); 
-  // const routeChange = () =>{ 
-  //   let path = `/update-post/:id`; 
-  //   navigate(path);
-  // }
-  
-  // const updateData = (id) => {
-  //   if (window.confirm("Are you sure you want to update?")) {
-
-  //       fetch(`http://localhost:8200/api/post${id}`,
-  //           {
-  //               method: 'PUT',
-  //               headers: {
-  //                   'Accept': 'application/json',
-  //                   'content-Type': 'application/json'
-  //               },
-  //               // body: JSON.stringify({
-  //               //   "title": title,
-  //               //   "description": description,
-  //               //   "requested_amount": requested_amount,
-  //               //   "created": created,
-  //               // }),
-  //           })
-
-  //           .then(console.log("Updated"))
-  //           .catch(err => console.log(err));
-  //           window.location.reload()
-  //       }
-  //   };
-  
+      
   const removeData = (id) => {
     console.log("token",token)
     const url = process.env.REACT_APP_FastAPI_posts

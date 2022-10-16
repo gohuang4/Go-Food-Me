@@ -1,4 +1,3 @@
-// helper for form submission
 
 import { useState } from "react";
 

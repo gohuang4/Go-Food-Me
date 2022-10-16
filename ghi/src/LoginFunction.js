@@ -1,5 +1,4 @@
 async function login(username, password) {
-    // For FastAPI account services, use this one
     const url = `${process.env.REACT_APP_ACCOUNTS_HOST}/token`;
   
     const form = new FormData();
@@ -21,12 +20,10 @@ async function login(username, password) {
         if (response.ok) {
           const data = await response.json();
           const token = data.token;
-          // DO SOMETHING WITH THE TOKEN SO YOU CAN USE IT
-          // IN REQUESTS TO YOUR NON-ACCOUNTS SERVICES
+
         }
       } catch (e) {}
       return false;
     }
     let error = await response.json();
-    // DO SOMETHING WITH THE ERROR, IF YOU WANT
 }

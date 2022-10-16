@@ -18,14 +18,12 @@ function BootstrapInput(props) {
 
 function PostForm(props) {
   const { token } = useAuthContext();
-  // console.log(token);
   const [title, setTitle] = useState('')
   const [picture_url, setPictureURL] = useState('')
   const [description, setDescription] = useState('')
   const [requested_amount, setRequestedAmount] = useState(0)
   const [created, setCreated] = useState('')
   const [isPending, setIsPending] = useState(false)
-  // const [submitted,  setSubmitted] = useState(true)
   const handleSubmit= (e) => {
     e.preventDefault();
     const post = {
@@ -40,7 +38,6 @@ function PostForm(props) {
 
     const postURL = e.currentTarget.action;
     const postFetchConfig = {
-      // credentials: "include",
       method: 'POST',
       body: JSON.stringify(post),
       headers: {
@@ -58,7 +55,6 @@ function PostForm(props) {
 
     return (
       <form onSubmit={handleSubmit} action={PostURL} >
-        {/* {submitted ? <div className="success-message">Donation post created!</div>} */}
         <BootstrapInput
           id="title"
           placeholder="Title of your post"

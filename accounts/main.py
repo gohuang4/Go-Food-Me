@@ -70,8 +70,7 @@ async def post_account(account: Account):
     hashdict["hashed_password"] = pwd_context.hash(hashdict["password"])
     hashdict.pop("password")
 
-    # allaccounts = await fetch_all_accounts
-    # print(allaccounts)
+
 
     response = await create_account(hashdict)
     newdict = {
@@ -85,27 +84,6 @@ async def post_account(account: Account):
     if response:
         return newdict
     raise HTTPException(400, "Something went wrong / Bad Request")
-
-
-# @app.put("/api/account/{id}", response_model=AccountGetAll)
-# async def put_account(
-# id: str,
-# name: str | None = None,
-# password: str | None = None,
-# email: str | None = None,
-# ):
-# response = await update_account(
-# id=id,
-# name=name,
-# hashed_password=password,
-# email=email
-# )
-# if response:
-# return response
-# raise HTTPException(404, f"There is no account with this id.{id}")
-
-# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDYW0ifQ.0ukkY-PwiQZeW1JZnNltCUFaxkAJFuuEPEGO7T1pWx4
-# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDYW0ifQ.0ukkY-PwiQZeW1JZnNltCUFaxkAJFuuEPEGO7T1pWx4
 
 
 @app.delete("/api/account/{id}")

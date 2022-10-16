@@ -57,7 +57,6 @@ function BootstrapInput(props) {
 
     return (
       <form onSubmit={handleSubmit} action={PostURL} >
-        {/* {submitted ? <div className="success-message">Donation post created!</div>} */}
         <BootstrapInput
           id="title"
           placeholder="Title of your post"
